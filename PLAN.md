@@ -45,10 +45,10 @@
 - [x] Write README.md: how to run (`npx serve . -l 3010`), controls, how to add a quest.
 
 ## Day 6 — 3D upgrade and bigger village (user request)
-- [ ] Smooth 3D style: textured walls, floors, roofs, windows. Real sun shadows, sky, sun, moon. Textures drawn in code.
-- [ ] People with faces and joints (walk, blink, breathe, look at player, mouth moves when talking). Round panda Buu.
-- [ ] Houses with 2 rooms: kitchen (table, chairs, cabinets, stove, fridge, wall calendar) and bedroom (bed, wardrobe, desk).
-- [ ] Bigger village: school, market, well, lake with dock, farm, barn, forge, oven, street lamps, fence, forest, mountains.
-- [ ] 12 lost things to find (E). Buu says the English name. Family Book counts them.
-- [ ] Shift to run. Wall calendar opens the calendar.
-- [ ] Play all 15 quests again in the new world. No console errors.
+- [x] Smooth 3D style: textured walls, floors, roofs, windows. Real sun shadows, sky, sun, moon. Textures drawn in code.
+- [x] People with faces and joints (walk, blink, breathe, look at player, mouth moves when talking). Round panda Buu.
+- [x] Houses with 2 rooms: kitchen (table, chairs, cabinets, stove, fridge, wall calendar) and bedroom (bed, wardrobe, desk).
+- [x] Bigger village: school, market, well, lake with dock, farm, barn, forge, oven, street lamps, fence, forest, mountains.
+- [x] 12 lost things to find (E). Buu says the English name. Family Book counts them.
+- [x] Shift to run. Wall calendar opens the calendar.
+- [x] Play all 15 quests again in the new world. No console errors.
