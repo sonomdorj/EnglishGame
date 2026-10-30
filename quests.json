@@ -1,0 +1,341 @@
+[
+  {
+    "id": 1,
+    "a": "dulamsuren",
+    "b": "batbayar",
+    "claimA": "Batbayar paid me on Friday, 17 November 2017.",
+    "claimB": "No. I paid on Saturday.",
+    "date": "17 November 2017",
+    "weekday": "Friday",
+    "liar": "batbayar",
+    "penalty": "10 iron",
+    "words": [
+      "pay",
+      "iron",
+      "coin"
+    ],
+    "trap": {
+      "date": "21 June 2014",
+      "said": "Tuesday",
+      "weekday": "Saturday",
+      "line": "Oyunaa was born on Tuesday, 21 June 2014."
+    }
+  },
+  {
+    "id": 2,
+    "a": "ganbold",
+    "b": "dulamsuren",
+    "claimA": "Dulamsuren took my fish on Saturday, 3 March 2019.",
+    "claimB": "No. I took it on Sunday.",
+    "date": "3 March 2019",
+    "weekday": "Sunday",
+    "liar": "ganbold",
+    "penalty": "5 fish",
+    "words": [
+      "fish",
+      "take",
+      "lake",
+      "net"
+    ],
+    "trap": {
+      "date": "4 July 1998",
+      "said": "Wednesday",
+      "weekday": "Saturday",
+      "line": "4 July 1998 was a Wednesday."
+    }
+  },
+  {
+    "id": 3,
+    "a": "tsetseg",
+    "b": "oyunaa",
+    "claimA": "Oyunaa missed school on Monday, 9 October 2023.",
+    "claimB": "No. I missed it on Wednesday.",
+    "date": "9 October 2023",
+    "weekday": "Monday",
+    "liar": "oyunaa",
+    "penalty": "3 pencils",
+    "words": [
+      "school",
+      "miss",
+      "pencil"
+    ],
+    "trap": {
+      "date": "14 March 1978",
+      "said": "Sunday",
+      "weekday": "Tuesday",
+      "line": "Batbayar was born on Sunday, 14 March 1978."
+    }
+  },
+  {
+    "id": 4,
+    "a": "enkhjargal",
+    "b": "ganbold",
+    "claimA": "Ganbold borrowed my horse on Sunday, 26 July 2005.",
+    "claimB": "No. I borrowed it on Tuesday.",
+    "date": "26 July 2005",
+    "weekday": "Tuesday",
+    "liar": "enkhjargal",
+    "penalty": "4 carrots",
+    "words": [
+      "horse",
+      "borrow",
+      "carrot",
+      "field"
+    ],
+    "trap": {
+      "date": "25 December 2002",
+      "said": "Saturday",
+      "weekday": "Wednesday",
+      "line": "25 December 2002 was a Saturday."
+    }
+  },
+  {
+    "id": 5,
+    "a": "batbayar",
+    "b": "enkhjargal",
+    "claimA": "Enkhjargal ordered a shovel on Tuesday, 12 April 2011.",
+    "claimB": "No. I ordered it on Friday.",
+    "date": "12 April 2011",
+    "weekday": "Tuesday",
+    "liar": "enkhjargal",
+    "penalty": "6 potatoes",
+    "words": [
+      "shovel",
+      "order",
+      "potato"
+    ],
+    "trap": {
+      "date": "8 November 1991",
+      "said": "Tuesday",
+      "weekday": "Friday",
+      "line": "Tsetseg was born on Tuesday, 8 November 1991."
+    }
+  },
+  {
+    "id": 6,
+    "a": "oyunaa",
+    "b": "tsetseg",
+    "claimA": "Tsetseg gave us a test on Thursday, 15 May 2024.",
+    "claimB": "No. I gave it on Wednesday.",
+    "date": "15 May 2024",
+    "weekday": "Wednesday",
+    "liar": "oyunaa",
+    "penalty": "2 erasers",
+    "words": [
+      "test",
+      "give",
+      "eraser",
+      "answer"
+    ],
+    "trap": {
+      "date": "1 April 2015",
+      "said": "Monday",
+      "weekday": "Wednesday",
+      "line": "1 April 2015 was a Monday."
+    }
+  },
+  {
+    "id": 7,
+    "a": "dulamsuren",
+    "b": "ganbold",
+    "claimA": "Ganbold ate my cake on Friday, 31 December 1999.",
+    "claimB": "No. I ate it on Thursday.",
+    "date": "31 December 1999",
+    "weekday": "Friday",
+    "liar": "ganbold",
+    "penalty": "1 fishing net",
+    "words": [
+      "cake",
+      "eat",
+      "party"
+    ],
+    "trap": {
+      "date": "17 May 1975",
+      "said": "Tuesday",
+      "weekday": "Saturday",
+      "line": "Ganbold was born on Tuesday, 17 May 1975."
+    }
+  },
+  {
+    "id": 8,
+    "a": "ganbold",
+    "b": "batbayar",
+    "claimA": "Batbayar fixed my hook on Sunday, 8 August 2008.",
+    "claimB": "No. I fixed it on Friday.",
+    "date": "8 August 2008",
+    "weekday": "Friday",
+    "liar": "ganbold",
+    "penalty": "1 fishing rod",
+    "words": [
+      "hook",
+      "fix",
+      "rod",
+      "metal"
+    ],
+    "trap": {
+      "date": "13 June 1997",
+      "said": "Tuesday",
+      "weekday": "Friday",
+      "line": "13 June 1997 was a Tuesday."
+    }
+  },
+  {
+    "id": 9,
+    "a": "tsetseg",
+    "b": "enkhjargal",
+    "claimA": "Enkhjargal visited me on Wednesday, 1 June 2016.",
+    "claimB": "No. I visited you on Monday.",
+    "date": "1 June 2016",
+    "weekday": "Wednesday",
+    "liar": "enkhjargal",
+    "penalty": "12 eggs",
+    "words": [
+      "visit",
+      "mother",
+      "egg"
+    ],
+    "trap": {
+      "date": "2 September 1983",
+      "said": "Wednesday",
+      "weekday": "Friday",
+      "line": "Dulamsuren was born on Wednesday, 2 September 1983."
+    }
+  },
+  {
+    "id": 10,
+    "a": "enkhjargal",
+    "b": "dulamsuren",
+    "claimA": "Dulamsuren bought my wheat on Monday, 20 September 2013.",
+    "claimB": "No. I bought it on Friday.",
+    "date": "20 September 2013",
+    "weekday": "Friday",
+    "liar": "enkhjargal",
+    "penalty": "1 bag of wheat",
+    "words": [
+      "wheat",
+      "buy",
+      "bag",
+      "flour"
+    ],
+    "trap": {
+      "date": "30 October 2020",
+      "said": "Monday",
+      "weekday": "Friday",
+      "line": "30 October 2020 was a Monday."
+    }
+  },
+  {
+    "id": 11,
+    "a": "oyunaa",
+    "b": "batbayar",
+    "claimA": "My father promised me a dog on Thursday, 29 February 2024.",
+    "claimB": "No. I promised it on Friday.",
+    "date": "29 February 2024",
+    "weekday": "Thursday",
+    "liar": "batbayar",
+    "penalty": "1 hammer",
+    "words": [
+      "promise",
+      "dog",
+      "father"
+    ],
+    "trap": {
+      "date": "30 January 1969",
+      "said": "Monday",
+      "weekday": "Thursday",
+      "line": "Enkhjargal was born on Monday, 30 January 1969."
+    }
+  },
+  {
+    "id": 12,
+    "a": "batbayar",
+    "b": "tsetseg",
+    "claimA": "Tsetseg returned my book on Sunday, 4 January 2010.",
+    "claimB": "No. I returned it on Monday.",
+    "date": "4 January 2010",
+    "weekday": "Monday",
+    "liar": "batbayar",
+    "penalty": "1 horseshoe",
+    "words": [
+      "book",
+      "return",
+      "late",
+      "shelf"
+    ],
+    "trap": {
+      "date": "5 May 2005",
+      "said": "Tuesday",
+      "weekday": "Thursday",
+      "line": "5 May 2005 was a Tuesday."
+    }
+  },
+  {
+    "id": 13,
+    "a": "ganbold",
+    "b": "oyunaa",
+    "claimA": "Oyunaa fed my cat on Monday, 22 August 2022.",
+    "claimB": "No. I fed it on Wednesday.",
+    "date": "22 August 2022",
+    "weekday": "Monday",
+    "liar": "oyunaa",
+    "penalty": "1 kite",
+    "words": [
+      "cat",
+      "feed",
+      "kite"
+    ],
+    "trap": {
+      "date": "16 August 2018",
+      "said": "Sunday",
+      "weekday": "Thursday",
+      "line": "16 August 2018 was a Sunday."
+    }
+  },
+  {
+    "id": 14,
+    "a": "dulamsuren",
+    "b": "tsetseg",
+    "claimA": "Tsetseg lost my umbrella on Wednesday, 11 November 2011.",
+    "claimB": "No. I lost it on Friday.",
+    "date": "11 November 2011",
+    "weekday": "Friday",
+    "liar": "dulamsuren",
+    "penalty": "2 loaves of bread",
+    "words": [
+      "umbrella",
+      "lose",
+      "rain",
+      "bread"
+    ],
+    "trap": {
+      "date": "2 February 2012",
+      "said": "Monday",
+      "weekday": "Thursday",
+      "line": "2 February 2012 was a Monday."
+    }
+  },
+  {
+    "id": 15,
+    "a": "tsetseg",
+    "b": "ganbold",
+    "claimA": "Ganbold sang at my party on Sunday, 7 March 2021.",
+    "claimB": "No. I sang on Wednesday.",
+    "date": "7 March 2021",
+    "weekday": "Sunday",
+    "liar": "ganbold",
+    "penalty": "7 shells",
+    "words": [
+      "sing",
+      "song",
+      "shell",
+      "loud",
+      "music"
+    ],
+    "trap": {
+      "date": "21 March 2001",
+      "said": "Monday",
+      "weekday": "Wednesday",
+      "line": "21 March 2001 was a Monday."
+    }
+  }
+]

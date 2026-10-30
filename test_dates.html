@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Date engine tests</title>
+  <style>
+    body { font: 16px system-ui, sans-serif; margin: 24px; }
+    .pass { color: #1f7a3a; } .fail { color: #b3261e; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Date engine tests</h1>
+  <p id="summary">Running...</p>
+  <ol id="list"></ol>
+  <script type="module">
+    import { weekday, parseDate } from './dates.js';
+    // Expected weekdays checked against an independent calendar (Python datetime).
+    const CASES = [
+      ['1 January 1900', 'Monday'], ['28 February 1900', 'Wednesday'], ['1 March 1900', 'Thursday'],
+      ['1 January 1901', 'Tuesday'], ['15 April 1912', 'Monday'], ['8 May 1945', 'Tuesday'],
+      ['12 April 1961', 'Wednesday'], ['20 July 1969', 'Sunday'], ['29 February 1980', 'Friday'],
+      ['9 November 1989', 'Thursday'], ['31 December 1999', 'Friday'], ['1 January 2000', 'Saturday'],
+      ['29 February 2000', 'Tuesday'], ['11 September 2001', 'Tuesday'], ['21 June 2014', 'Saturday'],
+      ['17 November 2017', 'Friday'], ['29 February 2024', 'Thursday'], ['4 July 2050', 'Monday'],
+      ['8 August 2088', 'Sunday'], ['31 December 2099', 'Thursday'],
+    ];
+    const list = document.getElementById('list');
+    let pass = 0;
+    for (const [date, want] of CASES) {
+      const { d, m, y } = parseDate(date);
+      const got = weekday(d, m, y);
+      const ok = got === want;
+      if (ok) pass++;
+      const li = document.createElement('li');
+      li.className = ok ? 'pass' : 'fail';
+      li.textContent = `${date}: expected ${want}, got ${got} — ${ok ? 'PASS' : 'FAIL'}`;
+      list.appendChild(li);
+    }
+    const summary = document.getElementById('summary');
+    summary.textContent = `${pass} / ${CASES.length} passed`;
+    summary.className = pass === CASES.length ? 'pass' : 'fail';
+    window.testResult = { pass, total: CASES.length };
+  </script>
+</body>
+</html>

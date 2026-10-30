@@ -1,0 +1,14 @@
+[
+  { "id": "batbayar", "name": "Batbayar Sonomdorj", "house": "h1", "job": "blacksmith", "birthday": "14-3-1978",
+    "father": "Sonomdorj Ganzorig", "mother": "Altantsetseg Bat", "children": ["oyunaa"] },
+  { "id": "dulamsuren", "name": "Dulamsuren Tsogt", "house": "h2", "job": "baker", "birthday": "2-9-1983",
+    "father": "Tsogt Dashdorj", "mother": "Narantuya Luvsan", "children": [] },
+  { "id": "oyunaa", "name": "Oyunaa Batbayar", "house": "h3", "job": "student", "birthday": "21-6-2014",
+    "father": "Batbayar Sonomdorj", "mother": "Saruul Bold", "children": [] },
+  { "id": "enkhjargal", "name": "Enkhjargal Dorj", "house": "h4", "job": "farmer", "birthday": "30-1-1969",
+    "father": "Dorj Purev", "mother": "Khulan Tumur", "children": ["tsetseg"] },
+  { "id": "tsetseg", "name": "Tsetseg Nyamdorj", "house": "h5", "job": "teacher", "birthday": "8-11-1991",
+    "father": "Nyamdorj Baatar", "mother": "Enkhjargal Dorj", "children": [] },
+  { "id": "ganbold", "name": "Ganbold Erdene", "house": "h6", "job": "fisherman", "birthday": "17-5-1975",
+    "father": "Erdene Damdin", "mother": "Oyun Ganbaatar", "children": [] }
+]

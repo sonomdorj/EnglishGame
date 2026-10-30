@@ -1,11 +1,97 @@
-# Word Game
+# The Name Keeper
 
-English vocabulary game for Mongolian speakers.
+A small 3D voxel village game for learning English.
+You are the judge. Villagers argue about dates. You find the true weekday.
+Buu the panda follows you and helps (a little).
 
-Run:
+## How to run
+
+You need Node.js. In this folder run:
 
 ```bash
-npx serve
+npx serve . -l 3010
 ```
 
-Open the URL it prints.
+Open http://localhost:3010 in Chrome, Safari or Edge.
+The page loads Three.js from the internet (jsDelivr CDN), so you need a network connection.
+
+Date engine tests: open http://localhost:3010/test_dates.html
+
+## Controls
+
+| Key | Action |
+| --- | --- |
+| W A S D or arrows | Walk |
+| Mouse | Look (click the game first) |
+| Space | Jump. Next line when a dialog is open |
+| E | Talk, read a letter, take an item |
+| F | Buu said a wrong weekday. Correct him |
+| B | Family Book |
+| C | Calendar |
+| 1–7 | Pick an answer in an open panel |
+| Esc | Close a panel, or free the mouse |
+
+## How a case works
+
+1. Buu says "New case" and names villager A.
+2. Talk to A (E). Hear the claim and new words.
+3. Talk to villager B. Hear the other claim.
+4. Buu asks which weekday the date was. Use the calendar. Click a weekday.
+5. Walk to the liar and press E to take the penalty item.
+6. Word check: listen and click the word you hear.
+7. Buu: "Correct. Next."
+
+Night comes after 4 minutes and lasts 2 minutes.
+At night you can read the letters inside the houses.
+The headmaster patrols at night. If he sees you, he sends you back to the gate.
+
+## How to add a quest
+
+Add an object to `quests.json`:
+
+```json
+{
+  "id": 16,
+  "a": "dulamsuren",
+  "b": "batbayar",
+  "claimA": "Batbayar paid me on Friday, 17 November 2017.",
+  "claimB": "No. I paid on Saturday.",
+  "date": "17 November 2017",
+  "weekday": "Friday",
+  "liar": "batbayar",
+  "penalty": "10 iron",
+  "words": ["pay", "iron", "coin"],
+  "trap": { "date": "21 June 2014", "said": "Tuesday", "weekday": "Saturday",
+            "line": "Oyunaa was born on Tuesday, 21 June 2014." }
+}
+```
+
+Rules:
+
+- `a`, `b` and `liar` are villager ids from `villagers.json`.
+- `date` must be "day Month year", between 1900 and 2099.
+- `weekday` must be the true weekday. Check it in the calendar (C) or with `dates.js`.
+- The liar's claim must use a wrong weekday. The other claim uses the true one.
+- `words` has 3 to 5 items. The count sets how many new words the case teaches.
+  The words themselves come from `words.json` at the player's current level.
+- `trap.line` is said by Buu. It must use the wrong weekday `trap.said`. Max 8 words.
+
+## Files
+
+| File | What it does |
+| --- | --- |
+| `index.html`, `style.css` | Page and UI |
+| `main.js` | Scene, player, Buu, input, game loop |
+| `world.js` | Voxel ground, houses, trees, gate, collision |
+| `npc.js` | Voxel people and the panda |
+| `dialog.js`, `tts.js` | Dialog box and speech (en-US, rate 0.85) |
+| `quest.js` | Judge quest flow and Buu's date trap |
+| `dates.js` | Weekday for any date 1900–2099 |
+| `learn.js` | Adaptive word level |
+| `night.js` | Day/night cycle and the headmaster |
+| `ui.js` | Calendar, answer panel, Family Book |
+| `save.js` | localStorage save |
+| `config.js` | Settings: speech rate, mouse sensitivity, Buu distance |
+| `villagers.json`, `quests.json`, `words.json`, `letters.json` | Game data |
+
+To start over, clear the site data for localhost:3010 in the browser.

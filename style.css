@@ -1,23 +1,58 @@
 :root {
-  --bg: #f4f1ea;
-  --card: #ffffff;
-  --text: #1f2430;
-  --muted: #6b7280;
-  --accent: #2f6fde;
-  --good: #1f9d55;
-  --bad: #d64545;
-  --border: #d9d4c7;
+  --panel: rgba(18, 22, 30, 0.92);
+  --text: #f2efe6;
+  --muted: #a7adb8;
+  --accent: #f0c24b;
+  --good: #6fcf7f;
+  --line: rgba(255, 255, 255, 0.15);
 }
 * { box-sizing: border-box; }
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-}
-#app {
-  max-width: 560px;
-  margin: 0 auto;
-  padding: 24px 16px;
-}
-h1 { margin: 0 0 16px; font-size: 28px; }
+html, body { margin: 0; height: 100%; overflow: hidden; background: #000; color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+#view { display: block; width: 100vw; height: 100vh; }
+[hidden] { display: none !important; }
+
+#crosshair { position: fixed; left: 50%; top: 50%; width: 14px; height: 14px; margin: -7px 0 0 -7px; pointer-events: none; }
+#crosshair::before, #crosshair::after { content: ""; position: absolute; background: #fff; box-shadow: 0 0 2px #000; }
+#crosshair::before { left: 6px; top: 0; width: 2px; height: 14px; }
+#crosshair::after { top: 6px; left: 0; height: 2px; width: 14px; }
+
+#hint { position: fixed; left: 50%; top: calc(50% + 28px); transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.6); padding: 6px 14px; border-radius: 6px; font-size: 20px; font-weight: 600; pointer-events: none; }
+#keys { position: fixed; left: 12px; top: 10px; font-size: 14px; color: #fff; text-shadow: 0 1px 2px #000; opacity: 0.85; pointer-events: none; }
+
+#dialog { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); width: min(900px, calc(100vw - 32px));
+  background: var(--panel); border: 2px solid var(--line); border-radius: 10px; padding: 18px 24px 30px; }
+.d-name { color: var(--accent); font-weight: 700; font-size: 20px; margin-bottom: 6px; }
+.d-text { font-size: 30px; line-height: 1.3; }
+.d-text b { color: var(--accent); }
+.d-next { position: absolute; right: 16px; bottom: 8px; font-size: 14px; color: var(--muted); }
+
+.panel { position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(720px, calc(100vw - 32px));
+  max-height: calc(100vh - 32px); overflow: auto; background: var(--panel); border: 2px solid var(--line); border-radius: 12px; padding: 20px 24px; }
+.p-title { font-size: 28px; font-weight: 700; margin-bottom: 12px; text-align: center; }
+.p-options { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 14px; }
+.p-options button, .cal-nav button, .p-body button { font: inherit; font-size: 22px; padding: 10px 16px; border-radius: 8px;
+  border: 2px solid var(--line); background: #2a3242; color: var(--text); cursor: pointer; }
+.p-options button:hover, .cal-nav button:hover, .p-body button:hover { border-color: var(--accent); }
+.p-options button.wrong { opacity: 0.4; }
+.p-foot { text-align: center; color: var(--muted); font-size: 14px; margin-top: 12px; }
+
+.cal { margin: 0 auto; border-collapse: collapse; font-size: 18px; }
+.cal th, .cal td { width: 54px; height: 36px; text-align: center; border: 1px solid var(--line); }
+.cal th { color: var(--accent); font-size: 14px; }
+.cal td.mark { outline: 3px solid var(--accent); outline-offset: -3px; font-weight: 700; }
+.cal-nav { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+.cal-nav .cal-month { font-size: 22px; font-weight: 700; min-width: 220px; text-align: center; }
+.cal-nav button { font-size: 16px; padding: 6px 10px; }
+
+#book h2 { margin: 0 0 14px; text-align: center; }
+.person { border-top: 1px solid var(--line); padding: 10px 0; font-size: 18px; line-height: 1.5; }
+.person .pname { font-size: 22px; font-weight: 700; color: var(--accent); }
+.book-foot { border-top: 1px solid var(--line); padding-top: 10px; color: var(--muted); }
+
+#start { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(10, 14, 20, 0.75); cursor: pointer; }
+.start-box { background: var(--panel); border: 2px solid var(--line); border-radius: 14px; padding: 24px 32px; max-width: calc(100vw - 32px); }
+.start-box h1 { margin: 0 0 8px; }
+.start-box .ready { font-size: 24px; color: var(--accent); font-weight: 700; }
+.start-box ul { padding-left: 18px; line-height: 1.7; }

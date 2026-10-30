@@ -1,0 +1,1502 @@
+[
+ {
+  "word": "cat",
+  "level": 1,
+  "sentence": "The cat sleeps on the bed."
+ },
+ {
+  "word": "dog",
+  "level": 1,
+  "sentence": "The dog runs to the gate."
+ },
+ {
+  "word": "sun",
+  "level": 1,
+  "sentence": "The sun is hot today."
+ },
+ {
+  "word": "tree",
+  "level": 1,
+  "sentence": "The tree is very tall."
+ },
+ {
+  "word": "house",
+  "level": 1,
+  "sentence": "My house has a red roof."
+ },
+ {
+  "word": "door",
+  "level": 1,
+  "sentence": "Please open the door."
+ },
+ {
+  "word": "bread",
+  "level": 1,
+  "sentence": "I eat bread in the morning."
+ },
+ {
+  "word": "fish",
+  "level": 1,
+  "sentence": "The fish swims in the lake."
+ },
+ {
+  "word": "water",
+  "level": 1,
+  "sentence": "I drink cold water."
+ },
+ {
+  "word": "milk",
+  "level": 1,
+  "sentence": "The milk is white."
+ },
+ {
+  "word": "egg",
+  "level": 1,
+  "sentence": "The hen lays an egg."
+ },
+ {
+  "word": "hat",
+  "level": 1,
+  "sentence": "He wears a black hat."
+ },
+ {
+  "word": "bed",
+  "level": 1,
+  "sentence": "I sleep in my bed."
+ },
+ {
+  "word": "book",
+  "level": 1,
+  "sentence": "I read a book."
+ },
+ {
+  "word": "ball",
+  "level": 1,
+  "sentence": "Kick the ball to me."
+ },
+ {
+  "word": "boat",
+  "level": 1,
+  "sentence": "The boat is on the lake."
+ },
+ {
+  "word": "cup",
+  "level": 1,
+  "sentence": "The cup is full of tea."
+ },
+ {
+  "word": "hand",
+  "level": 1,
+  "sentence": "Raise your hand."
+ },
+ {
+  "word": "eye",
+  "level": 1,
+  "sentence": "Close one eye."
+ },
+ {
+  "word": "road",
+  "level": 1,
+  "sentence": "The road goes to the village."
+ },
+ {
+  "word": "red",
+  "level": 1,
+  "sentence": "The roof is red."
+ },
+ {
+  "word": "big",
+  "level": 1,
+  "sentence": "The panda is big."
+ },
+ {
+  "word": "small",
+  "level": 1,
+  "sentence": "The mouse is small."
+ },
+ {
+  "word": "hot",
+  "level": 1,
+  "sentence": "The fire is hot."
+ },
+ {
+  "word": "cold",
+  "level": 1,
+  "sentence": "The snow is cold."
+ },
+ {
+  "word": "run",
+  "level": 1,
+  "sentence": "I run to school."
+ },
+ {
+  "word": "sit",
+  "level": 1,
+  "sentence": "Sit on the chair."
+ },
+ {
+  "word": "eat",
+  "level": 1,
+  "sentence": "We eat dinner at six."
+ },
+ {
+  "word": "sleep",
+  "level": 1,
+  "sentence": "Pandas sleep a lot."
+ },
+ {
+  "word": "day",
+  "level": 1,
+  "sentence": "It is a nice day."
+ },
+ {
+  "word": "apple",
+  "level": 2,
+  "sentence": "The apple is green."
+ },
+ {
+  "word": "chair",
+  "level": 2,
+  "sentence": "The chair is made of wood."
+ },
+ {
+  "word": "table",
+  "level": 2,
+  "sentence": "The cup is on the table."
+ },
+ {
+  "word": "window",
+  "level": 2,
+  "sentence": "Look out of the window."
+ },
+ {
+  "word": "garden",
+  "level": 2,
+  "sentence": "Flowers grow in the garden."
+ },
+ {
+  "word": "horse",
+  "level": 2,
+  "sentence": "The horse eats grass."
+ },
+ {
+  "word": "bird",
+  "level": 2,
+  "sentence": "A bird sings in the tree."
+ },
+ {
+  "word": "river",
+  "level": 2,
+  "sentence": "The river is long."
+ },
+ {
+  "word": "school",
+  "level": 2,
+  "sentence": "I walk to school."
+ },
+ {
+  "word": "teacher",
+  "level": 2,
+  "sentence": "The teacher writes on the board."
+ },
+ {
+  "word": "friend",
+  "level": 2,
+  "sentence": "Buu is my friend."
+ },
+ {
+  "word": "mother",
+  "level": 2,
+  "sentence": "My mother bakes bread."
+ },
+ {
+  "word": "father",
+  "level": 2,
+  "sentence": "My father works with iron."
+ },
+ {
+  "word": "sister",
+  "level": 2,
+  "sentence": "My sister is ten."
+ },
+ {
+  "word": "brother",
+  "level": 2,
+  "sentence": "My brother likes fish."
+ },
+ {
+  "word": "morning",
+  "level": 2,
+  "sentence": "I wake up in the morning."
+ },
+ {
+  "word": "night",
+  "level": 2,
+  "sentence": "The stars come out at night."
+ },
+ {
+  "word": "week",
+  "level": 2,
+  "sentence": "A week has seven days."
+ },
+ {
+  "word": "today",
+  "level": 2,
+  "sentence": "Today is a good day."
+ },
+ {
+  "word": "happy",
+  "level": 2,
+  "sentence": "The dog is happy."
+ },
+ {
+  "word": "tired",
+  "level": 2,
+  "sentence": "I am tired after school."
+ },
+ {
+  "word": "open",
+  "level": 2,
+  "sentence": "The shop is open."
+ },
+ {
+  "word": "close",
+  "level": 2,
+  "sentence": "Close the window, please."
+ },
+ {
+  "word": "walk",
+  "level": 2,
+  "sentence": "We walk to the lake."
+ },
+ {
+  "word": "jump",
+  "level": 2,
+  "sentence": "Jump over the fence."
+ },
+ {
+  "word": "read",
+  "level": 2,
+  "sentence": "I read a letter."
+ },
+ {
+  "word": "write",
+  "level": 2,
+  "sentence": "Write your name here."
+ },
+ {
+  "word": "pen",
+  "level": 2,
+  "sentence": "I write with a pen."
+ },
+ {
+  "word": "bag",
+  "level": 2,
+  "sentence": "My bag is heavy."
+ },
+ {
+  "word": "shoe",
+  "level": 2,
+  "sentence": "I lost one shoe."
+ },
+ {
+  "word": "Monday",
+  "level": 3,
+  "sentence": "School starts on Monday."
+ },
+ {
+  "word": "Tuesday",
+  "level": 3,
+  "sentence": "We bake bread on Tuesday."
+ },
+ {
+  "word": "Wednesday",
+  "level": 3,
+  "sentence": "Wednesday is in the middle of the week."
+ },
+ {
+  "word": "Thursday",
+  "level": 3,
+  "sentence": "The market is open on Thursday."
+ },
+ {
+  "word": "Friday",
+  "level": 3,
+  "sentence": "Friday is the last school day."
+ },
+ {
+  "word": "Saturday",
+  "level": 3,
+  "sentence": "On Saturday I play outside."
+ },
+ {
+  "word": "Sunday",
+  "level": 3,
+  "sentence": "On Sunday we rest."
+ },
+ {
+  "word": "yesterday",
+  "level": 3,
+  "sentence": "Yesterday it rained."
+ },
+ {
+  "word": "tomorrow",
+  "level": 3,
+  "sentence": "Tomorrow I will visit my friend."
+ },
+ {
+  "word": "birthday",
+  "level": 3,
+  "sentence": "My birthday is in June."
+ },
+ {
+  "word": "date",
+  "level": 3,
+  "sentence": "What is the date today?"
+ },
+ {
+  "word": "calendar",
+  "level": 3,
+  "sentence": "Look at the calendar."
+ },
+ {
+  "word": "clock",
+  "level": 3,
+  "sentence": "The clock is on the wall."
+ },
+ {
+  "word": "hour",
+  "level": 3,
+  "sentence": "One hour has sixty minutes."
+ },
+ {
+  "word": "minute",
+  "level": 3,
+  "sentence": "Wait one minute."
+ },
+ {
+  "word": "early",
+  "level": 3,
+  "sentence": "I wake up early."
+ },
+ {
+  "word": "late",
+  "level": 3,
+  "sentence": "Do not be late."
+ },
+ {
+  "word": "before",
+  "level": 3,
+  "sentence": "Wash your hands before dinner."
+ },
+ {
+  "word": "after",
+  "level": 3,
+  "sentence": "I play after school."
+ },
+ {
+  "word": "first",
+  "level": 3,
+  "sentence": "Monday is the first school day."
+ },
+ {
+  "word": "last",
+  "level": 3,
+  "sentence": "This is the last cake."
+ },
+ {
+  "word": "next",
+  "level": 3,
+  "sentence": "Who is next?"
+ },
+ {
+  "word": "number",
+  "level": 3,
+  "sentence": "Seven is my number."
+ },
+ {
+  "word": "count",
+  "level": 3,
+  "sentence": "Count the eggs."
+ },
+ {
+  "word": "weekend",
+  "level": 3,
+  "sentence": "The weekend is Saturday and Sunday."
+ },
+ {
+  "word": "year",
+  "level": 3,
+  "sentence": "A year has twelve months."
+ },
+ {
+  "word": "month",
+  "level": 3,
+  "sentence": "This month is cold."
+ },
+ {
+  "word": "time",
+  "level": 3,
+  "sentence": "What time is it?"
+ },
+ {
+  "word": "noon",
+  "level": 3,
+  "sentence": "We eat lunch at noon."
+ },
+ {
+  "word": "evening",
+  "level": 3,
+  "sentence": "In the evening we read."
+ },
+ {
+  "word": "January",
+  "level": 4,
+  "sentence": "January is very cold here."
+ },
+ {
+  "word": "February",
+  "level": 4,
+  "sentence": "February is a short month."
+ },
+ {
+  "word": "March",
+  "level": 4,
+  "sentence": "Snow melts in March."
+ },
+ {
+  "word": "April",
+  "level": 4,
+  "sentence": "Birds come back in April."
+ },
+ {
+  "word": "May",
+  "level": 4,
+  "sentence": "Flowers open in May."
+ },
+ {
+  "word": "June",
+  "level": 4,
+  "sentence": "Oyunaa was born in June."
+ },
+ {
+  "word": "July",
+  "level": 4,
+  "sentence": "July is hot."
+ },
+ {
+  "word": "August",
+  "level": 4,
+  "sentence": "We swim in August."
+ },
+ {
+  "word": "September",
+  "level": 4,
+  "sentence": "School starts in September."
+ },
+ {
+  "word": "October",
+  "level": 4,
+  "sentence": "Leaves fall in October."
+ },
+ {
+  "word": "November",
+  "level": 4,
+  "sentence": "November is dark and cold."
+ },
+ {
+  "word": "December",
+  "level": 4,
+  "sentence": "December is the last month."
+ },
+ {
+  "word": "village",
+  "level": 4,
+  "sentence": "Our village is small."
+ },
+ {
+  "word": "market",
+  "level": 4,
+  "sentence": "We buy eggs at the market."
+ },
+ {
+  "word": "shop",
+  "level": 4,
+  "sentence": "The shop sells bread."
+ },
+ {
+  "word": "money",
+  "level": 4,
+  "sentence": "I keep my money in a box."
+ },
+ {
+  "word": "coin",
+  "level": 4,
+  "sentence": "I found a coin on the road."
+ },
+ {
+  "word": "price",
+  "level": 4,
+  "sentence": "The price is ten coins."
+ },
+ {
+  "word": "buy",
+  "level": 4,
+  "sentence": "I buy milk every day."
+ },
+ {
+  "word": "sell",
+  "level": 4,
+  "sentence": "The farmer sells potatoes."
+ },
+ {
+  "word": "pay",
+  "level": 4,
+  "sentence": "You must pay for the bread."
+ },
+ {
+  "word": "borrow",
+  "level": 4,
+  "sentence": "Can I borrow your pen?"
+ },
+ {
+  "word": "return",
+  "level": 4,
+  "sentence": "Please return my book."
+ },
+ {
+  "word": "owe",
+  "level": 4,
+  "sentence": "You owe me two coins."
+ },
+ {
+  "word": "carry",
+  "level": 4,
+  "sentence": "I carry the bag home."
+ },
+ {
+  "word": "heavy",
+  "level": 4,
+  "sentence": "The iron is heavy."
+ },
+ {
+  "word": "light",
+  "level": 4,
+  "sentence": "The feather is light."
+ },
+ {
+  "word": "baker",
+  "level": 4,
+  "sentence": "The baker gets up at four."
+ },
+ {
+  "word": "farmer",
+  "level": 4,
+  "sentence": "The farmer has three cows."
+ },
+ {
+  "word": "student",
+  "level": 4,
+  "sentence": "The student asks a question."
+ },
+ {
+  "word": "iron",
+  "level": 5,
+  "sentence": "The blacksmith works with iron."
+ },
+ {
+  "word": "hammer",
+  "level": 5,
+  "sentence": "He hits the iron with a hammer."
+ },
+ {
+  "word": "anvil",
+  "level": 5,
+  "sentence": "The anvil is very heavy."
+ },
+ {
+  "word": "fire",
+  "level": 5,
+  "sentence": "The fire is orange."
+ },
+ {
+  "word": "smoke",
+  "level": 5,
+  "sentence": "Smoke goes up into the sky."
+ },
+ {
+  "word": "bake",
+  "level": 5,
+  "sentence": "We bake a cake."
+ },
+ {
+  "word": "flour",
+  "level": 5,
+  "sentence": "Bread is made from flour."
+ },
+ {
+  "word": "wheat",
+  "level": 5,
+  "sentence": "Wheat grows in the field."
+ },
+ {
+  "word": "oven",
+  "level": 5,
+  "sentence": "The oven is hot."
+ },
+ {
+  "word": "carrot",
+  "level": 5,
+  "sentence": "The horse eats a carrot."
+ },
+ {
+  "word": "potato",
+  "level": 5,
+  "sentence": "I like hot potatoes."
+ },
+ {
+  "word": "field",
+  "level": 5,
+  "sentence": "The field is green."
+ },
+ {
+  "word": "cow",
+  "level": 5,
+  "sentence": "The cow gives milk."
+ },
+ {
+  "word": "sheep",
+  "level": 5,
+  "sentence": "The sheep are on the hill."
+ },
+ {
+  "word": "net",
+  "level": 5,
+  "sentence": "The fisherman throws his net."
+ },
+ {
+  "word": "hook",
+  "level": 5,
+  "sentence": "A fish is on the hook."
+ },
+ {
+  "word": "lake",
+  "level": 5,
+  "sentence": "The lake is quiet."
+ },
+ {
+  "word": "shell",
+  "level": 5,
+  "sentence": "I found a shell by the water."
+ },
+ {
+  "word": "kite",
+  "level": 5,
+  "sentence": "My kite flies high."
+ },
+ {
+  "word": "umbrella",
+  "level": 5,
+  "sentence": "Take an umbrella. It may rain."
+ },
+ {
+  "word": "basket",
+  "level": 5,
+  "sentence": "The eggs are in the basket."
+ },
+ {
+  "word": "pencil",
+  "level": 5,
+  "sentence": "My pencil is sharp."
+ },
+ {
+  "word": "eraser",
+  "level": 5,
+  "sentence": "Use the eraser to fix it."
+ },
+ {
+  "word": "lesson",
+  "level": 5,
+  "sentence": "The lesson starts at nine."
+ },
+ {
+  "word": "test",
+  "level": 5,
+  "sentence": "We have a test today."
+ },
+ {
+  "word": "answer",
+  "level": 5,
+  "sentence": "Write the answer here."
+ },
+ {
+  "word": "question",
+  "level": 5,
+  "sentence": "I have a question."
+ },
+ {
+  "word": "shovel",
+  "level": 5,
+  "sentence": "Dig with the shovel."
+ },
+ {
+  "word": "rod",
+  "level": 5,
+  "sentence": "He holds a fishing rod."
+ },
+ {
+  "word": "metal",
+  "level": 5,
+  "sentence": "A spoon can be made of metal."
+ },
+ {
+  "word": "judge",
+  "level": 6,
+  "sentence": "The judge listens to both people."
+ },
+ {
+  "word": "case",
+  "level": 6,
+  "sentence": "This case is about a cake."
+ },
+ {
+  "word": "claim",
+  "level": 6,
+  "sentence": "Her claim is not true."
+ },
+ {
+  "word": "truth",
+  "level": 6,
+  "sentence": "Always tell the truth."
+ },
+ {
+  "word": "lie",
+  "level": 6,
+  "sentence": "A lie is not true."
+ },
+ {
+  "word": "liar",
+  "level": 6,
+  "sentence": "The liar said the wrong day."
+ },
+ {
+  "word": "fair",
+  "level": 6,
+  "sentence": "The judge must be fair."
+ },
+ {
+  "word": "promise",
+  "level": 6,
+  "sentence": "I promise to come back."
+ },
+ {
+  "word": "proof",
+  "level": 6,
+  "sentence": "The calendar is our proof."
+ },
+ {
+  "word": "guilty",
+  "level": 6,
+  "sentence": "The guilty man pays a fine."
+ },
+ {
+  "word": "fine",
+  "level": 6,
+  "sentence": "He paid a fine of ten coins."
+ },
+ {
+  "word": "witness",
+  "level": 6,
+  "sentence": "The witness saw everything."
+ },
+ {
+  "word": "remember",
+  "level": 6,
+  "sentence": "I remember your birthday."
+ },
+ {
+  "word": "forget",
+  "level": 6,
+  "sentence": "Do not forget your hat."
+ },
+ {
+  "word": "agree",
+  "level": 6,
+  "sentence": "I agree with you."
+ },
+ {
+  "word": "argue",
+  "level": 6,
+  "sentence": "The two neighbors argue."
+ },
+ {
+  "word": "check",
+  "level": 6,
+  "sentence": "Check the date again."
+ },
+ {
+  "word": "wrong",
+  "level": 6,
+  "sentence": "That day is wrong."
+ },
+ {
+  "word": "right",
+  "level": 6,
+  "sentence": "You are right."
+ },
+ {
+  "word": "sure",
+  "level": 6,
+  "sentence": "Are you sure?"
+ },
+ {
+  "word": "maybe",
+  "level": 6,
+  "sentence": "Maybe it was Friday."
+ },
+ {
+  "word": "because",
+  "level": 6,
+  "sentence": "I am late because of the rain."
+ },
+ {
+  "word": "order",
+  "level": 6,
+  "sentence": "She made an order for bread."
+ },
+ {
+  "word": "fix",
+  "level": 6,
+  "sentence": "He can fix the door."
+ },
+ {
+  "word": "lose",
+  "level": 6,
+  "sentence": "Do not lose your key."
+ },
+ {
+  "word": "miss",
+  "level": 6,
+  "sentence": "I miss my old friend."
+ },
+ {
+  "word": "feed",
+  "level": 6,
+  "sentence": "Feed the cat at six."
+ },
+ {
+  "word": "visit",
+  "level": 6,
+  "sentence": "We visit grandmother on Sunday."
+ },
+ {
+  "word": "party",
+  "level": 6,
+  "sentence": "The party was fun."
+ },
+ {
+  "word": "sing",
+  "level": 6,
+  "sentence": "They sing a song."
+ },
+ {
+  "word": "neighbor",
+  "level": 7,
+  "sentence": "My neighbor has a horse."
+ },
+ {
+  "word": "family",
+  "level": 7,
+  "sentence": "My family is big."
+ },
+ {
+  "word": "parent",
+  "level": 7,
+  "sentence": "A parent takes care of a child."
+ },
+ {
+  "word": "child",
+  "level": 7,
+  "sentence": "The child plays with a ball."
+ },
+ {
+  "word": "grandfather",
+  "level": 7,
+  "sentence": "My grandfather tells old stories."
+ },
+ {
+  "word": "grandmother",
+  "level": 7,
+  "sentence": "My grandmother makes tea."
+ },
+ {
+  "word": "daughter",
+  "level": 7,
+  "sentence": "Oyunaa is Batbayar's daughter."
+ },
+ {
+  "word": "son",
+  "level": 7,
+  "sentence": "Their son is a fisherman."
+ },
+ {
+  "word": "uncle",
+  "level": 7,
+  "sentence": "My uncle lives by the lake."
+ },
+ {
+  "word": "aunt",
+  "level": 7,
+  "sentence": "My aunt is a teacher."
+ },
+ {
+  "word": "cousin",
+  "level": 7,
+  "sentence": "My cousin is my age."
+ },
+ {
+  "word": "husband",
+  "level": 7,
+  "sentence": "Her husband is a farmer."
+ },
+ {
+  "word": "wife",
+  "level": 7,
+  "sentence": "His wife is a baker."
+ },
+ {
+  "word": "born",
+  "level": 7,
+  "sentence": "I was born in winter."
+ },
+ {
+  "word": "name",
+  "level": 7,
+  "sentence": "Everyone has a name."
+ },
+ {
+  "word": "surname",
+  "level": 7,
+  "sentence": "The father's name comes first."
+ },
+ {
+  "word": "age",
+  "level": 7,
+  "sentence": "What is your age?"
+ },
+ {
+  "word": "young",
+  "level": 7,
+  "sentence": "The kitten is young."
+ },
+ {
+  "word": "old",
+  "level": 7,
+  "sentence": "The old man walks slowly."
+ },
+ {
+  "word": "letter",
+  "level": 7,
+  "sentence": "She wrote a letter."
+ },
+ {
+  "word": "secret",
+  "level": 7,
+  "sentence": "Can you keep a secret?"
+ },
+ {
+  "word": "quiet",
+  "level": 7,
+  "sentence": "The night is quiet."
+ },
+ {
+  "word": "whisper",
+  "level": 7,
+  "sentence": "Whisper so nobody hears."
+ },
+ {
+  "word": "hide",
+  "level": 7,
+  "sentence": "The cat likes to hide."
+ },
+ {
+  "word": "follow",
+  "level": 7,
+  "sentence": "The panda will follow you."
+ },
+ {
+  "word": "gate",
+  "level": 7,
+  "sentence": "Meet me at the village gate."
+ },
+ {
+  "word": "path",
+  "level": 7,
+  "sentence": "Walk on the path."
+ },
+ {
+  "word": "roof",
+  "level": 7,
+  "sentence": "The roof is blue."
+ },
+ {
+  "word": "wall",
+  "level": 7,
+  "sentence": "The wall is made of stone."
+ },
+ {
+  "word": "lamp",
+  "level": 7,
+  "sentence": "Turn on the lamp."
+ },
+ {
+  "word": "honest",
+  "level": 8,
+  "sentence": "An honest person tells the truth."
+ },
+ {
+  "word": "careful",
+  "level": 8,
+  "sentence": "Be careful with the fire."
+ },
+ {
+  "word": "patient",
+  "level": 8,
+  "sentence": "A good judge is patient."
+ },
+ {
+  "word": "brave",
+  "level": 8,
+  "sentence": "A brave girl walks at night."
+ },
+ {
+  "word": "calm",
+  "level": 8,
+  "sentence": "Stay calm and think."
+ },
+ {
+  "word": "clever",
+  "level": 8,
+  "sentence": "The panda is not very clever."
+ },
+ {
+  "word": "silly",
+  "level": 8,
+  "sentence": "That was a silly mistake."
+ },
+ {
+  "word": "strict",
+  "level": 8,
+  "sentence": "The headmaster is strict."
+ },
+ {
+  "word": "polite",
+  "level": 8,
+  "sentence": "Be polite to the baker."
+ },
+ {
+  "word": "proud",
+  "level": 8,
+  "sentence": "She is proud of her bread."
+ },
+ {
+  "word": "angry",
+  "level": 8,
+  "sentence": "He is angry about the fish."
+ },
+ {
+  "word": "upset",
+  "level": 8,
+  "sentence": "She is upset about her umbrella."
+ },
+ {
+  "word": "afraid",
+  "level": 8,
+  "sentence": "Do not be afraid of the dark."
+ },
+ {
+  "word": "curious",
+  "level": 8,
+  "sentence": "A curious child asks questions."
+ },
+ {
+  "word": "nervous",
+  "level": 8,
+  "sentence": "He is nervous before the test."
+ },
+ {
+  "word": "decide",
+  "level": 8,
+  "sentence": "You decide who is right."
+ },
+ {
+  "word": "explain",
+  "level": 8,
+  "sentence": "Explain your answer."
+ },
+ {
+  "word": "describe",
+  "level": 8,
+  "sentence": "Describe the house."
+ },
+ {
+  "word": "compare",
+  "level": 8,
+  "sentence": "Compare the two claims."
+ },
+ {
+  "word": "choose",
+  "level": 8,
+  "sentence": "Choose one day."
+ },
+ {
+  "word": "notice",
+  "level": 8,
+  "sentence": "Did you notice the mistake?"
+ },
+ {
+  "word": "believe",
+  "level": 8,
+  "sentence": "I believe you."
+ },
+ {
+  "word": "doubt",
+  "level": 8,
+  "sentence": "I doubt that story."
+ },
+ {
+  "word": "guess",
+  "level": 8,
+  "sentence": "Do not guess. Check."
+ },
+ {
+  "word": "discover",
+  "level": 8,
+  "sentence": "We discover a secret letter."
+ },
+ {
+  "word": "mistake",
+  "level": 8,
+  "sentence": "Everyone makes a mistake."
+ },
+ {
+  "word": "reason",
+  "level": 8,
+  "sentence": "Tell me the reason."
+ },
+ {
+  "word": "patrol",
+  "level": 8,
+  "sentence": "The headmaster will patrol at night."
+ },
+ {
+  "word": "sneak",
+  "level": 8,
+  "sentence": "Sneak past the headmaster."
+ },
+ {
+  "word": "lantern",
+  "level": 8,
+  "sentence": "He carries a lantern."
+ },
+ {
+  "word": "evidence",
+  "level": 9,
+  "sentence": "The calendar is good evidence."
+ },
+ {
+  "word": "testimony",
+  "level": 9,
+  "sentence": "Listen to each testimony."
+ },
+ {
+  "word": "statement",
+  "level": 9,
+  "sentence": "His statement was wrong."
+ },
+ {
+  "word": "accuse",
+  "level": 9,
+  "sentence": "Do not accuse without proof."
+ },
+ {
+  "word": "admit",
+  "level": 9,
+  "sentence": "He will admit the truth."
+ },
+ {
+  "word": "deny",
+  "level": 9,
+  "sentence": "She denies the claim."
+ },
+ {
+  "word": "penalty",
+  "level": 9,
+  "sentence": "The penalty is ten iron."
+ },
+ {
+  "word": "justice",
+  "level": 9,
+  "sentence": "Justice means being fair."
+ },
+ {
+  "word": "verdict",
+  "level": 9,
+  "sentence": "The judge gives a verdict."
+ },
+ {
+  "word": "court",
+  "level": 9,
+  "sentence": "The court is quiet."
+ },
+ {
+  "word": "record",
+  "level": 9,
+  "sentence": "Keep a record of each case."
+ },
+ {
+  "word": "detail",
+  "level": 9,
+  "sentence": "Look at every detail."
+ },
+ {
+  "word": "exact",
+  "level": 9,
+  "sentence": "Tell me the exact date."
+ },
+ {
+  "word": "correct",
+  "level": 9,
+  "sentence": "Your answer is correct."
+ },
+ {
+  "word": "certain",
+  "level": 9,
+  "sentence": "I am certain it was Monday."
+ },
+ {
+  "word": "probably",
+  "level": 9,
+  "sentence": "It was probably a Friday."
+ },
+ {
+  "word": "suddenly",
+  "level": 9,
+  "sentence": "Suddenly the lamp went out."
+ },
+ {
+  "word": "finally",
+  "level": 9,
+  "sentence": "Finally the case is closed."
+ },
+ {
+  "word": "although",
+  "level": 9,
+  "sentence": "Although it rained, we played."
+ },
+ {
+  "word": "however",
+  "level": 9,
+  "sentence": "He said Monday. However, it was Tuesday."
+ },
+ {
+  "word": "instead",
+  "level": 9,
+  "sentence": "Drink water instead of tea."
+ },
+ {
+  "word": "during",
+  "level": 9,
+  "sentence": "Do not talk during the test."
+ },
+ {
+  "word": "between",
+  "level": 9,
+  "sentence": "The house is between two trees."
+ },
+ {
+  "word": "against",
+  "level": 9,
+  "sentence": "The ladder is against the wall."
+ },
+ {
+  "word": "toward",
+  "level": 9,
+  "sentence": "Buu walks toward the lake."
+ },
+ {
+  "word": "ancestor",
+  "level": 9,
+  "sentence": "Our ancestor lived here long ago."
+ },
+ {
+  "word": "generation",
+  "level": 9,
+  "sentence": "Three generations live in one house."
+ },
+ {
+  "word": "relative",
+  "level": 9,
+  "sentence": "A cousin is a relative."
+ },
+ {
+  "word": "inherit",
+  "level": 9,
+  "sentence": "She will inherit the old anvil."
+ },
+ {
+  "word": "tradition",
+  "level": 9,
+  "sentence": "Making bread is a family tradition."
+ },
+ {
+  "word": "investigate",
+  "level": 10,
+  "sentence": "We investigate every claim."
+ },
+ {
+  "word": "contradict",
+  "level": 10,
+  "sentence": "Their stories contradict each other."
+ },
+ {
+  "word": "consistent",
+  "level": 10,
+  "sentence": "His story is consistent."
+ },
+ {
+  "word": "reliable",
+  "level": 10,
+  "sentence": "The calendar is reliable."
+ },
+ {
+  "word": "suspicious",
+  "level": 10,
+  "sentence": "That story sounds suspicious."
+ },
+ {
+  "word": "conclusion",
+  "level": 10,
+  "sentence": "What is your conclusion?"
+ },
+ {
+  "word": "consequence",
+  "level": 10,
+  "sentence": "A lie has a consequence."
+ },
+ {
+  "word": "responsible",
+  "level": 10,
+  "sentence": "You are responsible for your words."
+ },
+ {
+  "word": "reputation",
+  "level": 10,
+  "sentence": "A liar loses his reputation."
+ },
+ {
+  "word": "apologize",
+  "level": 10,
+  "sentence": "He must apologize to her."
+ },
+ {
+  "word": "forgive",
+  "level": 10,
+  "sentence": "She will forgive him."
+ },
+ {
+  "word": "negotiate",
+  "level": 10,
+  "sentence": "They negotiate a fair price."
+ },
+ {
+  "word": "agreement",
+  "level": 10,
+  "sentence": "They made an agreement."
+ },
+ {
+  "word": "obligation",
+  "level": 10,
+  "sentence": "Paying back money is an obligation."
+ },
+ {
+  "word": "testify",
+  "level": 10,
+  "sentence": "She will testify in the case."
+ },
+ {
+  "word": "alibi",
+  "level": 10,
+  "sentence": "He has an alibi for Friday."
+ },
+ {
+  "word": "motive",
+  "level": 10,
+  "sentence": "What was his motive?"
+ },
+ {
+  "word": "assume",
+  "level": 10,
+  "sentence": "Do not assume. Check the date."
+ },
+ {
+  "word": "confirm",
+  "level": 10,
+  "sentence": "Can you confirm the day?"
+ },
+ {
+  "word": "deduce",
+  "level": 10,
+  "sentence": "Deduce the day from the calendar."
+ },
+ {
+  "word": "precise",
+  "level": 10,
+  "sentence": "Be precise with dates."
+ },
+ {
+  "word": "ambiguous",
+  "level": 10,
+  "sentence": "That answer is ambiguous."
+ },
+ {
+  "word": "interrupt",
+  "level": 10,
+  "sentence": "Do not interrupt the judge."
+ },
+ {
+  "word": "hesitate",
+  "level": 10,
+  "sentence": "Do not hesitate to ask."
+ },
+ {
+  "word": "memorable",
+  "level": 10,
+  "sentence": "It was a memorable party."
+ },
+ {
+  "word": "legend",
+  "level": 10,
+  "sentence": "There is a legend about the lake."
+ },
+ {
+  "word": "heritage",
+  "level": 10,
+  "sentence": "The anvil is family heritage."
+ },
+ {
+  "word": "descendant",
+  "level": 10,
+  "sentence": "She is a descendant of a smith."
+ },
+ {
+  "word": "lineage",
+  "level": 10,
+  "sentence": "The book shows the family lineage."
+ },
+ {
+  "word": "chronicle",
+  "level": 10,
+  "sentence": "The chronicle lists every case."
+ }
+]

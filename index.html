@@ -3,12 +3,50 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Word Game</title>
+  <title>The Name Keeper</title>
   <link rel="stylesheet" href="style.css">
+  <script type="importmap">
+    { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
+  </script>
 </head>
 <body>
-  <main id="app"></main>
-  <script src="words.js"></script>
-  <script src="game.js"></script>
+  <canvas id="view"></canvas>
+
+  <div id="crosshair"></div>
+  <div id="hint" hidden></div>
+  <div id="keys">E talk · F Buu is wrong · B Family Book · C Calendar</div>
+
+  <div id="dialog" hidden>
+    <div class="d-name"></div>
+    <div class="d-text"></div>
+    <div class="d-next">Space</div>
+  </div>
+
+  <div id="picker" class="panel" hidden>
+    <div class="p-title"></div>
+    <div class="p-body"></div>
+    <div class="p-options"></div>
+    <div class="p-foot">Esc to close</div>
+  </div>
+
+  <div id="book" class="panel" hidden></div>
+
+  <div id="start">
+    <div class="start-box">
+      <h1>The Name Keeper</h1>
+      <p class="loading">Loading...</p>
+      <p class="ready" hidden>Click to play</p>
+      <ul>
+        <li><b>W A S D</b> walk · <b>Mouse</b> look · <b>Space</b> jump</li>
+        <li><b>E</b> talk, read, take</li>
+        <li><b>Space</b> next line</li>
+        <li><b>F</b> Buu said a wrong day</li>
+        <li><b>B</b> Family Book · <b>C</b> Calendar</li>
+        <li><b>Esc</b> free the mouse</li>
+      </ul>
+    </div>
+  </div>
+
+  <script type="module" src="main.js"></script>
 </body>
 </html>
