@@ -1,25 +1,37 @@
 import * as THREE from 'three';
 import { CONFIG } from './config.js';
-import { HOUSES, GATE_SPAWN } from './world.js';
+import { HOUSES, GATE_SPAWN, SCHOOL } from './world.js';
 import { Human } from './npc.js';
 
-const DAY_SKY = new THREE.Color(0x8ccff0);
-const NIGHT_SKY = new THREE.Color(0x0b1026);
+const DAY_TOP = new THREE.Color(0x3f7fd0), DAY_HORIZON = new THREE.Color(0xcfe6f5);
+const DUSK_HORIZON = new THREE.Color(0xf0a060);
+const NIGHT_TOP = new THREE.Color(0x05081a), NIGHT_HORIZON = new THREE.Color(0x1a2240);
 
 // Day: CONFIG.dayLengthSec, then night: CONFIG.nightLengthSec.
 export class DayNight {
-  constructor(scene, hemi, sun) {
-    this.scene = scene; this.hemi = hemi; this.sun = sun;
-    this.t = 0;
+  constructor(G) {
+    this.G = G;
+    this.t = 60; // start in the morning
     this.light = 1;
+    const scene = G.scene;
+    this.sky = new THREE.Mesh(new THREE.SphereGeometry(380, 32, 16), new THREE.ShaderMaterial({
+      side: THREE.BackSide, depthWrite: false, fog: false,
+      uniforms: { top: { value: DAY_TOP.clone() }, horizon: { value: DAY_HORIZON.clone() } },
+      vertexShader: 'varying vec3 vP; void main(){ vP = normalize(position); gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }',
+      fragmentShader: 'uniform vec3 top; uniform vec3 horizon; varying vec3 vP; void main(){ float h = clamp(vP.y, 0.0, 1.0); gl_FragColor = vec4(mix(horizon, top, pow(h, 0.6)), 1.0); }',
+    }));
+    scene.add(this.sky);
+    this.sunDisc = new THREE.Mesh(new THREE.SphereGeometry(9, 16, 12), new THREE.MeshBasicMaterial({ color: 0xfff2c0, fog: false }));
+    this.moon = new THREE.Mesh(new THREE.SphereGeometry(6, 16, 12), new THREE.MeshBasicMaterial({ color: 0xe8ecf4, fog: false }));
+    scene.add(this.sunDisc, this.moon);
     const pts = [];
-    for (let i = 0; i < 400; i++) {
+    for (let i = 0; i < 700; i++) {
       const v = new THREE.Vector3().randomDirection();
       v.y = Math.abs(v.y) + 0.05;
-      pts.push(v.normalize().multiplyScalar(180));
+      pts.push(v.normalize().multiplyScalar(360));
     }
     this.stars = new THREE.Points(new THREE.BufferGeometry().setFromPoints(pts),
-      new THREE.PointsMaterial({ color: 0xffffff, size: 1.2, sizeAttenuation: false, transparent: true, opacity: 0 }));
+      new THREE.PointsMaterial({ color: 0xffffff, size: 1.6, sizeAttenuation: false, transparent: true, opacity: 0, fog: false }));
     scene.add(this.stars);
   }
 
@@ -27,24 +39,44 @@ export class DayNight {
   get isNight() { return this.t >= CONFIG.dayLengthSec; }
 
   update(dt) {
+    const G = this.G;
     this.t = (this.t + dt) % this.cycle;
-    const fade = 8;
-    const d = CONFIG.dayLengthSec;
+    const fade = 10, d = CONFIG.dayLengthSec;
     let light;
-    if (this.t < fade) light = this.t / fade;                     // dawn
+    if (this.t < fade) light = this.t / fade;
     else if (this.t < d - fade) light = 1;
-    else if (this.t < d) light = (d - this.t) / fade;             // dusk
+    else if (this.t < d) light = (d - this.t) / fade;
     else light = 0;
-    // Start of the game is full day.
-    if (this.firstDay !== false && this.t < fade) light = 1;
-    if (this.t >= fade) this.firstDay = false;
     this.light = light;
-    const sky = NIGHT_SKY.clone().lerp(DAY_SKY, light);
-    this.scene.background = sky;
-    this.scene.fog.color.copy(sky);
-    this.hemi.intensity = 0.25 + 0.75 * light;
-    this.sun.intensity = 0.1 + 0.9 * light;
+
+    // Sun goes across the sky during the day. Moon at night.
+    const dayPart = Math.min(1, this.t / d);
+    const a = Math.PI * (0.15 + 0.7 * dayPart);
+    const sunDir = new THREE.Vector3(Math.cos(a), Math.sin(a) * 0.9 + 0.1, -0.35).normalize();
+    const p = G.player.pos;
+    G.sun.position.copy(p).addScaledVector(sunDir, 80);
+    G.sun.target.position.copy(p);
+    G.sun.target.updateMatrixWorld();
+    this.sunDisc.position.copy(G.camera.position).addScaledVector(sunDir, 340);
+    this.moon.position.copy(G.camera.position).addScaledVector(new THREE.Vector3(-0.5, 0.6, 0.4).normalize(), 340);
+    this.sky.position.copy(G.camera.position);
+    this.stars.position.copy(G.camera.position);
+    this.sunDisc.visible = light > 0.05;
+    this.moon.visible = light < 0.6;
+
+    const low = 1 - Math.min(1, Math.abs(dayPart - 0.5) * 2.2);  // 1 at noon
+    const horizonDay = DUSK_HORIZON.clone().lerp(DAY_HORIZON, Math.min(1, low * 1.6));
+    const top = NIGHT_TOP.clone().lerp(DAY_TOP, light);
+    const horizon = NIGHT_HORIZON.clone().lerp(horizonDay, light);
+    this.sky.material.uniforms.top.value.copy(top);
+    this.sky.material.uniforms.horizon.value.copy(horizon);
+    G.scene.fog.color.copy(horizon);
+    G.hemi.intensity = 0.25 + 0.85 * light;
+    G.hemi.color.set(0xb8c8ff).lerp(new THREE.Color(0xffffff), light);
+    G.sun.intensity = 0.05 + 2.4 * light;
+    G.sun.color.set(0xffd0a0).lerp(new THREE.Color(0xfff6e8), Math.min(1, low * 1.6));
     this.stars.material.opacity = 1 - light;
+    G.world.setNight(1 - light);
   }
 }
 
@@ -55,19 +87,21 @@ const LINES = [
   'I see you. Back to the gate, please.',
   'The village is closed at night. Go home.',
 ];
-const DAY_SPOT = { x: 5.5, z: 25.5 };
+const DAY_SPOT = { x: SCHOOL.x + 3, z: SCHOOL.z + SCHOOL.d / 2 + 2.5 };
 
 // Headmaster Batsaikhan Erdene: patrols houses at night.
 export class Headmaster {
   constructor(G) {
     this.G = G;
-    this.npc = new Human({ id: 'headmaster', name: 'Batsaikhan Erdene', shirt: 0x2b2f3a, pants: 0x1c1f26, hair: 0x9a9a9a });
-    this.lantern = new THREE.PointLight(0xffc870, 0, 9);
-    this.lantern.position.set(0.45, 1.0, 0.35);
-    this.npc.group.add(this.lantern);
-    const lamp = new THREE.Mesh(new THREE.BoxGeometry(0.18, 0.25, 0.18), new THREE.MeshBasicMaterial({ color: 0xffd27a }));
+    this.npc = new Human({ id: 'headmaster', name: 'Batsaikhan Erdene', kind: 'headmaster', shirt: 0x2b2f3a, pants: 0x1c1f26,
+      hair: 0x8a8a8a, skin: 0xcf9f7a, extras: ['glasses', 'mustache', 'tie', 'longSleeves'], scale: 1.08 });
+    this.lantern = new THREE.PointLight(0xffc870, 0, 14, 1.5);
+    this.lantern.position.set(0, -0.42, 0.12);
+    this.npc.armR.el.add(this.lantern);
+    const lamp = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.09, 0.2, 10), new THREE.MeshBasicMaterial({ color: 0xffd27a }));
     lamp.position.copy(this.lantern.position);
-    this.npc.group.add(lamp);
+    this.npc.armR.el.add(lamp);
+    this.lamp = lamp;
     G.scene.add(this.npc.group);
 
     this.patrolCount = 3;
@@ -94,7 +128,8 @@ export class Headmaster {
     this.route = [];
     for (const id of PATROL_ORDER.slice(0, this.patrolCount)) {
       const h = HOUSES.find(x => x.id === id);
-      this.route.push({ x: 0, z: h.front.z }, { x: h.front.x, z: h.front.z, wait: 2 }, { x: 0, z: h.front.z });
+      // Walk on the road beside the well (x = 1.8), then to the door.
+      this.route.push({ x: 1.8, z: h.front.z }, { x: h.front.x, z: h.front.z, wait: 2 }, { x: 1.8, z: h.front.z });
     }
     this.wp %= this.route.length;
   }
@@ -114,11 +149,12 @@ export class Headmaster {
     const G = this.G;
     const night = G.dayNight.isNight;
     this.adapt();
-    this.lantern.intensity = night ? 2.5 : 0;
+    this.lantern.intensity = night ? 6 : 0;
+    this.lamp.visible = night;
     if (night !== this.wasNight) {
       this.wasNight = night;
       if (!night) this.toDaySpot();
-      else { this.wp = 0; this.npc.group.position.set(0, 0, 24); }
+      else { this.wp = 0; this.npc.group.position.set(0, 0, SCHOOL.z + SCHOOL.d / 2 + 4); }
     }
     if (this.cooldown > 0) this.cooldown -= dt;
     if (!night) { this.npc.animate(dt, false, G.clock); return; }

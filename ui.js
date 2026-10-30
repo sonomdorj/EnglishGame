@@ -86,7 +86,7 @@ export class Picker {
 }
 
 // Family Book: villagers the player has met.
-export function renderBook(root, villagers, state) {
+export function renderBook(root, villagers, state, lostTotal = 12) {
   const byId = Object.fromEntries(villagers.map(v => [v.id, v]));
   const met = villagers.filter(v => state.met.includes(v.id));
   let html = '<h2>Family Book</h2>';
@@ -107,6 +107,7 @@ export function renderBook(root, villagers, state) {
   if (notMet) html += `<div>Not met yet: ${notMet} ${notMet === 1 ? 'person' : 'people'}.</div>`;
   if (state.items.length) html += `<div>Things you took: ${state.items.join(', ')}.</div>`;
   html += `<div>Letters read: ${state.lettersRead.length} of 6.</div>`;
+  html += `<div>Lost things found: ${(state.found || []).length} of ${lostTotal}${state.found?.length ? ` (${state.found.join(', ')})` : ''}.</div>`;
   html += '<div>Press B or Esc to close.</div></div>';
   root.innerHTML = html;
 }

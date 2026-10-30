@@ -49,6 +49,7 @@ export class QuestRunner {
           'You are the judge.',
           'C opens the calendar.',
           'B opens the Family Book.',
+          'Lost things hide in the village.',
           'Sometimes I say a wrong day.',
           'Then press F.',
         ], () => { G.state.introDone = true; G.persist(); this.stage = 'idle'; this.timer = 0; });

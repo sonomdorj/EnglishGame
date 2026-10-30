@@ -6,7 +6,10 @@
   <title>The Name Keeper</title>
   <link rel="stylesheet" href="style.css">
   <script type="importmap">
-    { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
+    { "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    } }
   </script>
 </head>
 <body>
@@ -37,8 +40,8 @@
       <p class="loading">Loading...</p>
       <p class="ready" hidden>Click to play</p>
       <ul>
-        <li><b>W A S D</b> walk · <b>Mouse</b> look · <b>Space</b> jump</li>
-        <li><b>E</b> talk, read, take</li>
+        <li><b>W A S D</b> walk · <b>Shift</b> run · <b>Mouse</b> look · <b>Space</b> jump</li>
+        <li><b>E</b> talk, read, take, pick up</li>
         <li><b>Space</b> next line</li>
         <li><b>F</b> Buu said a wrong day</li>
         <li><b>B</b> Family Book · <b>C</b> Calendar</li>

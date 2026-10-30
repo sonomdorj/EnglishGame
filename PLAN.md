@@ -43,3 +43,12 @@
 - [x] Night cycle: 4 minutes day, 2 minutes night. Letters inside houses can only be read at night.
 - [x] Headmaster adaptive rules: caught 3+ times in 5 min → walks slower, sees shorter. 0 catches in 10 min → patrols one more house.
 - [x] Write README.md: how to run (`npx serve . -l 3010`), controls, how to add a quest.
+
+## Day 6 — 3D upgrade and bigger village (user request)
+- [ ] Smooth 3D style: textured walls, floors, roofs, windows. Real sun shadows, sky, sun, moon. Textures drawn in code.
+- [ ] People with faces and joints (walk, blink, breathe, look at player, mouth moves when talking). Round panda Buu.
+- [ ] Houses with 2 rooms: kitchen (table, chairs, cabinets, stove, fridge, wall calendar) and bedroom (bed, wardrobe, desk).
+- [ ] Bigger village: school, market, well, lake with dock, farm, barn, forge, oven, street lamps, fence, forest, mountains.
+- [ ] 12 lost things to find (E). Buu says the English name. Family Book counts them.
+- [ ] Shift to run. Wall calendar opens the calendar.
+- [ ] Play all 15 quests again in the new world. No console errors.

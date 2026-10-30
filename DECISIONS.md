@@ -27,3 +27,20 @@
 25. Letters: one per house, on a table. In the day Buu says "Read it at night. Not now."
 26. Pointer lock: Esc frees the mouse and pauses the game with the start screen. Opening a panel frees the mouse without pausing. Big mouse jumps right after lock are ignored (Chrome bug).
 27. Buu: walks to 3 blocks from the player, hops when blocked, teleports when stuck 2 s or more than 16 blocks away.
+
+## Day 6 — Visual upgrade and bigger village (user request)
+
+28. The user asked for a 3D look like a realistic game, and a bigger game. They chose "build it in code" (no downloaded models) and said "not good enough" means more content.
+29. Style changed from voxel blocks to smooth 3D: textured walls, wallpaper, tile and plank floors, tiled roofs, window frames with shutters. All textures are drawn in code on canvas (`textures.js`). No image files.
+30. Units are now meters. The village is about 114 x 109 m (old: 64 x 64 blocks).
+31. People: built from capsules and spheres with joints (hips, knees, shoulders, elbows), a face (eyes, brows, nose, mouth, ears), hair styles, and clothes (apron, skirt, glasses, cap, beard). They walk, breathe, blink, turn the head to the player, and move the mouth while talking.
+32. Buu is now a round panda made from spheres.
+33. Each house has 2 rooms: a kitchen (table with a checked cloth, chairs, cabinets, stove, fridge, lamp, wall calendar, letter) and a bedroom (bed, wardrobe, desk, nightstand, picture).
+34. New places: school with a classroom (headmaster's day spot), market with 4 stalls, well, benches, lake with a dock and boat, farm with crops, scarecrow and barn, forge, bread oven, street lamps, a fence around the village, forest and mountains.
+35. Light: real sun shadows, tone mapping, a gradient sky, sun and moon. A warm light turns on inside the house the player is in. Windows and lamps glow at night. The headmaster's lantern is a real light.
+36. Collision: box colliders in a grid, no voxels. The player can step up onto low things (dock). Water and fences block walking.
+37. Static scene parts are merged into one mesh per material, so the game stays fast.
+38. New task: 12 lost things are hidden in the village and in two bedrooms. E picks one up. Buu says its English name. The Family Book counts them.
+39. A wall calendar in each kitchen opens the calendar (E).
+40. Shift = run. Walk 4 m/s, run 7 m/s.
+41. Headmaster route uses the road at x = 1.8 so he walks beside the well, not through it.

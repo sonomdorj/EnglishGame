@@ -1,6 +1,6 @@
 # The Name Keeper
 
-A small 3D voxel village game for learning English.
+A 3D village game for learning English.
 You are the judge. Villagers argue about dates. You find the true weekday.
 Buu the panda follows you and helps (a little).
 
@@ -14,6 +14,7 @@ npx serve . -l 3010
 
 Open http://localhost:3010 in Chrome, Safari or Edge.
 The page loads Three.js from the internet (jsDelivr CDN), so you need a network connection.
+Use a recent Chrome. The game uses real shadows, so an old computer may be slow.
 
 Date engine tests: open http://localhost:3010/test_dates.html
 
@@ -22,9 +23,10 @@ Date engine tests: open http://localhost:3010/test_dates.html
 | Key | Action |
 | --- | --- |
 | W A S D or arrows | Walk |
+| Shift | Run |
 | Mouse | Look (click the game first) |
 | Space | Jump. Next line when a dialog is open |
-| E | Talk, read a letter, take an item |
+| E | Talk, read a letter, take an item, pick up a lost thing, look at a wall calendar |
 | F | Buu said a wrong weekday. Correct him |
 | B | Family Book |
 | C | Calendar |
@@ -44,6 +46,8 @@ Date engine tests: open http://localhost:3010/test_dates.html
 Night comes after 4 minutes and lasts 2 minutes.
 At night you can read the letters inside the houses.
 The headmaster patrols at night. If he sees you, he sends you back to the gate.
+
+12 lost things are hidden in the village. Find them all. Buu tells you the English name of each one.
 
 ## How to add a quest
 
@@ -82,8 +86,9 @@ Rules:
 | --- | --- |
 | `index.html`, `style.css` | Page and UI |
 | `main.js` | Scene, player, Buu, input, game loop |
-| `world.js` | Voxel ground, houses, trees, gate, collision |
-| `npc.js` | Voxel people and the panda |
+| `world.js` | Ground, houses with rooms, school, lake, farm, market, trees, collision, lost things |
+| `textures.js` | Textures drawn in code (grass, wood, wallpaper, roof tiles) |
+| `npc.js` | People with faces and joints, and Buu the panda |
 | `dialog.js`, `tts.js` | Dialog box and speech (en-US, rate 0.85) |
 | `quest.js` | Judge quest flow and Buu's date trap |
 | `dates.js` | Weekday for any date 1900–2099 |
