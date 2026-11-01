@@ -9,7 +9,7 @@ import { QuestRunner } from './quest.js';
 import { DayNight, Headmaster } from './night.js';
 import { loadSave, writeSave } from './save.js';
 import { Voice } from './audio.js';
-import { parseDate } from './dates.js';
+import { Power } from './power.js';
 
 const $ = id => document.getElementById(id);
 
@@ -117,14 +117,15 @@ async function init() {
   G.headmaster = new Headmaster(G);
 
   // UI
-  G.dialog = new Dialog($('dialog'), G.voice, nameOf);
+  G.dialog = new Dialog($('dialog'), G.voice, nameOf, line => G.power.lineFor(line));
+  G.power = new Power(G);
   G.picker = new Picker($('picker'));
   G.bookEl = $('book');
   G.quest = new QuestRunner(G);
 
   // Things the player can look at and use
   G.targets = [G.buu.hit, ...Object.values(G.villagers).map(n => n.hit), ...world.letters.map(l => l.mesh),
-    ...world.calendars, ...world.items.map(i => i.hit)];
+    ...world.items.map(i => i.hit)];
   G.raycaster = new THREE.Raycaster();
   G.fetchItems = [];
   G.carrying = null;
@@ -215,7 +216,7 @@ function pickFetch(name) {
 
 // Returns intro lines the first time the player meets a villager.
 G.meet = id => {
-  if (G.state.met.includes(id)) return [];
+  if (!G.villagerData[id] || G.state.met.includes(id)) return [];
   G.state.met.push(id);
   G.persist();
   return G.villagerData[id].lines.intro;
@@ -303,7 +304,6 @@ function onKey(e) {
   if (G.picker.isOpen) {
     const n = Number(e.key);
     if (n >= 1 && n <= 9) G.picker.pick(n - 1);
-    if (code === 'KeyC' && G.picker.cfg?.calendarOnly) G.closePanels();
     return;
   }
   if (!G.bookEl.hidden) {
@@ -315,7 +315,6 @@ function onKey(e) {
   if (code === 'KeyE') interact();
   else if (code === 'KeyF') G.quest.trapKey();
   else if (code === 'KeyB') openBook();
-  else if (code === 'KeyC') openCalendar();
   else keys.add(code);
   if (code === 'Space') jump();
 }
@@ -329,12 +328,6 @@ function openBook() {
     renderBook(G.bookEl, G.villagerList, G.state, LOST_TOTAL);
     G.bookEl.hidden = false;
   });
-}
-
-function openCalendar() {
-  const q = G.quest.q;
-  const { y, m } = q ? parseDate(q.date) : { y: 2024, m: 1 };
-  G.openPanel(() => G.picker.open({ title: 'Calendar', cal: { y, m }, options: [], calendarOnly: true }));
 }
 
 // ---------- interaction ----------
@@ -354,7 +347,6 @@ function lookTarget() {
 function hintFor(t) {
   if (!t) return '';
   if (t.kind === 'letter') return 'E to read';
-  if (t.kind === 'calendar') return 'E to look';
   if (t.kind === 'item' || t.kind === 'fetch') return 'E to pick up';
   if (t.kind === 'buu' && G.carrying && G.quest.stage === 'fetch') return 'E to give';
   if (t.kind === 'headmaster') return 'E to talk';
@@ -367,10 +359,10 @@ function interact() {
   if (!t) return;
   if (t.kind === 'buu') return G.quest.talkBuu();
   if (t.kind === 'letter') return readLetter(t.houseId);
-  if (t.kind === 'calendar') return openCalendar();
   if (t.kind === 'item') return pickItem(t.name);
   if (t.kind === 'fetch') return pickFetch(t.name);
   if (t.kind === 'headmaster') {
+    if (G.quest.talkVillager('headmaster')) return;
     const hl = G.people.headmaster.lines;
     return G.dialog.say(G.dayNight.isNight ? hl.talkNight : hl.talkDay);
   }
@@ -378,6 +370,10 @@ function interact() {
     if (G.quest.talkVillager(t.id)) return;
     const v = G.villagerData[t.id];
     const intro = G.meet(t.id);
+    if (G.power.isLocked(t.id) && G.state.lockoutSeen !== `${t.id}:${G.state.day}`) {
+      G.state.lockoutSeen = `${t.id}:${G.state.day}`;
+      return G.dialog.say([...intro, ...v.lines.lockedOut]);
+    }
     const line = v.lines.talk[Math.floor(Math.random() * v.lines.talk.length)];
     G.dialog.say(intro.length ? intro : [...v.lines.again, line]);
   }
@@ -444,7 +440,7 @@ function update(dt) {
     const d = npc.group.position.distanceTo(p.pos);
     if (d < 7) npc.lookAt(p.pos.x, p.pos.z);
     npc.talking = speaker === id;
-    npc.animate(dt, false, G.clock);
+    npc.animate(dt, !!npc.moving, G.clock);
     npc.label.visible = d < 14;
   }
   const hm = G.headmaster.npc;
@@ -474,6 +470,7 @@ function update(dt) {
   } else G.roomLight.intensity = 0;
 
   G.headmaster.update(dt);
+  G.power.update(dt);
   G.quest.update(dt);
 
   const t = frozen ? null : lookTarget();

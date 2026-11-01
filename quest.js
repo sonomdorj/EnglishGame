@@ -1,5 +1,5 @@
 import { CONFIG } from './config.js';
-import { WEEKDAYS, parseDate } from './dates.js';
+import { WEEKDAYS } from './dates.js';
 import { shuffle } from './learn.js';
 import { FETCH_WORDS } from './world.js';
 
@@ -93,9 +93,10 @@ export class QuestRunner {
     if (this.stage === 'take' && id === q.liar) {
       G.dialog.say([...intro, ...L.take], () => {
         G.state.items.push(q.penalty);
-        G.villagers[id].setItem(null);
+        G.villagers[id]?.setItem(null);
+        G.headmaster.npc.setItem(null);
         G.persist();
-        this.startFetch();
+        G.power.onCatch(id, () => this.startFetch());
       });
       return true;
     }
@@ -116,24 +117,22 @@ export class QuestRunner {
     }
   }
 
-  // Weekday question with a calendar. Wrong answers: "No. Look again." No limit.
-  weekdayPicker(title, dateStr, answer, onCorrect) {
+  // Weekday question: 7 buttons, no hints. Wrong: Buu says "No." and waits.
+  weekdayPicker(title, answer, onCorrect) {
     const G = this.G;
-    const { m, y } = parseDate(dateStr);
     G.openPanel(() => G.picker.open({
       title,
-      cal: { y, m },
       options: WEEKDAYS,
-      onPick: (i, btn) => {
+      onPick: i => {
         if (WEEKDAYS[i] === answer) {
           G.learner.record(true);
           G.closePanels();
+          G.dialog.clear();
           onCorrect();
         } else {
           G.learner.record(false);
-          btn.classList.add('wrong');
           G.dialog.clear();
-          G.dialog.say([this.B.noLook]);
+          G.dialog.say([this.B.no]);
         }
       },
     }));
@@ -143,9 +142,9 @@ export class QuestRunner {
     const q = this.q;
     this.G.dialog.say(q.lines.ask, () => {
       if (this.stage !== 'ask') return;
-      this.weekdayPicker(`Which day was ${q.date}?`, q.date, q.weekday, () => {
+      this.weekdayPicker(q.date, q.weekday, () => {
         this.stage = 'take';
-        this.G.villagers[q.liar].setItem(itemColor(q.penalty));
+        (q.liar === 'headmaster' ? this.G.headmaster.npc : this.G.villagers[q.liar]).setItem(itemColor(q.penalty));
         this.G.dialog.say(q.lines.verdict);
       });
     });
@@ -156,7 +155,7 @@ export class QuestRunner {
     const q = this.q, G = this.G;
     if (this.trapCaught) return G.dialog.say([this.B.caughtAlready]);
     if (!this.trapActive || !q) return G.dialog.say([this.B.nothingWrong]);
-    this.weekdayPicker(`Buu said: "${q.lines.announce[2].text}" Which day was it?`, q.trap.date, q.trap.weekday, () => {
+    this.weekdayPicker(q.trap.date, q.trap.weekday, () => {
       this.trapActive = false;
       this.trapCaught = true;
       G.dialog.say([this.B.silly]);

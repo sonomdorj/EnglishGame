@@ -22,7 +22,24 @@
         {
           "who": "buu",
           "text": "New case. Talk to Dulamsuren.",
-          "audio": "buu-7af8da7e"
+          "audio": "buu-7af8da7e",
+          "nick": {
+            "Cake Face": {
+              "who": "buu",
+              "text": "New case. Talk to Cake Face.",
+              "audio": "buu-efe2268d"
+            },
+            "Miss Oven": {
+              "who": "buu",
+              "text": "New case. Talk to Miss Oven.",
+              "audio": "buu-81669cb4"
+            },
+            "Bread Queen": {
+              "who": "buu",
+              "text": "New case. Talk to Bread Queen.",
+              "audio": "buu-a5bbf3c2"
+            }
+          }
         },
         {
           "who": "buu",
@@ -46,14 +63,48 @@
         {
           "who": "buu",
           "text": "Now talk to Batbayar.",
-          "audio": "buu-d48def14"
+          "audio": "buu-d48def14",
+          "nick": {
+            "Iron Nose": {
+              "who": "buu",
+              "text": "Now talk to Iron Nose.",
+              "audio": "buu-8a3c7bf5"
+            },
+            "Mister Friday": {
+              "who": "buu",
+              "text": "Now talk to Mister Friday.",
+              "audio": "buu-fb7ed6f5"
+            },
+            "Big Hammer": {
+              "who": "buu",
+              "text": "Now talk to Big Hammer.",
+              "audio": "buu-4cc8f33e"
+            }
+          }
         }
       ],
       "wrongOrder": [
         {
           "who": "buu",
           "text": "Talk to Dulamsuren first.",
-          "audio": "buu-81521a80"
+          "audio": "buu-81521a80",
+          "nick": {
+            "Cake Face": {
+              "who": "buu",
+              "text": "Talk to Cake Face first.",
+              "audio": "buu-b05e30df"
+            },
+            "Miss Oven": {
+              "who": "buu",
+              "text": "Talk to Miss Oven first.",
+              "audio": "buu-9a3b0442"
+            },
+            "Bread Queen": {
+              "who": "buu",
+              "text": "Talk to Bread Queen first.",
+              "audio": "buu-6de053b4"
+            }
+          }
         }
       ],
       "claimB": [
@@ -74,12 +125,46 @@
         {
           "who": "buu",
           "text": "Friday. Batbayar lied.",
-          "audio": "buu-8280f2ee"
+          "audio": "buu-8280f2ee",
+          "nick": {
+            "Iron Nose": {
+              "who": "buu",
+              "text": "Friday. Iron Nose lied.",
+              "audio": "buu-6e1ae9c9"
+            },
+            "Mister Friday": {
+              "who": "buu",
+              "text": "Friday. Mister Friday lied.",
+              "audio": "buu-073bc6d9"
+            },
+            "Big Hammer": {
+              "who": "buu",
+              "text": "Friday. Big Hammer lied.",
+              "audio": "buu-cf97f124"
+            }
+          }
         },
         {
           "who": "buu",
           "text": "Take 10 iron from Batbayar.",
-          "audio": "buu-59ac68ad"
+          "audio": "buu-59ac68ad",
+          "nick": {
+            "Iron Nose": {
+              "who": "buu",
+              "text": "Take 10 iron from Iron Nose.",
+              "audio": "buu-ee67c37a"
+            },
+            "Mister Friday": {
+              "who": "buu",
+              "text": "Take 10 iron from Mister Friday.",
+              "audio": "buu-807b57b2"
+            },
+            "Big Hammer": {
+              "who": "buu",
+              "text": "Take 10 iron from Big Hammer.",
+              "audio": "buu-3efbd107"
+            }
+          }
         }
       ],
       "take": [
@@ -115,7 +200,24 @@
         {
           "who": "buu",
           "text": "New case. Talk to Ganbold.",
-          "audio": "buu-95551931"
+          "audio": "buu-95551931",
+          "nick": {
+            "Fish Head": {
+              "who": "buu",
+              "text": "New case. Talk to Fish Head.",
+              "audio": "buu-71d701c6"
+            },
+            "Captain Net": {
+              "who": "buu",
+              "text": "New case. Talk to Captain Net.",
+              "audio": "buu-1a5520cf"
+            },
+            "Wet Boots": {
+              "who": "buu",
+              "text": "New case. Talk to Wet Boots.",
+              "audio": "buu-5124bebd"
+            }
+          }
         },
         {
           "who": "buu",
@@ -139,14 +241,48 @@
         {
           "who": "buu",
           "text": "Now talk to Dulamsuren.",
-          "audio": "buu-f9924032"
+          "audio": "buu-f9924032",
+          "nick": {
+            "Cake Face": {
+              "who": "buu",
+              "text": "Now talk to Cake Face.",
+              "audio": "buu-cd6cc999"
+            },
+            "Miss Oven": {
+              "who": "buu",
+              "text": "Now talk to Miss Oven.",
+              "audio": "buu-c5b215c0"
+            },
+            "Bread Queen": {
+              "who": "buu",
+              "text": "Now talk to Bread Queen.",
+              "audio": "buu-d37e5b26"
+            }
+          }
         }
       ],
       "wrongOrder": [
         {
           "who": "buu",
           "text": "Talk to Ganbold first.",
-          "audio": "buu-b55dc533"
+          "audio": "buu-b55dc533",
+          "nick": {
+            "Fish Head": {
+              "who": "buu",
+              "text": "Talk to Fish Head first.",
+              "audio": "buu-266e9050"
+            },
+            "Captain Net": {
+              "who": "buu",
+              "text": "Talk to Captain Net first.",
+              "audio": "buu-18b81c15"
+            },
+            "Wet Boots": {
+              "who": "buu",
+              "text": "Talk to Wet Boots first.",
+              "audio": "buu-cb3cc8c7"
+            }
+          }
         }
       ],
       "claimB": [
@@ -167,12 +303,46 @@
         {
           "who": "buu",
           "text": "Sunday. Ganbold lied.",
-          "audio": "buu-8e3ded54"
+          "audio": "buu-8e3ded54",
+          "nick": {
+            "Fish Head": {
+              "who": "buu",
+              "text": "Sunday. Fish Head lied.",
+              "audio": "buu-d7ca6b51"
+            },
+            "Captain Net": {
+              "who": "buu",
+              "text": "Sunday. Captain Net lied.",
+              "audio": "buu-0c6c050e"
+            },
+            "Wet Boots": {
+              "who": "buu",
+              "text": "Sunday. Wet Boots lied.",
+              "audio": "buu-9d414f70"
+            }
+          }
         },
         {
           "who": "buu",
           "text": "Take 5 fish from Ganbold.",
-          "audio": "buu-2d2fc4c4"
+          "audio": "buu-2d2fc4c4",
+          "nick": {
+            "Fish Head": {
+              "who": "buu",
+              "text": "Take 5 fish from Fish Head.",
+              "audio": "buu-e1582b03"
+            },
+            "Captain Net": {
+              "who": "buu",
+              "text": "Take 5 fish from Captain Net.",
+              "audio": "buu-39e7bf06"
+            },
+            "Wet Boots": {
+              "who": "buu",
+              "text": "Take 5 fish from Wet Boots.",
+              "audio": "buu-6993afec"
+            }
+          }
         }
       ],
       "take": [
@@ -207,7 +377,24 @@
         {
           "who": "buu",
           "text": "New case. Talk to Tsetseg.",
-          "audio": "buu-0d316e85"
+          "audio": "buu-0d316e85",
+          "nick": {
+            "Miss Pencil": {
+              "who": "buu",
+              "text": "New case. Talk to Miss Pencil.",
+              "audio": "buu-4d1c7df5"
+            },
+            "Teacher Owl": {
+              "who": "buu",
+              "text": "New case. Talk to Teacher Owl.",
+              "audio": "buu-60c7f3f2"
+            },
+            "Lady Test": {
+              "who": "buu",
+              "text": "New case. Talk to Lady Test.",
+              "audio": "buu-5a8a476a"
+            }
+          }
         },
         {
           "who": "buu",
@@ -217,7 +404,24 @@
         {
           "who": "buu",
           "text": "Batbayar was born on Sunday, 14 March 1978.",
-          "audio": "buu-4e51738d"
+          "audio": "buu-4e51738d",
+          "nick": {
+            "Iron Nose": {
+              "who": "buu",
+              "text": "Iron Nose was born on Sunday, 14 March 1978.",
+              "audio": "buu-a8e23842"
+            },
+            "Mister Friday": {
+              "who": "buu",
+              "text": "Mister Friday was born on Sunday, 14 March 1978.",
+              "audio": "buu-a64e4052"
+            },
+            "Big Hammer": {
+              "who": "buu",
+              "text": "Big Hammer was born on Sunday, 14 March 1978.",
+              "audio": "buu-c4bb3bb3"
+            }
+          }
         }
       ],
       "claimA": [
@@ -238,7 +442,24 @@
         {
           "who": "buu",
           "text": "Talk to Tsetseg first.",
-          "audio": "buu-8b824e97"
+          "audio": "buu-8b824e97",
+          "nick": {
+            "Miss Pencil": {
+              "who": "buu",
+              "text": "Talk to Miss Pencil first.",
+              "audio": "buu-dfa2abaf"
+            },
+            "Teacher Owl": {
+              "who": "buu",
+              "text": "Talk to Teacher Owl first.",
+              "audio": "buu-b6d42e34"
+            },
+            "Lady Test": {
+              "who": "buu",
+              "text": "Talk to Lady Test first.",
+              "audio": "buu-515112b4"
+            }
+          }
         }
       ],
       "claimB": [
@@ -300,7 +521,24 @@
         {
           "who": "buu",
           "text": "New case. Talk to Enkhjargal.",
-          "audio": "buu-0a3790ab"
+          "audio": "buu-0a3790ab",
+          "nick": {
+            "Carrot Boss": {
+              "who": "buu",
+              "text": "New case. Talk to Carrot Boss.",
+              "audio": "buu-602334c2"
+            },
+            "Mrs Potato": {
+              "who": "buu",
+              "text": "New case. Talk to Mrs Potato.",
+              "audio": "buu-ec97637f"
+            },
+            "Wheat Lady": {
+              "who": "buu",
+              "text": "New case. Talk to Wheat Lady.",
+              "audio": "buu-e55975a1"
+            }
+          }
         },
         {
           "who": "buu",
@@ -324,14 +562,48 @@
         {
           "who": "buu",
           "text": "Now talk to Ganbold.",
-          "audio": "buu-6fe657ad"
+          "audio": "buu-6fe657ad",
+          "nick": {
+            "Fish Head": {
+              "who": "buu",
+              "text": "Now talk to Fish Head.",
+              "audio": "buu-eea0aaf2"
+            },
+            "Captain Net": {
+              "who": "buu",
+              "text": "Now talk to Captain Net.",
+              "audio": "buu-59e48b0b"
+            },
+            "Wet Boots": {
+              "who": "buu",
+              "text": "Now talk to Wet Boots.",
+              "audio": "buu-b147cb61"
+            }
+          }
         }
       ],
       "wrongOrder": [
         {
           "who": "buu",
           "text": "Talk to Enkhjargal first.",
-          "audio": "buu-ca221661"
+          "audio": "buu-ca221661",
+          "nick": {
+            "Carrot Boss": {
+              "who": "buu",
+              "text": "Talk to Carrot Boss first.",
+              "audio": "buu-e98d525c"
+            },
+            "Mrs Potato": {
+              "who": "buu",
+              "text": "Talk to Mrs Potato first.",
+              "audio": "buu-46ddc8fd"
+            },
+            "Wheat Lady": {
+              "who": "buu",
+              "text": "Talk to Wheat Lady first.",
+              "audio": "buu-3a62c4eb"
+            }
+          }
         }
       ],
       "claimB": [
@@ -352,12 +624,46 @@
         {
           "who": "buu",
           "text": "Tuesday. Enkhjargal lied.",
-          "audio": "buu-e8475021"
+          "audio": "buu-e8475021",
+          "nick": {
+            "Carrot Boss": {
+              "who": "buu",
+              "text": "Tuesday. Carrot Boss lied.",
+              "audio": "buu-5fb757d6"
+            },
+            "Mrs Potato": {
+              "who": "buu",
+              "text": "Tuesday. Mrs Potato lied.",
+              "audio": "buu-7e7fbd21"
+            },
+            "Wheat Lady": {
+              "who": "buu",
+              "text": "Tuesday. Wheat Lady lied.",
+              "audio": "buu-107253cb"
+            }
+          }
         },
         {
           "who": "buu",
           "text": "Take 4 carrots from Enkhjargal.",
-          "audio": "buu-54a4df0d"
+          "audio": "buu-54a4df0d",
+          "nick": {
+            "Carrot Boss": {
+              "who": "buu",
+              "text": "Take 4 carrots from Carrot Boss.",
+              "audio": "buu-8ea959ec"
+            },
+            "Mrs Potato": {
+              "who": "buu",
+              "text": "Take 4 carrots from Mrs Potato.",
+              "audio": "buu-ae39f12d"
+            },
+            "Wheat Lady": {
+              "who": "buu",
+              "text": "Take 4 carrots from Wheat Lady.",
+              "audio": "buu-6dc0ef53"
+            }
+          }
         }
       ],
       "take": [
@@ -392,7 +698,24 @@
         {
           "who": "buu",
           "text": "New case. Talk to Batbayar.",
-          "audio": "buu-a204b290"
+          "audio": "buu-a204b290",
+          "nick": {
+            "Iron Nose": {
+              "who": "buu",
+              "text": "New case. Talk to Iron Nose.",
+              "audio": "buu-5571a179"
+            },
+            "Mister Friday": {
+              "who": "buu",
+              "text": "New case. Talk to Mister Friday.",
+              "audio": "buu-415f0509"
+            },
+            "Big Hammer": {
+              "who": "buu",
+              "text": "New case. Talk to Big Hammer.",
+              "audio": "buu-1866e2c2"
+            }
+          }
         },
         {
           "who": "buu",
@@ -402,7 +725,24 @@
         {
           "who": "buu",
           "text": "Tsetseg was born on Tuesday, 8 November 1991.",
-          "audio": "buu-653fe014"
+          "audio": "buu-653fe014",
+          "nick": {
+            "Miss Pencil": {
+              "who": "buu",
+              "text": "Miss Pencil was born on Tuesday, 8 November 1991.",
+              "audio": "buu-f779dcbc"
+            },
+            "Teacher Owl": {
+              "who": "buu",
+              "text": "Teacher Owl was born on Tuesday, 8 November 1991.",
+              "audio": "buu-190ac2d9"
+            },
+            "Lady Test": {
+              "who": "buu",
+              "text": "Lady Test was born on Tuesday, 8 November 1991.",
+              "audio": "buu-d02a5bd1"
+            }
+          }
         }
       ],
       "claimA": [
@@ -416,14 +756,48 @@
         {
           "who": "buu",
           "text": "Now talk to Enkhjargal.",
-          "audio": "buu-e108b657"
+          "audio": "buu-e108b657",
+          "nick": {
+            "Carrot Boss": {
+              "who": "buu",
+              "text": "Now talk to Carrot Boss.",
+              "audio": "buu-440ead4e"
+            },
+            "Mrs Potato": {
+              "who": "buu",
+              "text": "Now talk to Mrs Potato.",
+              "audio": "buu-3e3c7e53"
+            },
+            "Wheat Lady": {
+              "who": "buu",
+              "text": "Now talk to Wheat Lady.",
+              "audio": "buu-22c90085"
+            }
+          }
         }
       ],
       "wrongOrder": [
         {
           "who": "buu",
           "text": "Talk to Batbayar first.",
-          "audio": "buu-d80457b6"
+          "audio": "buu-d80457b6",
+          "nick": {
+            "Iron Nose": {
+              "who": "buu",
+              "text": "Talk to Iron Nose first.",
+              "audio": "buu-4aa7834b"
+            },
+            "Mister Friday": {
+              "who": "buu",
+              "text": "Talk to Mister Friday first.",
+              "audio": "buu-d627fe1b"
+            },
+            "Big Hammer": {
+              "who": "buu",
+              "text": "Talk to Big Hammer first.",
+              "audio": "buu-767166bc"
+            }
+          }
         }
       ],
       "claimB": [
@@ -444,12 +818,46 @@
         {
           "who": "buu",
           "text": "Tuesday. Enkhjargal lied.",
-          "audio": "buu-e8475021"
+          "audio": "buu-e8475021",
+          "nick": {
+            "Carrot Boss": {
+              "who": "buu",
+              "text": "Tuesday. Carrot Boss lied.",
+              "audio": "buu-5fb757d6"
+            },
+            "Mrs Potato": {
+              "who": "buu",
+              "text": "Tuesday. Mrs Potato lied.",
+              "audio": "buu-7e7fbd21"
+            },
+            "Wheat Lady": {
+              "who": "buu",
+              "text": "Tuesday. Wheat Lady lied.",
+              "audio": "buu-107253cb"
+            }
+          }
         },
         {
           "who": "buu",
           "text": "Take 6 potatoes from Enkhjargal.",
-          "audio": "buu-0414bf0a"
+          "audio": "buu-0414bf0a",
+          "nick": {
+            "Carrot Boss": {
+              "who": "buu",
+              "text": "Take 6 potatoes from Carrot Boss.",
+              "audio": "buu-4d4a95f5"
+            },
+            "Mrs Potato": {
+              "who": "buu",
+              "text": "Take 6 potatoes from Mrs Potato.",
+              "audio": "buu-dc54fa4a"
+            },
+            "Wheat Lady": {
+              "who": "buu",
+              "text": "Take 6 potatoes from Wheat Lady.",
+              "audio": "buu-1667ed04"
+            }
+          }
         }
       ],
       "take": [
@@ -509,7 +917,24 @@
         {
           "who": "buu",
           "text": "Now talk to Tsetseg.",
-          "audio": "buu-3b7e38d1"
+          "audio": "buu-3b7e38d1",
+          "nick": {
+            "Miss Pencil": {
+              "who": "buu",
+              "text": "Now talk to Miss Pencil.",
+              "audio": "buu-549c3bc9"
+            },
+            "Teacher Owl": {
+              "who": "buu",
+              "text": "Now talk to Teacher Owl.",
+              "audio": "buu-6da971c6"
+            },
+            "Lady Test": {
+              "who": "buu",
+              "text": "Now talk to Lady Test.",
+              "audio": "buu-c38b6536"
+            }
+          }
         }
       ],
       "wrongOrder": [
@@ -577,7 +1002,24 @@
         {
           "who": "buu",
           "text": "New case. Talk to Dulamsuren.",
-          "audio": "buu-7af8da7e"
+          "audio": "buu-7af8da7e",
+          "nick": {
+            "Cake Face": {
+              "who": "buu",
+              "text": "New case. Talk to Cake Face.",
+              "audio": "buu-efe2268d"
+            },
+            "Miss Oven": {
+              "who": "buu",
+              "text": "New case. Talk to Miss Oven.",
+              "audio": "buu-81669cb4"
+            },
+            "Bread Queen": {
+              "who": "buu",
+              "text": "New case. Talk to Bread Queen.",
+              "audio": "buu-a5bbf3c2"
+            }
+          }
         },
         {
           "who": "buu",
@@ -587,7 +1029,24 @@
         {
           "who": "buu",
           "text": "Ganbold was born on Tuesday, 17 May 1975.",
-          "audio": "buu-4ac267f5"
+          "audio": "buu-4ac267f5",
+          "nick": {
+            "Fish Head": {
+              "who": "buu",
+              "text": "Fish Head was born on Tuesday, 17 May 1975.",
+              "audio": "buu-4c4f03dc"
+            },
+            "Captain Net": {
+              "who": "buu",
+              "text": "Captain Net was born on Tuesday, 17 May 1975.",
+              "audio": "buu-d60506c7"
+            },
+            "Wet Boots": {
+              "who": "buu",
+              "text": "Wet Boots was born on Tuesday, 17 May 1975.",
+              "audio": "buu-97449815"
+            }
+          }
         }
       ],
       "claimA": [
@@ -601,14 +1060,48 @@
         {
           "who": "buu",
           "text": "Now talk to Ganbold.",
-          "audio": "buu-6fe657ad"
+          "audio": "buu-6fe657ad",
+          "nick": {
+            "Fish Head": {
+              "who": "buu",
+              "text": "Now talk to Fish Head.",
+              "audio": "buu-eea0aaf2"
+            },
+            "Captain Net": {
+              "who": "buu",
+              "text": "Now talk to Captain Net.",
+              "audio": "buu-59e48b0b"
+            },
+            "Wet Boots": {
+              "who": "buu",
+              "text": "Now talk to Wet Boots.",
+              "audio": "buu-b147cb61"
+            }
+          }
         }
       ],
       "wrongOrder": [
         {
           "who": "buu",
           "text": "Talk to Dulamsuren first.",
-          "audio": "buu-81521a80"
+          "audio": "buu-81521a80",
+          "nick": {
+            "Cake Face": {
+              "who": "buu",
+              "text": "Talk to Cake Face first.",
+              "audio": "buu-b05e30df"
+            },
+            "Miss Oven": {
+              "who": "buu",
+              "text": "Talk to Miss Oven first.",
+              "audio": "buu-9a3b0442"
+            },
+            "Bread Queen": {
+              "who": "buu",
+              "text": "Talk to Bread Queen first.",
+              "audio": "buu-6de053b4"
+            }
+          }
         }
       ],
       "claimB": [
@@ -629,12 +1122,46 @@
         {
           "who": "buu",
           "text": "Friday. Ganbold lied.",
-          "audio": "buu-b8fe26b1"
+          "audio": "buu-b8fe26b1",
+          "nick": {
+            "Fish Head": {
+              "who": "buu",
+              "text": "Friday. Fish Head lied.",
+              "audio": "buu-96902158"
+            },
+            "Captain Net": {
+              "who": "buu",
+              "text": "Friday. Captain Net lied.",
+              "audio": "buu-06567ca3"
+            },
+            "Wet Boots": {
+              "who": "buu",
+              "text": "Friday. Wet Boots lied.",
+              "audio": "buu-53a243b5"
+            }
+          }
         },
         {
           "who": "buu",
           "text": "Take 1 fishing net from Ganbold.",
-          "audio": "buu-92b62b81"
+          "audio": "buu-92b62b81",
+          "nick": {
+            "Fish Head": {
+              "who": "buu",
+              "text": "Take 1 fishing net from Fish Head.",
+              "audio": "buu-cee90e76"
+            },
+            "Captain Net": {
+              "who": "buu",
+              "text": "Take 1 fishing net from Captain Net.",
+              "audio": "buu-07b9c6ff"
+            },
+            "Wet Boots": {
+              "who": "buu",
+              "text": "Take 1 fishing net from Wet Boots.",
+              "audio": "buu-2100d8cd"
+            }
+          }
         }
       ],
       "take": [
@@ -670,7 +1197,24 @@
         {
           "who": "buu",
           "text": "New case. Talk to Ganbold.",
-          "audio": "buu-95551931"
+          "audio": "buu-95551931",
+          "nick": {
+            "Fish Head": {
+              "who": "buu",
+              "text": "New case. Talk to Fish Head.",
+              "audio": "buu-71d701c6"
+            },
+            "Captain Net": {
+              "who": "buu",
+              "text": "New case. Talk to Captain Net.",
+              "audio": "buu-1a5520cf"
+            },
+            "Wet Boots": {
+              "who": "buu",
+              "text": "New case. Talk to Wet Boots.",
+              "audio": "buu-5124bebd"
+            }
+          }
         },
         {
           "who": "buu",
@@ -694,14 +1238,48 @@
         {
           "who": "buu",
           "text": "Now talk to Batbayar.",
-          "audio": "buu-d48def14"
+          "audio": "buu-d48def14",
+          "nick": {
+            "Iron Nose": {
+              "who": "buu",
+              "text": "Now talk to Iron Nose.",
+              "audio": "buu-8a3c7bf5"
+            },
+            "Mister Friday": {
+              "who": "buu",
+              "text": "Now talk to Mister Friday.",
+              "audio": "buu-fb7ed6f5"
+            },
+            "Big Hammer": {
+              "who": "buu",
+              "text": "Now talk to Big Hammer.",
+              "audio": "buu-4cc8f33e"
+            }
+          }
         }
       ],
       "wrongOrder": [
         {
           "who": "buu",
           "text": "Talk to Ganbold first.",
-          "audio": "buu-b55dc533"
+          "audio": "buu-b55dc533",
+          "nick": {
+            "Fish Head": {
+              "who": "buu",
+              "text": "Talk to Fish Head first.",
+              "audio": "buu-266e9050"
+            },
+            "Captain Net": {
+              "who": "buu",
+              "text": "Talk to Captain Net first.",
+              "audio": "buu-18b81c15"
+            },
+            "Wet Boots": {
+              "who": "buu",
+              "text": "Talk to Wet Boots first.",
+              "audio": "buu-cb3cc8c7"
+            }
+          }
         }
       ],
       "claimB": [
@@ -722,12 +1300,46 @@
         {
           "who": "buu",
           "text": "Friday. Ganbold lied.",
-          "audio": "buu-b8fe26b1"
+          "audio": "buu-b8fe26b1",
+          "nick": {
+            "Fish Head": {
+              "who": "buu",
+              "text": "Friday. Fish Head lied.",
+              "audio": "buu-96902158"
+            },
+            "Captain Net": {
+              "who": "buu",
+              "text": "Friday. Captain Net lied.",
+              "audio": "buu-06567ca3"
+            },
+            "Wet Boots": {
+              "who": "buu",
+              "text": "Friday. Wet Boots lied.",
+              "audio": "buu-53a243b5"
+            }
+          }
         },
         {
           "who": "buu",
           "text": "Take 1 fishing rod from Ganbold.",
-          "audio": "buu-c7659c47"
+          "audio": "buu-c7659c47",
+          "nick": {
+            "Fish Head": {
+              "who": "buu",
+              "text": "Take 1 fishing rod from Fish Head.",
+              "audio": "buu-5064569c"
+            },
+            "Captain Net": {
+              "who": "buu",
+              "text": "Take 1 fishing rod from Captain Net.",
+              "audio": "buu-c36cc519"
+            },
+            "Wet Boots": {
+              "who": "buu",
+              "text": "Take 1 fishing rod from Wet Boots.",
+              "audio": "buu-241708cf"
+            }
+          }
         }
       ],
       "take": [
@@ -762,7 +1374,24 @@
         {
           "who": "buu",
           "text": "New case. Talk to Tsetseg.",
-          "audio": "buu-0d316e85"
+          "audio": "buu-0d316e85",
+          "nick": {
+            "Miss Pencil": {
+              "who": "buu",
+              "text": "New case. Talk to Miss Pencil.",
+              "audio": "buu-4d1c7df5"
+            },
+            "Teacher Owl": {
+              "who": "buu",
+              "text": "New case. Talk to Teacher Owl.",
+              "audio": "buu-60c7f3f2"
+            },
+            "Lady Test": {
+              "who": "buu",
+              "text": "New case. Talk to Lady Test.",
+              "audio": "buu-5a8a476a"
+            }
+          }
         },
         {
           "who": "buu",
@@ -772,7 +1401,24 @@
         {
           "who": "buu",
           "text": "Dulamsuren was born on Wednesday, 2 September 1983.",
-          "audio": "buu-a3bfbf86"
+          "audio": "buu-a3bfbf86",
+          "nick": {
+            "Cake Face": {
+              "who": "buu",
+              "text": "Cake Face was born on Wednesday, 2 September 1983.",
+              "audio": "buu-6deed993"
+            },
+            "Miss Oven": {
+              "who": "buu",
+              "text": "Miss Oven was born on Wednesday, 2 September 1983.",
+              "audio": "buu-1502cf76"
+            },
+            "Bread Queen": {
+              "who": "buu",
+              "text": "Bread Queen was born on Wednesday, 2 September 1983.",
+              "audio": "buu-b2304b74"
+            }
+          }
         }
       ],
       "claimA": [
@@ -786,14 +1432,48 @@
         {
           "who": "buu",
           "text": "Now talk to Enkhjargal.",
-          "audio": "buu-e108b657"
+          "audio": "buu-e108b657",
+          "nick": {
+            "Carrot Boss": {
+              "who": "buu",
+              "text": "Now talk to Carrot Boss.",
+              "audio": "buu-440ead4e"
+            },
+            "Mrs Potato": {
+              "who": "buu",
+              "text": "Now talk to Mrs Potato.",
+              "audio": "buu-3e3c7e53"
+            },
+            "Wheat Lady": {
+              "who": "buu",
+              "text": "Now talk to Wheat Lady.",
+              "audio": "buu-22c90085"
+            }
+          }
         }
       ],
       "wrongOrder": [
         {
           "who": "buu",
           "text": "Talk to Tsetseg first.",
-          "audio": "buu-8b824e97"
+          "audio": "buu-8b824e97",
+          "nick": {
+            "Miss Pencil": {
+              "who": "buu",
+              "text": "Talk to Miss Pencil first.",
+              "audio": "buu-dfa2abaf"
+            },
+            "Teacher Owl": {
+              "who": "buu",
+              "text": "Talk to Teacher Owl first.",
+              "audio": "buu-b6d42e34"
+            },
+            "Lady Test": {
+              "who": "buu",
+              "text": "Talk to Lady Test first.",
+              "audio": "buu-515112b4"
+            }
+          }
         }
       ],
       "claimB": [
@@ -814,12 +1494,46 @@
         {
           "who": "buu",
           "text": "Wednesday. Enkhjargal lied.",
-          "audio": "buu-f90ebd82"
+          "audio": "buu-f90ebd82",
+          "nick": {
+            "Carrot Boss": {
+              "who": "buu",
+              "text": "Wednesday. Carrot Boss lied.",
+              "audio": "buu-6c464feb"
+            },
+            "Mrs Potato": {
+              "who": "buu",
+              "text": "Wednesday. Mrs Potato lied.",
+              "audio": "buu-c1439816"
+            },
+            "Wheat Lady": {
+              "who": "buu",
+              "text": "Wednesday. Wheat Lady lied.",
+              "audio": "buu-7996e5b0"
+            }
+          }
         },
         {
           "who": "buu",
           "text": "Take 12 eggs from Enkhjargal.",
-          "audio": "buu-28773ddc"
+          "audio": "buu-28773ddc",
+          "nick": {
+            "Carrot Boss": {
+              "who": "buu",
+              "text": "Take 12 eggs from Carrot Boss.",
+              "audio": "buu-0d525017"
+            },
+            "Mrs Potato": {
+              "who": "buu",
+              "text": "Take 12 eggs from Mrs Potato.",
+              "audio": "buu-8ab93998"
+            },
+            "Wheat Lady": {
+              "who": "buu",
+              "text": "Take 12 eggs from Wheat Lady.",
+              "audio": "buu-7e3a20e6"
+            }
+          }
         }
       ],
       "take": [
@@ -855,7 +1569,24 @@
         {
           "who": "buu",
           "text": "New case. Talk to Enkhjargal.",
-          "audio": "buu-0a3790ab"
+          "audio": "buu-0a3790ab",
+          "nick": {
+            "Carrot Boss": {
+              "who": "buu",
+              "text": "New case. Talk to Carrot Boss.",
+              "audio": "buu-602334c2"
+            },
+            "Mrs Potato": {
+              "who": "buu",
+              "text": "New case. Talk to Mrs Potato.",
+              "audio": "buu-ec97637f"
+            },
+            "Wheat Lady": {
+              "who": "buu",
+              "text": "New case. Talk to Wheat Lady.",
+              "audio": "buu-e55975a1"
+            }
+          }
         },
         {
           "who": "buu",
@@ -879,14 +1610,48 @@
         {
           "who": "buu",
           "text": "Now talk to Dulamsuren.",
-          "audio": "buu-f9924032"
+          "audio": "buu-f9924032",
+          "nick": {
+            "Cake Face": {
+              "who": "buu",
+              "text": "Now talk to Cake Face.",
+              "audio": "buu-cd6cc999"
+            },
+            "Miss Oven": {
+              "who": "buu",
+              "text": "Now talk to Miss Oven.",
+              "audio": "buu-c5b215c0"
+            },
+            "Bread Queen": {
+              "who": "buu",
+              "text": "Now talk to Bread Queen.",
+              "audio": "buu-d37e5b26"
+            }
+          }
         }
       ],
       "wrongOrder": [
         {
           "who": "buu",
           "text": "Talk to Enkhjargal first.",
-          "audio": "buu-ca221661"
+          "audio": "buu-ca221661",
+          "nick": {
+            "Carrot Boss": {
+              "who": "buu",
+              "text": "Talk to Carrot Boss first.",
+              "audio": "buu-e98d525c"
+            },
+            "Mrs Potato": {
+              "who": "buu",
+              "text": "Talk to Mrs Potato first.",
+              "audio": "buu-46ddc8fd"
+            },
+            "Wheat Lady": {
+              "who": "buu",
+              "text": "Talk to Wheat Lady first.",
+              "audio": "buu-3a62c4eb"
+            }
+          }
         }
       ],
       "claimB": [
@@ -907,12 +1672,46 @@
         {
           "who": "buu",
           "text": "Friday. Enkhjargal lied.",
-          "audio": "buu-66017c7f"
+          "audio": "buu-66017c7f",
+          "nick": {
+            "Carrot Boss": {
+              "who": "buu",
+              "text": "Friday. Carrot Boss lied.",
+              "audio": "buu-597a20c4"
+            },
+            "Mrs Potato": {
+              "who": "buu",
+              "text": "Friday. Mrs Potato lied.",
+              "audio": "buu-ed1d9aab"
+            },
+            "Wheat Lady": {
+              "who": "buu",
+              "text": "Friday. Wheat Lady lied.",
+              "audio": "buu-5c4973e9"
+            }
+          }
         },
         {
           "who": "buu",
           "text": "Take 1 bag of wheat from Enkhjargal.",
-          "audio": "buu-af5e06fa"
+          "audio": "buu-af5e06fa",
+          "nick": {
+            "Carrot Boss": {
+              "who": "buu",
+              "text": "Take 1 bag of wheat from Carrot Boss.",
+              "audio": "buu-881651c5"
+            },
+            "Mrs Potato": {
+              "who": "buu",
+              "text": "Take 1 bag of wheat from Mrs Potato.",
+              "audio": "buu-66e40b7a"
+            },
+            "Wheat Lady": {
+              "who": "buu",
+              "text": "Take 1 bag of wheat from Wheat Lady.",
+              "audio": "buu-ca47b0b4"
+            }
+          }
         }
       ],
       "take": [
@@ -957,7 +1756,24 @@
         {
           "who": "buu",
           "text": "Enkhjargal was born on Monday, 30 January 1969.",
-          "audio": "buu-6575acbf"
+          "audio": "buu-6575acbf",
+          "nick": {
+            "Carrot Boss": {
+              "who": "buu",
+              "text": "Carrot Boss was born on Monday, 30 January 1969.",
+              "audio": "buu-14c1ac10"
+            },
+            "Mrs Potato": {
+              "who": "buu",
+              "text": "Mrs Potato was born on Monday, 30 January 1969.",
+              "audio": "buu-f2e77d33"
+            },
+            "Wheat Lady": {
+              "who": "buu",
+              "text": "Wheat Lady was born on Monday, 30 January 1969.",
+              "audio": "buu-0421f755"
+            }
+          }
         }
       ],
       "claimA": [
@@ -971,7 +1787,24 @@
         {
           "who": "buu",
           "text": "Now talk to Batbayar.",
-          "audio": "buu-d48def14"
+          "audio": "buu-d48def14",
+          "nick": {
+            "Iron Nose": {
+              "who": "buu",
+              "text": "Now talk to Iron Nose.",
+              "audio": "buu-8a3c7bf5"
+            },
+            "Mister Friday": {
+              "who": "buu",
+              "text": "Now talk to Mister Friday.",
+              "audio": "buu-fb7ed6f5"
+            },
+            "Big Hammer": {
+              "who": "buu",
+              "text": "Now talk to Big Hammer.",
+              "audio": "buu-4cc8f33e"
+            }
+          }
         }
       ],
       "wrongOrder": [
@@ -999,12 +1832,46 @@
         {
           "who": "buu",
           "text": "Thursday. Batbayar lied.",
-          "audio": "buu-867f4b73"
+          "audio": "buu-867f4b73",
+          "nick": {
+            "Iron Nose": {
+              "who": "buu",
+              "text": "Thursday. Iron Nose lied.",
+              "audio": "buu-0de4bb32"
+            },
+            "Mister Friday": {
+              "who": "buu",
+              "text": "Thursday. Mister Friday lied.",
+              "audio": "buu-5c4f2872"
+            },
+            "Big Hammer": {
+              "who": "buu",
+              "text": "Thursday. Big Hammer lied.",
+              "audio": "buu-25ea5709"
+            }
+          }
         },
         {
           "who": "buu",
           "text": "Take 1 hammer from Batbayar.",
-          "audio": "buu-04d7ebaf"
+          "audio": "buu-04d7ebaf",
+          "nick": {
+            "Iron Nose": {
+              "who": "buu",
+              "text": "Take 1 hammer from Iron Nose.",
+              "audio": "buu-6ef76b94"
+            },
+            "Mister Friday": {
+              "who": "buu",
+              "text": "Take 1 hammer from Mister Friday.",
+              "audio": "buu-5298c944"
+            },
+            "Big Hammer": {
+              "who": "buu",
+              "text": "Take 1 hammer from Big Hammer.",
+              "audio": "buu-22e40651"
+            }
+          }
         }
       ],
       "take": [
@@ -1040,7 +1907,24 @@
         {
           "who": "buu",
           "text": "New case. Talk to Batbayar.",
-          "audio": "buu-a204b290"
+          "audio": "buu-a204b290",
+          "nick": {
+            "Iron Nose": {
+              "who": "buu",
+              "text": "New case. Talk to Iron Nose.",
+              "audio": "buu-5571a179"
+            },
+            "Mister Friday": {
+              "who": "buu",
+              "text": "New case. Talk to Mister Friday.",
+              "audio": "buu-415f0509"
+            },
+            "Big Hammer": {
+              "who": "buu",
+              "text": "New case. Talk to Big Hammer.",
+              "audio": "buu-1866e2c2"
+            }
+          }
         },
         {
           "who": "buu",
@@ -1064,14 +1948,48 @@
         {
           "who": "buu",
           "text": "Now talk to Tsetseg.",
-          "audio": "buu-3b7e38d1"
+          "audio": "buu-3b7e38d1",
+          "nick": {
+            "Miss Pencil": {
+              "who": "buu",
+              "text": "Now talk to Miss Pencil.",
+              "audio": "buu-549c3bc9"
+            },
+            "Teacher Owl": {
+              "who": "buu",
+              "text": "Now talk to Teacher Owl.",
+              "audio": "buu-6da971c6"
+            },
+            "Lady Test": {
+              "who": "buu",
+              "text": "Now talk to Lady Test.",
+              "audio": "buu-c38b6536"
+            }
+          }
         }
       ],
       "wrongOrder": [
         {
           "who": "buu",
           "text": "Talk to Batbayar first.",
-          "audio": "buu-d80457b6"
+          "audio": "buu-d80457b6",
+          "nick": {
+            "Iron Nose": {
+              "who": "buu",
+              "text": "Talk to Iron Nose first.",
+              "audio": "buu-4aa7834b"
+            },
+            "Mister Friday": {
+              "who": "buu",
+              "text": "Talk to Mister Friday first.",
+              "audio": "buu-d627fe1b"
+            },
+            "Big Hammer": {
+              "who": "buu",
+              "text": "Talk to Big Hammer first.",
+              "audio": "buu-767166bc"
+            }
+          }
         }
       ],
       "claimB": [
@@ -1092,12 +2010,46 @@
         {
           "who": "buu",
           "text": "Monday. Batbayar lied.",
-          "audio": "buu-78333e39"
+          "audio": "buu-78333e39",
+          "nick": {
+            "Iron Nose": {
+              "who": "buu",
+              "text": "Monday. Iron Nose lied.",
+              "audio": "buu-19d65018"
+            },
+            "Mister Friday": {
+              "who": "buu",
+              "text": "Monday. Mister Friday lied.",
+              "audio": "buu-05a3f8e0"
+            },
+            "Big Hammer": {
+              "who": "buu",
+              "text": "Monday. Big Hammer lied.",
+              "audio": "buu-19af2d87"
+            }
+          }
         },
         {
           "who": "buu",
           "text": "Take 1 horseshoe from Batbayar.",
-          "audio": "buu-45468b7d"
+          "audio": "buu-45468b7d",
+          "nick": {
+            "Iron Nose": {
+              "who": "buu",
+              "text": "Take 1 horseshoe from Iron Nose.",
+              "audio": "buu-ec1bac4a"
+            },
+            "Mister Friday": {
+              "who": "buu",
+              "text": "Take 1 horseshoe from Mister Friday.",
+              "audio": "buu-032f9fe2"
+            },
+            "Big Hammer": {
+              "who": "buu",
+              "text": "Take 1 horseshoe from Big Hammer.",
+              "audio": "buu-c0ca4e97"
+            }
+          }
         }
       ],
       "take": [
@@ -1132,7 +2084,24 @@
         {
           "who": "buu",
           "text": "New case. Talk to Ganbold.",
-          "audio": "buu-95551931"
+          "audio": "buu-95551931",
+          "nick": {
+            "Fish Head": {
+              "who": "buu",
+              "text": "New case. Talk to Fish Head.",
+              "audio": "buu-71d701c6"
+            },
+            "Captain Net": {
+              "who": "buu",
+              "text": "New case. Talk to Captain Net.",
+              "audio": "buu-1a5520cf"
+            },
+            "Wet Boots": {
+              "who": "buu",
+              "text": "New case. Talk to Wet Boots.",
+              "audio": "buu-5124bebd"
+            }
+          }
         },
         {
           "who": "buu",
@@ -1163,7 +2132,24 @@
         {
           "who": "buu",
           "text": "Talk to Ganbold first.",
-          "audio": "buu-b55dc533"
+          "audio": "buu-b55dc533",
+          "nick": {
+            "Fish Head": {
+              "who": "buu",
+              "text": "Talk to Fish Head first.",
+              "audio": "buu-266e9050"
+            },
+            "Captain Net": {
+              "who": "buu",
+              "text": "Talk to Captain Net first.",
+              "audio": "buu-18b81c15"
+            },
+            "Wet Boots": {
+              "who": "buu",
+              "text": "Talk to Wet Boots first.",
+              "audio": "buu-cb3cc8c7"
+            }
+          }
         }
       ],
       "claimB": [
@@ -1225,7 +2211,24 @@
         {
           "who": "buu",
           "text": "New case. Talk to Dulamsuren.",
-          "audio": "buu-7af8da7e"
+          "audio": "buu-7af8da7e",
+          "nick": {
+            "Cake Face": {
+              "who": "buu",
+              "text": "New case. Talk to Cake Face.",
+              "audio": "buu-efe2268d"
+            },
+            "Miss Oven": {
+              "who": "buu",
+              "text": "New case. Talk to Miss Oven.",
+              "audio": "buu-81669cb4"
+            },
+            "Bread Queen": {
+              "who": "buu",
+              "text": "New case. Talk to Bread Queen.",
+              "audio": "buu-a5bbf3c2"
+            }
+          }
         },
         {
           "who": "buu",
@@ -1249,14 +2252,48 @@
         {
           "who": "buu",
           "text": "Now talk to Tsetseg.",
-          "audio": "buu-3b7e38d1"
+          "audio": "buu-3b7e38d1",
+          "nick": {
+            "Miss Pencil": {
+              "who": "buu",
+              "text": "Now talk to Miss Pencil.",
+              "audio": "buu-549c3bc9"
+            },
+            "Teacher Owl": {
+              "who": "buu",
+              "text": "Now talk to Teacher Owl.",
+              "audio": "buu-6da971c6"
+            },
+            "Lady Test": {
+              "who": "buu",
+              "text": "Now talk to Lady Test.",
+              "audio": "buu-c38b6536"
+            }
+          }
         }
       ],
       "wrongOrder": [
         {
           "who": "buu",
           "text": "Talk to Dulamsuren first.",
-          "audio": "buu-81521a80"
+          "audio": "buu-81521a80",
+          "nick": {
+            "Cake Face": {
+              "who": "buu",
+              "text": "Talk to Cake Face first.",
+              "audio": "buu-b05e30df"
+            },
+            "Miss Oven": {
+              "who": "buu",
+              "text": "Talk to Miss Oven first.",
+              "audio": "buu-9a3b0442"
+            },
+            "Bread Queen": {
+              "who": "buu",
+              "text": "Talk to Bread Queen first.",
+              "audio": "buu-6de053b4"
+            }
+          }
         }
       ],
       "claimB": [
@@ -1277,12 +2314,46 @@
         {
           "who": "buu",
           "text": "Friday. Dulamsuren lied.",
-          "audio": "buu-bea826c8"
+          "audio": "buu-bea826c8",
+          "nick": {
+            "Cake Face": {
+              "who": "buu",
+              "text": "Friday. Cake Face lied.",
+              "audio": "buu-f03c6d8d"
+            },
+            "Miss Oven": {
+              "who": "buu",
+              "text": "Friday. Miss Oven lied.",
+              "audio": "buu-2813272a"
+            },
+            "Bread Queen": {
+              "who": "buu",
+              "text": "Friday. Bread Queen lied.",
+              "audio": "buu-fdab937c"
+            }
+          }
         },
         {
           "who": "buu",
           "text": "Take 2 loaves of bread from Dulamsuren.",
-          "audio": "buu-688b90f1"
+          "audio": "buu-688b90f1",
+          "nick": {
+            "Cake Face": {
+              "who": "buu",
+              "text": "Take 2 loaves of bread from Cake Face.",
+              "audio": "buu-66e4bf34"
+            },
+            "Miss Oven": {
+              "who": "buu",
+              "text": "Take 2 loaves of bread from Miss Oven.",
+              "audio": "buu-5d5d1669"
+            },
+            "Bread Queen": {
+              "who": "buu",
+              "text": "Take 2 loaves of bread from Bread Queen.",
+              "audio": "buu-0137155f"
+            }
+          }
         }
       ],
       "take": [
@@ -1319,7 +2390,24 @@
         {
           "who": "buu",
           "text": "New case. Talk to Tsetseg.",
-          "audio": "buu-0d316e85"
+          "audio": "buu-0d316e85",
+          "nick": {
+            "Miss Pencil": {
+              "who": "buu",
+              "text": "New case. Talk to Miss Pencil.",
+              "audio": "buu-4d1c7df5"
+            },
+            "Teacher Owl": {
+              "who": "buu",
+              "text": "New case. Talk to Teacher Owl.",
+              "audio": "buu-60c7f3f2"
+            },
+            "Lady Test": {
+              "who": "buu",
+              "text": "New case. Talk to Lady Test.",
+              "audio": "buu-5a8a476a"
+            }
+          }
         },
         {
           "who": "buu",
@@ -1343,14 +2431,48 @@
         {
           "who": "buu",
           "text": "Now talk to Ganbold.",
-          "audio": "buu-6fe657ad"
+          "audio": "buu-6fe657ad",
+          "nick": {
+            "Fish Head": {
+              "who": "buu",
+              "text": "Now talk to Fish Head.",
+              "audio": "buu-eea0aaf2"
+            },
+            "Captain Net": {
+              "who": "buu",
+              "text": "Now talk to Captain Net.",
+              "audio": "buu-59e48b0b"
+            },
+            "Wet Boots": {
+              "who": "buu",
+              "text": "Now talk to Wet Boots.",
+              "audio": "buu-b147cb61"
+            }
+          }
         }
       ],
       "wrongOrder": [
         {
           "who": "buu",
           "text": "Talk to Tsetseg first.",
-          "audio": "buu-8b824e97"
+          "audio": "buu-8b824e97",
+          "nick": {
+            "Miss Pencil": {
+              "who": "buu",
+              "text": "Talk to Miss Pencil first.",
+              "audio": "buu-dfa2abaf"
+            },
+            "Teacher Owl": {
+              "who": "buu",
+              "text": "Talk to Teacher Owl first.",
+              "audio": "buu-b6d42e34"
+            },
+            "Lady Test": {
+              "who": "buu",
+              "text": "Talk to Lady Test first.",
+              "audio": "buu-515112b4"
+            }
+          }
         }
       ],
       "claimB": [
@@ -1371,12 +2493,46 @@
         {
           "who": "buu",
           "text": "Sunday. Ganbold lied.",
-          "audio": "buu-8e3ded54"
+          "audio": "buu-8e3ded54",
+          "nick": {
+            "Fish Head": {
+              "who": "buu",
+              "text": "Sunday. Fish Head lied.",
+              "audio": "buu-d7ca6b51"
+            },
+            "Captain Net": {
+              "who": "buu",
+              "text": "Sunday. Captain Net lied.",
+              "audio": "buu-0c6c050e"
+            },
+            "Wet Boots": {
+              "who": "buu",
+              "text": "Sunday. Wet Boots lied.",
+              "audio": "buu-9d414f70"
+            }
+          }
         },
         {
           "who": "buu",
           "text": "Take 7 shells from Ganbold.",
-          "audio": "buu-0e29b2d7"
+          "audio": "buu-0e29b2d7",
+          "nick": {
+            "Fish Head": {
+              "who": "buu",
+              "text": "Take 7 shells from Fish Head.",
+              "audio": "buu-cd769a8c"
+            },
+            "Captain Net": {
+              "who": "buu",
+              "text": "Take 7 shells from Captain Net.",
+              "audio": "buu-59338449"
+            },
+            "Wet Boots": {
+              "who": "buu",
+              "text": "Take 7 shells from Wet Boots.",
+              "audio": "buu-414f759f"
+            }
+          }
         }
       ],
       "take": [

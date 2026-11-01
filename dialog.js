@@ -4,8 +4,9 @@ import { CONFIG } from './config.js';
 // Each line plays its voice file. The text appears CONFIG.textDelaySec after the voice starts.
 // R replays the last line.
 export class Dialog {
-  constructor(root, voice, nameOf) {
+  constructor(root, voice, nameOf, swap = l => l) {
     this.root = root;
+    this.swap = swap;
     this.voice = voice;
     this.nameOf = nameOf;
     this.nameEl = root.querySelector('.d-name');
@@ -22,7 +23,7 @@ export class Dialog {
 
   // lines: array of { who, text, audio }. onDone runs after the last line is dismissed.
   say(lines, onDone) {
-    const items = lines.filter(Boolean).map(l => ({ ...l }));
+    const items = lines.filter(Boolean).map(l => ({ ...this.swap(l) }));
     if (!items.length) { onDone?.(); return; }
     items[items.length - 1].onDone = onDone;
     for (const it of items) {

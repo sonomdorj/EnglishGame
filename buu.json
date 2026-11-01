@@ -17,11 +17,6 @@
     },
     {
       "who": "buu",
-      "text": "C opens the calendar.",
-      "audio": "buu-f23f25c0"
-    },
-    {
-      "who": "buu",
       "text": "B opens the Family Book.",
       "audio": "buu-513f09d0"
     },
@@ -41,11 +36,6 @@
       "audio": "buu-1767d94f"
     }
   ],
-  "noLook": {
-    "who": "buu",
-    "text": "No. Look again.",
-    "audio": "buu-27ed9b9f"
-  },
   "silly": {
     "who": "buu",
     "text": "You are right. I am a silly panda.",
@@ -107,12 +97,46 @@
     "batbayar": {
       "who": "buu",
       "text": "Talk to Batbayar.",
-      "audio": "buu-922257ec"
+      "audio": "buu-922257ec",
+      "nick": {
+        "Iron Nose": {
+          "who": "buu",
+          "text": "Talk to Iron Nose.",
+          "audio": "buu-37eabbdd"
+        },
+        "Mister Friday": {
+          "who": "buu",
+          "text": "Talk to Mister Friday.",
+          "audio": "buu-7a5d2b4d"
+        },
+        "Big Hammer": {
+          "who": "buu",
+          "text": "Talk to Big Hammer.",
+          "audio": "buu-67c52146"
+        }
+      }
     },
     "dulamsuren": {
       "who": "buu",
       "text": "Talk to Dulamsuren.",
-      "audio": "buu-1259e00a"
+      "audio": "buu-1259e00a",
+      "nick": {
+        "Cake Face": {
+          "who": "buu",
+          "text": "Talk to Cake Face.",
+          "audio": "buu-fa061341"
+        },
+        "Miss Oven": {
+          "who": "buu",
+          "text": "Talk to Miss Oven.",
+          "audio": "buu-d684f6f8"
+        },
+        "Bread Queen": {
+          "who": "buu",
+          "text": "Talk to Bread Queen.",
+          "audio": "buu-26bdf2ee"
+        }
+      }
     },
     "oyunaa": {
       "who": "buu",
@@ -122,17 +146,68 @@
     "enkhjargal": {
       "who": "buu",
       "text": "Talk to Enkhjargal.",
-      "audio": "buu-ef66eb8f"
+      "audio": "buu-ef66eb8f",
+      "nick": {
+        "Carrot Boss": {
+          "who": "buu",
+          "text": "Talk to Carrot Boss.",
+          "audio": "buu-034e3066"
+        },
+        "Mrs Potato": {
+          "who": "buu",
+          "text": "Talk to Mrs Potato.",
+          "audio": "buu-40d1dfab"
+        },
+        "Wheat Lady": {
+          "who": "buu",
+          "text": "Talk to Wheat Lady.",
+          "audio": "buu-298b2b7d"
+        }
+      }
     },
     "tsetseg": {
       "who": "buu",
       "text": "Talk to Tsetseg.",
-      "audio": "buu-3e5e0249"
+      "audio": "buu-3e5e0249",
+      "nick": {
+        "Miss Pencil": {
+          "who": "buu",
+          "text": "Talk to Miss Pencil.",
+          "audio": "buu-21205471"
+        },
+        "Teacher Owl": {
+          "who": "buu",
+          "text": "Talk to Teacher Owl.",
+          "audio": "buu-54f8416e"
+        },
+        "Lady Test": {
+          "who": "buu",
+          "text": "Talk to Lady Test.",
+          "audio": "buu-404a69ee"
+        }
+      }
     },
     "ganbold": {
       "who": "buu",
       "text": "Talk to Ganbold.",
-      "audio": "buu-4b9e2335"
+      "audio": "buu-4b9e2335",
+      "nick": {
+        "Fish Head": {
+          "who": "buu",
+          "text": "Talk to Fish Head.",
+          "audio": "buu-5935f0fa"
+        },
+        "Captain Net": {
+          "who": "buu",
+          "text": "Talk to Captain Net.",
+          "audio": "buu-91f462d3"
+        },
+        "Wet Boots": {
+          "who": "buu",
+          "text": "Talk to Wet Boots.",
+          "audio": "buu-66167419"
+        }
+      }
     }
   },
   "lost": {
@@ -370,5 +445,231 @@
     "who": "buu",
     "text": "No.",
     "audio": "buu-8bf91400"
+  },
+  "lockout": {
+    "batbayar": {
+      "who": "buu",
+      "text": "Batbayar cannot go to the market today.",
+      "nick": {
+        "Iron Nose": {
+          "who": "buu",
+          "text": "Iron Nose cannot go to the market today.",
+          "audio": "buu-5e5dd614"
+        },
+        "Mister Friday": {
+          "who": "buu",
+          "text": "Mister Friday cannot go to the market today.",
+          "audio": "buu-cf4ce764"
+        },
+        "Big Hammer": {
+          "who": "buu",
+          "text": "Big Hammer cannot go to the market today.",
+          "audio": "buu-f6978e9d"
+        }
+      },
+      "audio": "buu-c8d2286b"
+    },
+    "dulamsuren": {
+      "who": "buu",
+      "text": "Dulamsuren cannot go to the market today.",
+      "nick": {
+        "Cake Face": {
+          "who": "buu",
+          "text": "Cake Face cannot go to the market today.",
+          "audio": "buu-c0dbbd18"
+        },
+        "Miss Oven": {
+          "who": "buu",
+          "text": "Miss Oven cannot go to the market today.",
+          "audio": "buu-d5131af9"
+        },
+        "Bread Queen": {
+          "who": "buu",
+          "text": "Bread Queen cannot go to the market today.",
+          "audio": "buu-5a6bc5d7"
+        }
+      },
+      "audio": "buu-c1224409"
+    },
+    "enkhjargal": {
+      "who": "buu",
+      "text": "Enkhjargal cannot go to the market today.",
+      "nick": {
+        "Carrot Boss": {
+          "who": "buu",
+          "text": "Carrot Boss cannot go to the market today.",
+          "audio": "buu-d8befc7b"
+        },
+        "Mrs Potato": {
+          "who": "buu",
+          "text": "Mrs Potato cannot go to the market today.",
+          "audio": "buu-61f78c30"
+        },
+        "Wheat Lady": {
+          "who": "buu",
+          "text": "Wheat Lady cannot go to the market today.",
+          "audio": "buu-e727c37e"
+        }
+      },
+      "audio": "buu-cc147d44"
+    },
+    "tsetseg": {
+      "who": "buu",
+      "text": "Tsetseg cannot go to the market today.",
+      "nick": {
+        "Miss Pencil": {
+          "who": "buu",
+          "text": "Miss Pencil cannot go to the market today.",
+          "audio": "buu-25aef8f8"
+        },
+        "Teacher Owl": {
+          "who": "buu",
+          "text": "Teacher Owl cannot go to the market today.",
+          "audio": "buu-a2aa9d07"
+        },
+        "Lady Test": {
+          "who": "buu",
+          "text": "Lady Test cannot go to the market today.",
+          "audio": "buu-db7b912f"
+        }
+      },
+      "audio": "buu-c128b120"
+    },
+    "ganbold": {
+      "who": "buu",
+      "text": "Ganbold cannot go to the market today.",
+      "nick": {
+        "Fish Head": {
+          "who": "buu",
+          "text": "Fish Head cannot go to the market today.",
+          "audio": "buu-7ba043eb"
+        },
+        "Captain Net": {
+          "who": "buu",
+          "text": "Captain Net cannot go to the market today.",
+          "audio": "buu-4620b2d2"
+        },
+        "Wet Boots": {
+          "who": "buu",
+          "text": "Wet Boots cannot go to the market today.",
+          "audio": "buu-b2464c70"
+        }
+      },
+      "audio": "buu-e02af950"
+    },
+    "headmaster": {
+      "who": "buu",
+      "text": "Batsaikhan cannot go to the market today.",
+      "nick": {
+        "Mister Lamp": {
+          "who": "buu",
+          "text": "Mister Lamp cannot go to the market today.",
+          "audio": "buu-10a9b13b"
+        },
+        "Night Owl": {
+          "who": "buu",
+          "text": "Night Owl cannot go to the market today.",
+          "audio": "buu-1a716e7b"
+        },
+        "Old Lantern": {
+          "who": "buu",
+          "text": "Old Lantern cannot go to the market today.",
+          "audio": "buu-1a176680"
+        }
+      },
+      "audio": "buu-a1f32e73"
+    }
+  },
+  "nickOk": {
+    "Iron Nose": {
+      "who": "buu",
+      "text": "Iron Nose. I will remember.",
+      "audio": "buu-fdb1489a"
+    },
+    "Mister Friday": {
+      "who": "buu",
+      "text": "Mister Friday. I will remember.",
+      "audio": "buu-42f3780a"
+    },
+    "Big Hammer": {
+      "who": "buu",
+      "text": "Big Hammer. I will remember.",
+      "audio": "buu-a640b6cd"
+    },
+    "Cake Face": {
+      "who": "buu",
+      "text": "Cake Face. I will remember.",
+      "audio": "buu-74118e9e"
+    },
+    "Miss Oven": {
+      "who": "buu",
+      "text": "Miss Oven. I will remember.",
+      "audio": "buu-30c59319"
+    },
+    "Bread Queen": {
+      "who": "buu",
+      "text": "Bread Queen. I will remember.",
+      "audio": "buu-71cbf66f"
+    },
+    "Carrot Boss": {
+      "who": "buu",
+      "text": "Carrot Boss. I will remember.",
+      "audio": "buu-b39c05b3"
+    },
+    "Mrs Potato": {
+      "who": "buu",
+      "text": "Mrs Potato. I will remember.",
+      "audio": "buu-da3c8b36"
+    },
+    "Wheat Lady": {
+      "who": "buu",
+      "text": "Wheat Lady. I will remember.",
+      "audio": "buu-3c315d54"
+    },
+    "Miss Pencil": {
+      "who": "buu",
+      "text": "Miss Pencil. I will remember.",
+      "audio": "buu-8132423e"
+    },
+    "Teacher Owl": {
+      "who": "buu",
+      "text": "Teacher Owl. I will remember.",
+      "audio": "buu-5b026a3f"
+    },
+    "Lady Test": {
+      "who": "buu",
+      "text": "Lady Test. I will remember.",
+      "audio": "buu-c58956a7"
+    },
+    "Fish Head": {
+      "who": "buu",
+      "text": "Fish Head. I will remember.",
+      "audio": "buu-911764c3"
+    },
+    "Captain Net": {
+      "who": "buu",
+      "text": "Captain Net. I will remember.",
+      "audio": "buu-53e71268"
+    },
+    "Wet Boots": {
+      "who": "buu",
+      "text": "Wet Boots. I will remember.",
+      "audio": "buu-ecd8ea76"
+    },
+    "Mister Lamp": {
+      "who": "buu",
+      "text": "Mister Lamp. I will remember.",
+      "audio": "buu-e6cdf773"
+    },
+    "Night Owl": {
+      "who": "buu",
+      "text": "Night Owl. I will remember.",
+      "audio": "buu-71d3ebb3"
+    },
+    "Old Lantern": {
+      "who": "buu",
+      "text": "Old Lantern. I will remember.",
+      "audio": "buu-4dc96966"
+    }
   }
 }

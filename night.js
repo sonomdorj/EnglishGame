@@ -113,6 +113,8 @@ export class Headmaster {
   get speed() { return this.easy ? 1.4 : 2.2; }
   get sight() { return this.easy ? 5 : 9; }
 
+  get daySpot() { return DAY_SPOT; }
+
   toDaySpot() {
     this.npc.group.position.set(DAY_SPOT.x, 0, DAY_SPOT.z);
     this.npc.faceToward(0, 0);
@@ -151,7 +153,7 @@ export class Headmaster {
       else { this.wp = 0; this.npc.group.position.set(0, 0, SCHOOL.z + SCHOOL.d / 2 + 4); }
     }
     if (this.cooldown > 0) this.cooldown -= dt;
-    if (!night) { this.npc.animate(dt, false, G.clock); return; }
+    if (!night) { this.npc.animate(dt, !!this.npc.moving, G.clock); return; }
 
     // Walk the route.
     const p = this.npc.group.position;

@@ -41,8 +41,21 @@
           "text": "My hammer is old.",
           "audio": "batbayar-94a51912"
         }
+      ],
+      "lockedOut": [
+        {
+          "who": "batbayar",
+          "text": "I cannot go to the market today.",
+          "audio": "batbayar-62a485da"
+        }
       ]
-    }
+    },
+    "adult": true,
+    "nicknames": [
+      "Iron Nose",
+      "Mister Friday",
+      "Big Hammer"
+    ]
   },
   {
     "id": "dulamsuren",
@@ -84,8 +97,21 @@
           "text": "I bake bread every morning.",
           "audio": "dulamsuren-f7082570"
         }
+      ],
+      "lockedOut": [
+        {
+          "who": "dulamsuren",
+          "text": "I cannot go to the market today.",
+          "audio": "dulamsuren-927adbb8"
+        }
       ]
-    }
+    },
+    "adult": true,
+    "nicknames": [
+      "Cake Face",
+      "Miss Oven",
+      "Bread Queen"
+    ]
   },
   {
     "id": "oyunaa",
@@ -128,7 +154,8 @@
           "audio": "oyunaa-da675cbe"
         }
       ]
-    }
+    },
+    "adult": false
   },
   {
     "id": "enkhjargal",
@@ -172,8 +199,21 @@
           "text": "My horse eats carrots.",
           "audio": "enkhjargal-89371a0e"
         }
+      ],
+      "lockedOut": [
+        {
+          "who": "enkhjargal",
+          "text": "I cannot go to the market today.",
+          "audio": "enkhjargal-26cb41a5"
+        }
       ]
-    }
+    },
+    "adult": true,
+    "nicknames": [
+      "Carrot Boss",
+      "Mrs Potato",
+      "Wheat Lady"
+    ]
   },
   {
     "id": "tsetseg",
@@ -215,8 +255,21 @@
           "text": "Read every day.",
           "audio": "tsetseg-fbb917a7"
         }
+      ],
+      "lockedOut": [
+        {
+          "who": "tsetseg",
+          "text": "I cannot go to the market today.",
+          "audio": "tsetseg-db271249"
+        }
       ]
-    }
+    },
+    "adult": true,
+    "nicknames": [
+      "Miss Pencil",
+      "Teacher Owl",
+      "Lady Test"
+    ]
   },
   {
     "id": "ganbold",
@@ -258,8 +311,21 @@
           "text": "I caught three fish.",
           "audio": "ganbold-e95b97a7"
         }
+      ],
+      "lockedOut": [
+        {
+          "who": "ganbold",
+          "text": "I cannot go to the market today.",
+          "audio": "ganbold-ed460659"
+        }
       ]
-    }
+    },
+    "adult": true,
+    "nicknames": [
+      "Fish Head",
+      "Captain Net",
+      "Wet Boots"
+    ]
   },
   {
     "id": "headmaster",
@@ -317,7 +383,20 @@
           "text": "Children must sleep at night.",
           "audio": "headmaster-0d6776ed"
         }
+      ],
+      "lockedOut": [
+        {
+          "who": "headmaster",
+          "text": "I cannot go to the market today.",
+          "audio": "headmaster-db9b3ecc"
+        }
       ]
-    }
+    },
+    "adult": true,
+    "nicknames": [
+      "Mister Lamp",
+      "Night Owl",
+      "Old Lantern"
+    ]
   }
 ]
