@@ -45,3 +45,43 @@ test('every spoken line has an audio id', async ({ page }) => {
   });
   expect(missing).toEqual([]);
 });
+
+test('Bring Buu the thing: wrong thing = "No.", right thing ends the quest', async ({ page }) => {
+  const problems = await openGame(page);
+  const { faceNpc, waitStage, clickOption, faceBuu } = await import('./helpers.js');
+  await page.evaluate(() => { game.dayNight.t = 60; });
+  await waitStage(page, 'toA');
+  const q = await page.evaluate(() => game.quest.q);
+  await faceNpc(page, q.a); await page.keyboard.press('KeyE'); await waitStage(page, 'toB');
+  await faceNpc(page, q.b); await page.keyboard.press('KeyE'); await drain(page);
+  await page.waitForFunction(() => game.picker.isOpen);
+  await clickOption(page, q.weekday);
+  await waitStage(page, 'take');
+  await faceNpc(page, q.liar); await page.keyboard.press('KeyE');
+  await waitStage(page, 'fetch');
+  expect(await page.evaluate(() => game.picker.isOpen)).toBe(false);   // no click-on-word panel
+  const want = await page.evaluate(() => game.quest.fetchWord);
+  const names = await page.evaluate(() => game.fetchItems.map(i => i.name));
+  expect(names).toContain(want);
+  expect(names.length).toBe(3);
+  const pick = async name => {
+    await page.evaluate(w => { const p = game.fetchItems.find(i => i.name === w).group.position;
+      game.teleportPlayer({ x: p.x, y: 0, z: p.z + 1.6, yaw: 0 }); game.pitch = -0.75; }, name);
+    await page.waitForFunction(w => game.lookingAt?.kind === 'fetch' && game.lookingAt.name === w, name);
+    await page.keyboard.press('KeyE'); await sleep(100);
+  };
+  const wrong = names.find(n => n !== want);
+  await pick(wrong);
+  expect(await page.evaluate(() => game.carrying)).toBe(wrong);
+  await faceBuu(page); await page.keyboard.press('KeyE'); await sleep(100);
+  expect(await page.evaluate(() => game.dialog.current.text)).toBe('No.');
+  expect(await page.evaluate(() => game.carrying)).toBe(null);
+  await drain(page);
+  await pick(want);
+  await faceBuu(page); await page.keyboard.press('KeyE'); await sleep(100);
+  expect(await page.evaluate(() => game.dialog.current.text)).toBe('Correct. Next.');
+  await drain(page);
+  expect(await page.evaluate(() => game.state.questsDone)).toBe(1);
+  expect(await page.evaluate(() => game.fetchItems.length)).toBe(0);
+  expect(problems).toEqual([]);
+});

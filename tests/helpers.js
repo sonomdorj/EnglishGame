@@ -42,7 +42,17 @@ export async function faceNpc(page, id) {
     const p = { x: v.x + sx * 2.0, z: v.z };
     game.teleportPlayer({ x: p.x, y: 0, z: p.z, yaw: Math.atan2(-(v.x - p.x), -(v.z - p.z)) });
   }, id);
-  await page.waitForFunction(id => game.lookingAt && game.lookingAt.id === id, id, { timeout: 30000 });
+  await waitLook(page, id);
+}
+
+// Wait until the player looks at the target. Closes open dialog lines first (the player cannot look while one is open).
+async function waitLook(page, id) {
+  for (let t = 0; t < 30000; t += 100) {
+    await drain(page);
+    if (await page.evaluate(id => game.lookingAt && (game.lookingAt.id === id || game.lookingAt.kind === id), id)) return;
+    await sleep(100);
+  }
+  throw new Error(`not looking at ${id}`);
 }
 
 export async function faceBuu(page) {
@@ -51,7 +61,7 @@ export async function faceBuu(page) {
     game.yaw = Math.atan2(-(b.x - p.x), -(b.z - p.z));
     game.pitch = -0.35;
   });
-  await page.waitForFunction(() => game.lookingAt && game.lookingAt.kind === 'buu', null, { timeout: 30000 });
+  await waitLook(page, 'buu');
 }
 
 export async function clickOption(page, text) {

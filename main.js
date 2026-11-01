@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { CONFIG } from './config.js';
-import { World, HOUSES, GATE_SPAWN, houseAt } from './world.js';
+import { World, HOUSES, GATE_SPAWN, houseAt, makeItem, FETCH_SPOTS } from './world.js';
 import { Human, Panda } from './npc.js';
 import { Dialog } from './dialog.js';
 import { Picker, renderBook } from './ui.js';
@@ -126,6 +126,13 @@ async function init() {
   G.targets = [G.buu.hit, ...Object.values(G.villagers).map(n => n.hit), ...world.letters.map(l => l.mesh),
     ...world.calendars, ...world.items.map(i => i.hit)];
   G.raycaster = new THREE.Raycaster();
+  G.fetchItems = [];
+  G.carrying = null;
+  // The thing in the player's hand, drawn in front of the camera.
+  G.handGroup = new THREE.Group();
+  G.handGroup.position.set(0.32, -0.3, -0.6);
+  camera.add(G.handGroup);
+  scene.add(camera);
 
   setupInput(canvas);
   $('start').querySelector('.loading').hidden = true;
@@ -156,6 +163,55 @@ G.closePanels = () => {
   G.picker.close();
   G.bookEl.hidden = true;
 };
+
+// ---------- "Bring me the X" things ----------
+
+G.spawnFetch = names => {
+  G.clearFetch();
+  const spots = [...FETCH_SPOTS].sort(() => Math.random() - 0.5);
+  names.forEach((name, i) => {
+    const group = makeItem(name);
+    const [x, z] = spots[i];
+    group.position.set(x, 0.05, z);
+    const hit = new THREE.Mesh(new THREE.BoxGeometry(0.7, 0.7, 0.7), new THREE.MeshBasicMaterial({ visible: false }));
+    hit.position.y = 0.3;
+    hit.userData = { kind: 'fetch', name };
+    group.add(hit);
+    G.scene.add(group);
+    G.fetchItems.push({ name, group, hit, home: group.position.clone() });
+    G.targets.push(hit);
+  });
+};
+
+G.clearFetch = () => {
+  for (const it of G.fetchItems) {
+    G.scene.remove(it.group);
+    G.targets.splice(G.targets.indexOf(it.hit), 1);
+  }
+  G.fetchItems = [];
+  G.carrying = null;
+  G.handGroup.clear();
+};
+
+// Put the carried thing back where it was.
+G.dropCarried = () => {
+  const it = G.fetchItems.find(i => i.name === G.carrying);
+  if (it) it.group.visible = true;
+  G.carrying = null;
+  G.handGroup.clear();
+};
+
+function pickFetch(name) {
+  if (G.carrying) G.dropCarried();
+  const it = G.fetchItems.find(i => i.name === name);
+  if (!it) return;
+  it.group.visible = false;
+  G.carrying = name;
+  const model = makeItem(name);
+  model.userData.ring.visible = false;
+  model.scale.setScalar(1.3);
+  G.handGroup.add(model);
+}
 
 // Returns intro lines the first time the player meets a villager.
 G.meet = id => {
@@ -299,7 +355,8 @@ function hintFor(t) {
   if (!t) return '';
   if (t.kind === 'letter') return 'E to read';
   if (t.kind === 'calendar') return 'E to look';
-  if (t.kind === 'item') return 'E to pick up';
+  if (t.kind === 'item' || t.kind === 'fetch') return 'E to pick up';
+  if (t.kind === 'buu' && G.carrying && G.quest.stage === 'fetch') return 'E to give';
   if (t.kind === 'headmaster') return 'E to talk';
   if (t.kind === 'villager' && G.quest.stage === 'take' && G.quest.q?.liar === t.id) return 'E to take';
   return 'E to talk';
@@ -312,6 +369,7 @@ function interact() {
   if (t.kind === 'letter') return readLetter(t.houseId);
   if (t.kind === 'calendar') return openCalendar();
   if (t.kind === 'item') return pickItem(t.name);
+  if (t.kind === 'fetch') return pickFetch(t.name);
   if (t.kind === 'headmaster') {
     const hl = G.people.headmaster.lines;
     return G.dialog.say(G.dayNight.isNight ? hl.talkNight : hl.talkDay);
@@ -394,6 +452,7 @@ function update(dt) {
   hm.label.visible = hm.group.position.distanceTo(p.pos) < 14;
   G.buu.label.visible = G.buuBody.pos.distanceTo(p.pos) < 10;
 
+  for (const it of G.fetchItems) if (it.group.visible) it.group.rotation.y += dt * 0.8;
   for (const it of G.world.items) {
     if (!it.group.visible) continue;
     it.group.rotation.y += dt * 0.8;

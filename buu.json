@@ -46,11 +46,6 @@
     "text": "No. Look again.",
     "audio": "buu-27ed9b9f"
   },
-  "noListen": {
-    "who": "buu",
-    "text": "No. Listen again.",
-    "audio": "buu-019675f7"
-  },
   "silly": {
     "who": "buu",
     "text": "You are right. I am a silly panda.",
@@ -102,11 +97,6 @@
     "who": "buu",
     "text": "Read it at night. Not now.",
     "audio": "buu-f5df9a6a"
-  },
-  "wordCheck": {
-    "who": "buu",
-    "text": "Word check. Listen.",
-    "audio": "buu-cc2ec1be"
   },
   "correctNext": {
     "who": "buu",
@@ -273,5 +263,112 @@
     "who": "buu",
     "text": "All lost things are found.",
     "audio": "buu-760ca061"
+  },
+  "bring": {
+    "cup": {
+      "who": "buu",
+      "text": "Bring me the *cup*.",
+      "audio": "buu-6a7eb06a"
+    },
+    "hat": {
+      "who": "buu",
+      "text": "Bring me the *hat*.",
+      "audio": "buu-a7fbd3ed"
+    },
+    "ball": {
+      "who": "buu",
+      "text": "Bring me the *ball*.",
+      "audio": "buu-d276c3c5"
+    },
+    "book": {
+      "who": "buu",
+      "text": "Bring me the *book*.",
+      "audio": "buu-c56a6e45"
+    },
+    "egg": {
+      "who": "buu",
+      "text": "Bring me the *egg*.",
+      "audio": "buu-4fd495bd"
+    },
+    "fish": {
+      "who": "buu",
+      "text": "Bring me the *fish*.",
+      "audio": "buu-a0120bb8"
+    },
+    "bread": {
+      "who": "buu",
+      "text": "Bring me the *bread*.",
+      "audio": "buu-7d0982dc"
+    },
+    "shoe": {
+      "who": "buu",
+      "text": "Bring me the *shoe*.",
+      "audio": "buu-649194eb"
+    },
+    "pen": {
+      "who": "buu",
+      "text": "Bring me the *pen*.",
+      "audio": "buu-25e584f3"
+    },
+    "bag": {
+      "who": "buu",
+      "text": "Bring me the *bag*.",
+      "audio": "buu-ab0b984c"
+    },
+    "apple": {
+      "who": "buu",
+      "text": "Bring me the *apple*.",
+      "audio": "buu-19187a06"
+    },
+    "hammer": {
+      "who": "buu",
+      "text": "Bring me the *hammer*.",
+      "audio": "buu-56e71cdc"
+    },
+    "carrot": {
+      "who": "buu",
+      "text": "Bring me the *carrot*.",
+      "audio": "buu-8b75f0c7"
+    },
+    "coin": {
+      "who": "buu",
+      "text": "Bring me the *coin*.",
+      "audio": "buu-626eff3d"
+    },
+    "pencil": {
+      "who": "buu",
+      "text": "Bring me the *pencil*.",
+      "audio": "buu-f313949d"
+    },
+    "kite": {
+      "who": "buu",
+      "text": "Bring me the *kite*.",
+      "audio": "buu-c43f2d8b"
+    },
+    "shell": {
+      "who": "buu",
+      "text": "Bring me the *shell*.",
+      "audio": "buu-31aac108"
+    },
+    "basket": {
+      "who": "buu",
+      "text": "Bring me the *basket*.",
+      "audio": "buu-71c7bb40"
+    },
+    "umbrella": {
+      "who": "buu",
+      "text": "Bring me the *umbrella*.",
+      "audio": "buu-4c6a71aa"
+    },
+    "potato": {
+      "who": "buu",
+      "text": "Bring me the *potato*.",
+      "audio": "buu-5e49f20b"
+    }
+  },
+  "no": {
+    "who": "buu",
+    "text": "No.",
+    "audio": "buu-8bf91400"
   }
 }

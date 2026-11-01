@@ -43,6 +43,12 @@ export const SCHOOL = { x: 0, z: -40, w: 20, d: 12, h: 4 };
 export const LAKE = { x: 40, z: -16, rx: 12, rz: 14 };
 export const FARM = { x0: 28, x1: 50, z0: 22, z1: 44 };
 
+// Things Buu can ask for ("Bring me the X"). Every one is a word in words.json.
+export const FETCH_WORDS = ['cup', 'hat', 'ball', 'book', 'egg', 'fish', 'bread', 'shoe', 'pen', 'bag', 'apple',
+  'hammer', 'carrot', 'coin', 'pencil', 'kite', 'shell', 'basket', 'umbrella', 'potato'];
+// Places on the plaza where those things appear.
+export const FETCH_SPOTS = [[-4.5, 4.5], [4.5, 4.5], [-4.5, -4.5], [4.5, -4.5], [-8.5, 0.5], [8.5, 0.5], [0.5, 8.5], [0.5, -8.5]];
+
 // Lost things the player can find.
 export const ITEMS = [
   { name: 'key', x: 1.6, y: 0, z: 1.2 },
@@ -873,7 +879,7 @@ function calendarTexture() {
 
 function itemMat(c, metal = 0) { return new THREE.MeshStandardMaterial({ color: c, roughness: metal ? 0.3 : 0.7, metalness: metal }); }
 
-function makeItem(name) {
+export function makeItem(name) {
   const g = new THREE.Group();
   const add = (geo, m, x, y, z, rx = 0, ry = 0, rz = 0) => { const o = new THREE.Mesh(geo, m); o.position.set(x, y, z); o.rotation.set(rx, ry, rz); o.castShadow = true; g.add(o); return o; };
   const gold = itemMat(0xd8a83a, 0.8), silver = itemMat(0xc8ccd2, 0.8);
@@ -890,6 +896,20 @@ function makeItem(name) {
     case 'comb': add(new THREE.BoxGeometry(0.16, 0.012, 0.04), itemMat(0x8a3a6a), 0, 0.006, 0); for (let i = 0; i < 8; i++) add(new THREE.BoxGeometry(0.008, 0.01, 0.04), itemMat(0x8a3a6a), -0.07 + i * 0.02, 0.006, 0.035); break;
     case 'glove': add(new THREE.BoxGeometry(0.12, 0.03, 0.16), itemMat(0x6a8a3a), 0, 0.015, 0); for (let i = 0; i < 4; i++) add(new THREE.BoxGeometry(0.022, 0.025, 0.08), itemMat(0x6a8a3a), -0.045 + i * 0.03, 0.013, 0.11); break;
     case 'candle': add(new THREE.CylinderGeometry(0.03, 0.03, 0.16, 12), itemMat(0xf4eedc), 0, 0.08, 0); add(new THREE.SphereGeometry(0.015, 8, 6), new THREE.MeshBasicMaterial({ color: 0xffb030 }), 0, 0.18, 0).scale.set(1, 1.8, 1); break;
+    case 'egg': add(new THREE.SphereGeometry(0.05, 14, 10), itemMat(0xf6efe0), 0, 0.06, 0).scale.set(1, 1.3, 1); break;
+    case 'fish': add(new THREE.SphereGeometry(0.08, 14, 10), itemMat(0x6a9ab8, 0.4), 0, 0.06, 0).scale.set(2.2, 0.8, 0.6); add(new THREE.ConeGeometry(0.06, 0.1, 4), itemMat(0x6a9ab8, 0.4), -0.2, 0.06, 0, 0, 0, Math.PI / 2); break;
+    case 'bread': add(new THREE.SphereGeometry(0.1, 14, 10), itemMat(0xc98a3e), 0, 0.06, 0).scale.set(1.8, 0.8, 1); break;
+    case 'pen': add(new THREE.CylinderGeometry(0.012, 0.012, 0.16, 8), itemMat(0x1a3a8a), 0, 0.012, 0, 0, 0, Math.PI / 2); break;
+    case 'pencil': add(new THREE.CylinderGeometry(0.012, 0.012, 0.18, 6), itemMat(0xf2c94c), 0, 0.012, 0, 0, 0, Math.PI / 2); add(new THREE.ConeGeometry(0.012, 0.03, 6), itemMat(0xe8c8a0), 0.105, 0.012, 0, 0, 0, -Math.PI / 2); break;
+    case 'bag': add(new THREE.BoxGeometry(0.3, 0.25, 0.12), itemMat(0x7a4a2a), 0, 0.125, 0); add(new THREE.TorusGeometry(0.08, 0.012, 6, 16, Math.PI), itemMat(0x5a3a1a), 0, 0.25, 0); break;
+    case 'apple': add(new THREE.SphereGeometry(0.07, 14, 10), itemMat(0xc8302a), 0, 0.07, 0); add(new THREE.CylinderGeometry(0.005, 0.005, 0.04), itemMat(0x4a3a20), 0, 0.15, 0); break;
+    case 'hammer': add(new THREE.CylinderGeometry(0.015, 0.015, 0.3, 8), itemMat(0x8a5a32), 0, 0.02, 0, 0, 0, Math.PI / 2); add(new THREE.BoxGeometry(0.06, 0.06, 0.12), silver, 0.15, 0.03, 0); break;
+    case 'carrot': add(new THREE.ConeGeometry(0.03, 0.18, 10), itemMat(0xf08a24), 0, 0.03, 0, 0, 0, Math.PI / 2); add(new THREE.ConeGeometry(0.03, 0.06, 5), itemMat(0x4a9a3a), -0.12, 0.03, 0, 0, 0, Math.PI / 2); break;
+    case 'kite': add(new THREE.BoxGeometry(0.3, 0.3, 0.01), itemMat(0xd64545), 0, 0.02, 0, Math.PI / 2, 0, Math.PI / 4); break;
+    case 'shell': add(new THREE.SphereGeometry(0.07, 12, 8, 0, Math.PI * 2, 0, Math.PI / 2), itemMat(0xf5e1c8), 0, 0, 0).scale.set(1, 0.5, 1.2); break;
+    case 'basket': add(new THREE.CylinderGeometry(0.16, 0.12, 0.16, 14, 1, true), itemMat(0xb08850), 0, 0.08, 0); add(new THREE.CylinderGeometry(0.12, 0.12, 0.01, 14), itemMat(0xb08850), 0, 0.005, 0); break;
+    case 'umbrella': add(new THREE.ConeGeometry(0.3, 0.12, 12), itemMat(0x2a5a9a), 0, 0.5, 0); add(new THREE.CylinderGeometry(0.01, 0.01, 0.5, 6), itemMat(0x222222), 0, 0.25, 0); break;
+    case 'potato': add(new THREE.SphereGeometry(0.06, 10, 8), itemMat(0xb08850), 0, 0.05, 0).scale.set(1.4, 0.9, 1); break;
     default: add(new THREE.BoxGeometry(0.15, 0.15, 0.15), itemMat(0xffffff), 0, 0.075, 0);
   }
   // A soft glow ring so the player can spot it.

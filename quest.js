@@ -1,6 +1,7 @@
 import { CONFIG } from './config.js';
 import { WEEKDAYS, parseDate } from './dates.js';
 import { shuffle } from './learn.js';
+import { FETCH_WORDS } from './world.js';
 
 const ITEM_COLORS = { iron: 0x8a8f99, fish: 0x5aa0c8, pencil: 0xf2c94c, carrot: 0xf08a24, potato: 0xb08850,
   eraser: 0xf29bb4, net: 0x6b8e6b, rod: 0x7a5432, egg: 0xfaf6e8, wheat: 0xe5c76b, hammer: 0x555b66,
@@ -22,7 +23,7 @@ function wordLine(w) {
 export class QuestRunner {
   constructor(G) {
     this.G = G;
-    this.stage = 'idle'; // idle | intro | toA | toB | ask | take | words | done
+    this.stage = 'idle'; // idle | intro | toA | toB | ask | take | fetch | done
     this.timer = 1;
     this.q = null;
     this.newWords = [];
@@ -94,8 +95,7 @@ export class QuestRunner {
         G.state.items.push(q.penalty);
         G.villagers[id].setItem(null);
         G.persist();
-        this.stage = 'words';
-        G.dialog.say([this.B.wordCheck], () => this.wordQuiz(0));
+        this.startFetch();
       });
       return true;
     }
@@ -109,7 +109,7 @@ export class QuestRunner {
       case 'toB': return G.dialog.say([this.B.talkTo[q.b]]);
       case 'ask': return this.askWeekday();
       case 'take': return G.dialog.say([q.lines.verdict[1]]);
-      case 'words': return G.dialog.say([this.B.wordCheck], () => this.wordQuiz(this.wordIndex || 0));
+      case 'fetch': return this.giveToBuu();
       default:
         if (G.state.questsDone >= this.list.length) return G.dialog.say([this.B.noMore]);
         return G.dialog.say([this.B.wait]);
@@ -163,34 +163,39 @@ export class QuestRunner {
     });
   }
 
-  // Listen and pick the written word.
-  wordQuiz(i) {
+  // "Bring me the X": the player finds the thing on the plaza, picks it up, and gives it to Buu.
+  chooseFetchWord() {
     const G = this.G;
-    this.wordIndex = i;
-    if (i >= this.newWords.length) return this.finish();
-    const target = this.newWords[i];
-    const options = shuffle([target, ...G.learner.distractors(target, 3)]);
-    const say = () => G.voice.play({ who: 'word', text: target.word, audio: target.audio });
-    G.openPanel(() => G.picker.open({
-      title: 'Listen. Which word?',
-      cal: null,
-      extra: [{ label: 'Listen again', onClick: say }],
-      options: options.map(w => w.word),
-      onPick: (k, btn) => {
-        if (options[k] === target) {
-          G.learner.record(true);
-          G.closePanels();
-          G.dialog.clear();
-          this.wordQuiz(i + 1);
-        } else {
-          G.learner.record(false);
-          btn.classList.add('wrong');
-          G.dialog.clear();
-          G.dialog.say([this.B.noListen]);
-        }
-      },
-    }));
-    say();
+    const fromQuest = this.newWords.map(w => w.word).filter(w => FETCH_WORDS.includes(w));
+    if (fromQuest.length) return shuffle(fromQuest)[0];
+    const level = G.learner.level;
+    const byLevel = FETCH_WORDS.filter(w => (G.learner.byWord.get(w)?.level ?? 1) <= level);
+    const fresh = byLevel.filter(w => !G.state.known.includes(w));
+    return shuffle(fresh.length ? fresh : byLevel.length ? byLevel : FETCH_WORDS)[0];
+  }
+
+  startFetch() {
+    const G = this.G;
+    this.stage = 'fetch';
+    this.fetchWord = this.chooseFetchWord();
+    if (!G.state.known.includes(this.fetchWord)) { G.state.known.push(this.fetchWord); G.persist(); }
+    const others = shuffle(FETCH_WORDS.filter(w => w !== this.fetchWord)).slice(0, 2);
+    G.spawnFetch(shuffle([this.fetchWord, ...others]));
+    G.dialog.say([this.B.bring[this.fetchWord]]);
+  }
+
+  giveToBuu() {
+    const G = this.G;
+    if (!G.carrying) return G.dialog.say([this.B.bring[this.fetchWord]]);
+    if (G.carrying === this.fetchWord) {
+      G.learner.record(true);
+      G.carrying = null;
+      G.clearFetch();
+      return this.finish();
+    }
+    G.learner.record(false);
+    G.dropCarried();
+    G.dialog.say([this.B.no, this.B.bring[this.fetchWord]]);
   }
 
   finish() {

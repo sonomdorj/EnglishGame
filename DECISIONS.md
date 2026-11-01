@@ -55,3 +55,6 @@
 47. Word lesson sentences are spoken by the narrator voice, not the villager, because each sentence has one recording.
 48. `?fast=1` turns off shadows and lowers resolution. Only tests use it.
 49. Tests serve three.js from node_modules (package.json devDependencies) because some machines cannot reach the CDN.
+50. Day 8 replaces the word check in item 15. After the penalty, Buu says "Bring me the X." Three things appear on the plaza (X and two others). The player picks one up (E, it shows in the hand) and gives it to Buu (E on Buu). Wrong thing: Buu says "No." and repeats the request; the thing goes back. Right thing: "Correct. Next."
+51. X is one of 20 things that have a 3D model and are words in words.json (cup, hat, ball, book, egg, fish, bread, shoe, pen, bag, apple, hammer, carrot, coin, pencil, kite, shell, basket, umbrella, potato). It is a quest's new word when possible, else a thing at or below the player's level, new words first.
+52. Each give counts as one answer for the adaptive level (right = correct, wrong = wrong).

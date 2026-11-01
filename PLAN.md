@@ -61,8 +61,8 @@
 - [x] Text appears 1.5 s after the voice starts. R replays the last line.
 
 ## Day 8 — Bring Buu the thing
-- [ ] Click-on-word check deleted.
-- [ ] Replaced by a world action: Buu says "Bring me the X". The player walks, picks up the thing, and gives it to Buu.
+- [x] Click-on-word check deleted.
+- [x] Replaced by a world action: Buu says "Bring me the X". The player walks, picks up the thing, and gives it to Buu.
 
 ## Day 9 — No calendar, power system
 - [ ] Calendar panel deleted (`grep -r calendar ui.js` returns nothing).
