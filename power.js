@@ -1,6 +1,3 @@
-import * as THREE from 'three';
-import { CONFIG } from './config.js';
-
 // Market hours inside the day (seconds from the start of the day).
 const MARKET_FROM = 100, MARKET_TO = 190;
 // Where each adult stands at the market.
@@ -121,8 +118,8 @@ export class Power {
       G.bows = (G.bows || 0) + 1;
     }
     hm.torso.rotation.x = b.t > 0 ? Math.sin((1.4 - b.t) / 1.4 * Math.PI) * 0.6 : 0;
+    G.bowMax = Math.max(G.bowMax || 0, hm.torso.rotation.x); // for tests
   }
 }
 
 export { MARKET_SPOT, MARKET_FROM, MARKET_TO };
-void THREE; void CONFIG;

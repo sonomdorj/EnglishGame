@@ -33,16 +33,24 @@ export async function drain(page, max = 60) {
   }
 }
 
-// Stand in front of a person and look at them.
+// Stand in front of a person and look at them. People can walk (market), so aim again on every try.
 export async function faceNpc(page, id) {
-  await page.evaluate(id => {
-    const npc = id === 'headmaster' ? game.headmaster.npc : game.villagers[id];
-    const v = npc.group.position;
-    const sx = v.x < 0 ? 1 : -1;
-    const p = { x: v.x + sx * 2.0, z: v.z };
-    game.teleportPlayer({ x: p.x, y: 0, z: p.z, yaw: Math.atan2(-(v.x - p.x), -(v.z - p.z)) });
-  }, id);
-  await waitLook(page, id);
+  for (let t = 0; t < 30000; t += 150) {
+    await drain(page);
+    const ok = await page.evaluate(id => {
+      const npc = id === 'headmaster' ? game.headmaster.npc : game.villagers[id];
+      const v = npc.group.position;
+      const sx = v.x < 0 ? 1 : -1;
+      const p = { x: v.x + sx * 2.0, z: v.z };
+      if (Math.hypot(game.player.pos.x - p.x, game.player.pos.z - p.z) > 0.3) {
+        game.teleportPlayer({ x: p.x, y: 0, z: p.z, yaw: Math.atan2(-(v.x - p.x), -(v.z - p.z)) });
+      }
+      return game.lookingAt && game.lookingAt.id === id;
+    }, id);
+    if (ok) return;
+    await sleep(150);
+  }
+  throw new Error(`not looking at ${id}`);
 }
 
 // Wait until the player looks at the target. Closes open dialog lines first (the player cannot look while one is open).

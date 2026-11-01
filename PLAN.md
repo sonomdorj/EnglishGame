@@ -65,12 +65,12 @@
 - [x] Replaced by a world action: Buu says "Bring me the X". The player walks, picks up the thing, and gives it to Buu.
 
 ## Day 9 — No calendar, power system
-- [ ] Calendar panel deleted (`grep -r calendar ui.js` returns nothing).
-- [ ] Weekday question = 7 buttons, no hints. Wrong = Buu says "No." and waits.
-- [ ] Catch count per adult. 1 catch = take one item.
-- [ ] 3 catches = player picks a nickname from 3 options. Buu uses it forever.
-- [ ] 5 catches = that adult is locked out of the market for one game day.
-- [ ] Headmaster with 3 catches bows when the player passes.
+- [x] Calendar panel deleted (`grep -r calendar ui.js` returns nothing).
+- [x] Weekday question = 7 buttons, no hints. Wrong = Buu says "No." and waits.
+- [x] Catch count per adult. 1 catch = take one item.
+- [x] 3 catches = player picks a nickname from 3 options. Buu uses it forever.
+- [x] 5 catches = that adult is locked out of the market for one game day.
+- [x] Headmaster with 3 catches bows when the player passes.
 
 ## Day 10 — 50 quests
 - [ ] quests.json: exactly 50 quests in 5 arcs of 10: The Baker's Lie, The Fake Birthday, The Headmaster's Diary, The Wedding War, Buu's Betrayal.

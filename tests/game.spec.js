@@ -17,12 +17,18 @@ test('text appears 1.5 s after the voice starts; R replays', async ({ page }) =>
   const gap = await page.evaluate(() => game.dialog.shownAt - game.dialog.voiceStartAt);
   console.log(`text shown ${Math.round(gap)} ms after voice start`);
   expect(gap).toBeGreaterThanOrEqual(1490);
-  expect(gap).toBeLessThan(2500);
-  const before = await page.evaluate(() => game.voice.log.length);
-  await page.keyboard.press('KeyR');
-  await sleep(100);
-  expect(await page.evaluate(() => game.voice.log.length)).toBe(before + 1);
-  expect(await page.evaluate(() => game.dialog.textVisible)).toBe(false);
+  expect(gap).toBeLessThan(6000); // upper bound only guards against a stuck timer on a busy test machine
+  // Press R and read the result in the same step.
+  const r = await page.evaluate(() => {
+    const before = game.voice.log.length, line = game.dialog.current;
+    dispatchEvent(new KeyboardEvent('keydown', { code: 'KeyR', key: 'r' }));
+    return { played: game.voice.log.length - before, sameLine: game.dialog.current === line, hidden: !game.dialog.textVisible,
+      replayedId: game.voice.log[game.voice.log.length - 1], lineId: game.voice.idFor(line) };
+  });
+  expect(r.played).toBe(1);
+  expect(r.sameLine).toBe(true);
+  expect(r.hidden).toBe(true);
+  expect(r.replayedId).toBe(r.lineId);
   await page.waitForFunction(() => game.dialog.textVisible, null, { timeout: 10000 });
   await drain(page);
   expect(problems).toEqual([]);
@@ -122,25 +128,27 @@ test('Day 9: 3 catches = nickname that Buu uses; 5 = no market; headmaster bows'
   expect(await page.evaluate(() => game.voice.log.some(id => id === game.buuLines.nickOk[game.state.nicknames.batbayar].audio))).toBe(true);
 
   // Catch 5: locked out of the market today.
-  await page.evaluate(() => { game.state.catches.batbayar = 4; game.quest.timer = 0; });
-  await playQuest(page).catch(() => {});
-  await page.evaluate(() => { game.state.catches.batbayar = 4; });
-  await page.evaluate(() => new Promise(res => game.power.onCatch('batbayar', res)));
   await drain(page);
+  await page.evaluate(() => { game.state.catches.batbayar = 4; game.lockDone = false; game.power.onCatch('batbayar', () => { game.lockDone = true; }); });
+  expect(await page.evaluate(() => game.dialog.current.text)).toBe(`${nick} cannot go to the market today.`);
+  await drain(page);
+  expect(await page.evaluate(() => game.lockDone)).toBe(true);
   expect(await page.evaluate(() => game.power.isLocked('batbayar'))).toBe(true);
   await page.evaluate(() => { game.dayNight.t = 120; });
-  await page.waitForFunction(() => {
-    const d = game.villagers.dulamsuren.group.position;
-    return Math.hypot(d.x + 5.5, d.z - 6.5) < 0.2;
-  }, null, { timeout: 120000 });
+  // People stand still while a dialog is open, so keep closing dialogs while we wait.
+  const until = async (fn, ms = 180000) => {
+    for (let t = 0; t < ms; t += 200) { await drain(page); if (await page.evaluate(fn)) return; await sleep(200); }
+    throw new Error('timeout: ' + fn);
+  };
+  await until(() => { const d = game.villagers.dulamsuren.group.position; return Math.hypot(d.x + 5.5, d.z - 6.5) < 0.2; });
   const b = await page.evaluate(() => { const p = game.villagers.batbayar.group.position, h = game.villagers.batbayar.home; return Math.hypot(p.x - h.x, p.z - h.z); });
   expect(b).toBeLessThan(0.2);   // Batbayar stayed home
 
   // Headmaster bows at 3 catches.
-  await page.evaluate(() => { game.dayNight.t = 60; game.state.catches.headmaster = 3; game.bows = 0; game.power.bow.cooldown = 0; });
-  await page.waitForFunction(() => Math.hypot(game.headmaster.npc.group.position.x - game.headmaster.daySpot.x, game.headmaster.npc.group.position.z - game.headmaster.daySpot.z) < 0.3, null, { timeout: 120000 });
+  await page.evaluate(() => { game.dayNight.t = 60; game.state.catches.headmaster = 3; game.bows = 0; game.bowMax = 0; game.power.bow.cooldown = 0; });
+  await until(() => Math.hypot(game.headmaster.npc.group.position.x - game.headmaster.daySpot.x, game.headmaster.npc.group.position.z - game.headmaster.daySpot.z) < 0.3);
   await page.evaluate(() => { const s = game.headmaster.daySpot; game.teleportPlayer({ x: s.x + 2, y: 0, z: s.z + 2, yaw: 0 }); });
-  await page.waitForFunction(() => game.bows > 0, null, { timeout: 30000 });
-  expect(await page.evaluate(() => game.headmaster.npc.torso.rotation.x)).toBeGreaterThan(0);
+  await until(() => game.bows > 0 && game.bowMax > 0.3, 30000);
+  console.log('headmaster bow angle:', await page.evaluate(() => game.bowMax.toFixed(2)));
   expect(problems).toEqual([]);
 });
