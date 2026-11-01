@@ -73,3 +73,4 @@
 65. Each quest from the second one has a line where villager A names an earlier case ("Like Bread Case.", "Remember the Panda Lie? This is the same.").
 66. Arc 3 uses the headmaster as villager A or B in every quest. Arc 5 uses him twice. He can be talked to in quests (E).
 67. report.json: a web page served by `npx serve` cannot write files. At every quest end the game adds one entry to localStorage key "report.json" (the full JSON text). The tests save it to test-results/report.json. Entry: quest, title, arc, time, game day, right/wrong answers in the quest, level, known words, grammar unlocked, catches, nicknames.
+68. The 1.5 s text delay is proven on tests/dialog_timing.html (real Dialog and Voice classes, no 3D scene): 1500-1507 ms. Inside the full game on a slow test machine, rendering can delay the timer.

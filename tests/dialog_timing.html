@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Dialog timing test</title></head>
+<body>
+  <div id="dialog" hidden><div class="d-name"></div><div class="d-text"></div></div>
+  <script type="module">
+    // The real Dialog and Voice classes, without the 3D scene, so the timer is not slowed by rendering.
+    import { Dialog } from '../dialog.js';
+    import { Voice } from '../audio.js';
+    const voice = new Voice();
+    const d = new Dialog(document.getElementById('dialog'), voice, w => w);
+    window.results = [];
+    const lines = ['One.', 'Two.', 'Three.'].map(text => ({ who: 'buu', text }));
+    d.say(lines);
+    const check = () => {
+      if (d.textVisible && d.current) {
+        window.results.push(d.shownAt - d.voiceStartAt);
+        if (window.results.length === 2) {           // R on the second line
+          const before = voice.log.length;
+          d.replay();
+          window.replay = { played: voice.log.length - before, hidden: !d.textVisible };
+          const t = setInterval(() => { if (d.textVisible) { clearInterval(t); window.results.push(d.shownAt - d.voiceStartAt); d.next(); setTimeout(check, 10); } }, 5);
+          return;
+        }
+        d.next();
+      }
+      if (window.results.length < 4) setTimeout(check, 10);
+    };
+    check();
+  </script>
+</body>
+</html>
