@@ -208,6 +208,28 @@
           "audio": "buu-66167419"
         }
       }
+    },
+    "headmaster": {
+      "who": "buu",
+      "text": "Talk to Batsaikhan.",
+      "nick": {
+        "Mister Lamp": {
+          "who": "buu",
+          "text": "Talk to Mister Lamp.",
+          "audio": "buu-988743b6"
+        },
+        "Night Owl": {
+          "who": "buu",
+          "text": "Talk to Night Owl.",
+          "audio": "buu-40a2d556"
+        },
+        "Old Lantern": {
+          "who": "buu",
+          "text": "Talk to Old Lantern.",
+          "audio": "buu-5c09cf45"
+        }
+      },
+      "audio": "buu-a37e1dc0"
     }
   },
   "lost": {

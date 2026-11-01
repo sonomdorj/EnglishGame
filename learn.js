@@ -23,6 +23,7 @@ export class Learner {
 
   record(correct) {
     const s = this.s;
+    this.onRecord?.(correct);
     if (correct) {
       s.wrongStreak = 0;
       s.correctStreak++;

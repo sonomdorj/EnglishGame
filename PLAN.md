@@ -73,9 +73,9 @@
 - [x] Headmaster with 3 catches bows when the player passes.
 
 ## Day 10 — 50 quests
-- [ ] quests.json: exactly 50 quests in 5 arcs of 10: The Baker's Lie, The Fake Birthday, The Headmaster's Diary, The Wedding War, Buu's Betrayal.
-- [ ] Max words per line by arc: 3, 5, 7, 10, 12. `scripts/check_quests.js` verifies and exits 0.
-- [ ] Past tense only from arc 4. because/so only from arc 5. A new grammar form unlocks only after 5 correct in a row. Grammar is never explained or shown.
-- [ ] Every quest reuses at least 90% words already in words.json.
-- [ ] Villagers mention past cases by name.
-- [ ] report.json is written at every quest end.
+- [x] quests.json: exactly 50 quests in 5 arcs of 10: The Baker's Lie, The Fake Birthday, The Headmaster's Diary, The Wedding War, Buu's Betrayal.
+- [x] Max words per line by arc: 3, 5, 7, 10, 12. `scripts/check_quests.js` verifies and exits 0.
+- [x] Past tense only from arc 4. because/so only from arc 5. A new grammar form unlocks only after 5 correct in a row. Grammar is never explained or shown.
+- [x] Every quest reuses at least 90% words already in words.json.
+- [x] Villagers mention past cases by name.
+- [x] report.json is written at every quest end.

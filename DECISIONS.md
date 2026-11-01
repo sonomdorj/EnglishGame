@@ -63,3 +63,13 @@
 55. Market: adults walk to the market from second 100 to 190 of each day, then walk home. 5 catches: that adult stays home for one game day (today if it is day, else tomorrow), and says "I cannot go to the market today." once. Game days are counted and saved.
 56. Headmaster with 3+ catches bows (in the day) when the player comes within 4 m, at most every 8 s.
 57. Wrong weekday buttons are not marked (no hints). Esc still closes the question; E on Buu asks it again.
+58. Day 10: quests.json is made by `scripts/build_quests.js` (story data + date engine), then `scripts/nicknames.js`, then `scripts/make_audio.js --ids-only`. Hand edits to quests.json are lost when the builder runs again. Edit the builder.
+59. 50 quests, 5 arcs of 10. Dates and wrong weekdays come from a seeded random generator, so the file is the same each time.
+60. Line length is checked on every line in quests.json, including Buu lines, narrator lines, plain versions and nickname versions. Buu lines that name a person are short enough that a 2-word nickname still fits.
+61. "Past tense" = a word in a fixed list of irregular past forms, or a word ending in "-ed" (except bed, red, need, feed, seed, speed, hundred, shed, weed). Rules are in grammar.js and used by the game and the checker.
+62. Past tense and because/so lines carry a form ("past" / "cause") and a plain present-tense version. The game says the plain version until the form is unlocked. Past unlocks after 5 correct answers in a row while in arc 4 or later. because/so unlocks after another 5 in a row while in arc 5. Every answer counts (weekday, trap, giving the thing to Buu). Nothing on screen mentions grammar.
+63. Word lessons follow the same rules: if an example sentence is longer than the arc allows, or uses a locked form, only the word itself is said.
+64. "Words already in words.json" = every headword and every word of the example sentences (540 words). Names, nicknames and numbers are not counted. The checker requires at least 90% per quest; the lowest is 92.6%.
+65. Each quest from the second one has a line where villager A names an earlier case ("Like Bread Case.", "Remember the Panda Lie? This is the same.").
+66. Arc 3 uses the headmaster as villager A or B in every quest. Arc 5 uses him twice. He can be talked to in quests (E).
+67. report.json: a web page served by `npx serve` cannot write files. At every quest end the game adds one entry to localStorage key "report.json" (the full JSON text). The tests save it to test-results/report.json. Entry: quest, title, arc, time, game day, right/wrong answers in the quest, level, known words, grammar unlocked, catches, nicknames.

@@ -45,10 +45,9 @@ npx playwright test
 | Mouse | Look (click the game first) |
 | Space | Jump. Next line when a dialog is open |
 | R | Replay the last line |
-| E | Talk, read a letter, take an item, pick up a lost thing, look at a wall calendar |
+| E | Talk, read a letter, take an item, pick up a thing, give a thing to Buu |
 | F | Buu said a wrong weekday. Correct him |
 | B | Family Book |
-| C | Calendar |
 | 1–7 | Pick an answer in an open panel |
 | Esc | Close a panel, or free the mouse |
 
@@ -57,9 +56,9 @@ npx playwright test
 1. Buu says "New case" and names villager A.
 2. Talk to A (E). Hear the claim and new words.
 3. Talk to villager B. Hear the other claim.
-4. Buu asks which weekday the date was. Use the calendar. Click a weekday.
+4. Buu asks which weekday the date was. Click one of 7 weekdays.
 5. Walk to the liar and press E to take the penalty item.
-6. Word check: listen and click the word you hear.
+6. Buu says "Bring me the X". Find the thing on the plaza (E), then give it to Buu (E).
 7. Buu: "Correct. Next."
 
 Night comes after 4 minutes and lasts 2 minutes.
@@ -68,36 +67,31 @@ The headmaster patrols at night. If he sees you, he sends you back to the gate.
 
 12 lost things are hidden in the village. Find them all. Buu tells you the English name of each one.
 
-## How to add a quest
+## Quests
 
-Add an object to `quests.json`:
+50 quests in 5 arcs: The Baker's Lie, The Fake Birthday, The Headmaster's Diary, The Wedding War, Buu's Betrayal.
+Lines get longer arc by arc (max 3, 5, 7, 10, 12 words).
 
-```json
-{
-  "id": 16,
-  "a": "dulamsuren",
-  "b": "batbayar",
-  "claimA": "Batbayar paid me on Friday, 17 November 2017.",
-  "claimB": "No. I paid on Saturday.",
-  "date": "17 November 2017",
-  "weekday": "Friday",
-  "liar": "batbayar",
-  "penalty": "10 iron",
-  "words": ["pay", "iron", "coin"],
-  "trap": { "date": "21 June 2014", "said": "Tuesday", "weekday": "Saturday",
-            "line": "Oyunaa was born on Tuesday, 21 June 2014." }
-}
+```bash
+node scripts/build_quests.js
+node scripts/nicknames.js
+node scripts/make_audio.js --ids-only
+node scripts/check_quests.js
 ```
 
-Rules:
+## Report
 
-- `a`, `b` and `liar` are villager ids from `villagers.json`.
-- `date` must be "day Month year", between 1900 and 2099.
-- `weekday` must be the true weekday. Check it in the calendar (C) or with `dates.js`.
-- The liar's claim must use a wrong weekday. The other claim uses the true one.
-- `words` has 3 to 5 items. The count sets how many new words the case teaches.
-  The words themselves come from `words.json` at the player's current level.
-- `trap.line` is said by Buu. It must use the wrong weekday `trap.said`. Max 8 words.
+At the end of every quest the game writes a report entry to the browser's localStorage under the key `report.json`.
+To save it as a file, open the browser console on the game page and run:
+
+```js
+copy(localStorage.getItem('report.json'))
+```
+
+## How to add or change a quest
+
+Do not edit quests.json by hand. Edit the story tables in `scripts/build_quests.js` (ARC1, ARC2_ITEMS, ...), then run the 4 commands in "Quests" above.
+`scripts/check_quests.js` must print `OK: all quest rules hold.`
 
 ## Files
 
@@ -112,11 +106,14 @@ Rules:
 | `buu.json` | Every Buu line that is not part of a quest |
 | `scripts/make_audio.js` | Makes audio/<id>.mp3 for every line with OpenAI TTS |
 | `tests/` | Playwright tests (`npx playwright test`) |
-| `quest.js` | Judge quest flow and Buu's date trap |
+| `quest.js` | Judge quest flow, Buu's date trap, "Bring me the X" |
+| `power.js` | Catches per adult, nicknames, market visits and lockout, headmaster bow |
+| `grammar.js` | Line length per arc and the grammar gate |
+| `scripts/build_quests.js`, `scripts/check_quests.js` | Make and check the 50 quests |
 | `dates.js` | Weekday for any date 1900–2099 |
 | `learn.js` | Adaptive word level |
 | `night.js` | Day/night cycle and the headmaster |
-| `ui.js` | Calendar, answer panel, Family Book |
+| `ui.js` | Answer panel, Family Book |
 | `save.js` | localStorage save |
 | `config.js` | Settings: speech rate, mouse sensitivity, Buu distance |
 | `villagers.json`, `quests.json`, `words.json`, `letters.json` | Game data |

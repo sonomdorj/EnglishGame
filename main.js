@@ -10,6 +10,7 @@ import { DayNight, Headmaster } from './night.js';
 import { loadSave, writeSave } from './save.js';
 import { Voice } from './audio.js';
 import { Power } from './power.js';
+import { Grammar } from './grammar.js';
 
 const $ = id => document.getElementById(id);
 
@@ -117,14 +118,19 @@ async function init() {
   G.headmaster = new Headmaster(G);
 
   // UI
-  G.dialog = new Dialog($('dialog'), G.voice, nameOf, line => G.power.lineFor(line));
+  G.dialog = new Dialog($('dialog'), G.voice, nameOf, line => G.power.lineFor(G.grammar.pick(line)));
   G.power = new Power(G);
+  G.grammar = new Grammar(G);
+  G.learner.onRecord = ok => {
+    G.grammar.record(ok);
+    if (G.quest.answers) G.quest.answers[ok ? 'correct' : 'wrong']++;
+  };
   G.picker = new Picker($('picker'));
   G.bookEl = $('book');
   G.quest = new QuestRunner(G);
 
   // Things the player can look at and use
-  G.targets = [G.buu.hit, ...Object.values(G.villagers).map(n => n.hit), ...world.letters.map(l => l.mesh),
+  G.targets = [G.buu.hit, G.headmaster.npc.hit, ...Object.values(G.villagers).map(n => n.hit), ...world.letters.map(l => l.mesh),
     ...world.items.map(i => i.hit)];
   G.raycaster = new THREE.Raycaster();
   G.fetchItems = [];
@@ -163,6 +169,23 @@ G.openPanel = show => {
 G.closePanels = () => {
   G.picker.close();
   G.bookEl.hidden = true;
+};
+
+// ---------- report.json ----------
+// A static web page cannot write files, so the report is kept in localStorage under the key "report.json"
+// (one entry per finished quest). tests/ and the README show how to save it as a file.
+G.writeReport = (q, answers) => {
+  const entry = {
+    quest: q.id, title: q.title, arc: q.arc, arcTitle: q.arcTitle, endedAt: new Date().toISOString(), gameDay: G.state.day,
+    answers: { ...answers }, level: G.state.level, known: G.state.known.length,
+    grammar: { past: G.state.grammar.past, because_so: G.state.grammar.cause },
+    catches: { ...G.state.catches }, nicknames: { ...G.state.nicknames }, questsDone: G.state.questsDone,
+  };
+  let report = [];
+  try { report = JSON.parse(localStorage.getItem('report.json') || '[]'); } catch (e) { report = []; }
+  report.push(entry);
+  try { localStorage.setItem('report.json', JSON.stringify(report, null, 2)); } catch (e) { /* storage blocked */ }
+  G.report = report;
 };
 
 // ---------- "Bring me the X" things ----------
