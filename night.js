@@ -81,12 +81,6 @@ export class DayNight {
 }
 
 const PATROL_ORDER = ['h2', 'h5', 'h3', 'h6', 'h1', 'h4'];
-const LINES = [
-  'Children must sleep at night. Go home.',
-  'It is too late to walk around. Go home.',
-  'I see you. Back to the gate, please.',
-  'The village is closed at night. Go home.',
-];
 const DAY_SPOT = { x: SCHOOL.x + 3, z: SCHOOL.z + SCHOOL.d / 2 + 2.5 };
 
 // Headmaster Batsaikhan Erdene: patrols houses at night.
@@ -199,8 +193,8 @@ export class Headmaster {
     this.catches.push(G.clock);
     this.lastChange = G.clock;
     this.cooldown = 4;
-    const line = LINES[(this.catches.length - 1) % LINES.length];
+    const lines = G.people.headmaster.lines.caught;
     G.teleportPlayer(GATE_SPAWN);
-    G.dialog.say([['Batsaikhan Erdene', line]]);
+    G.dialog.say([lines[(this.catches.length - 1) % lines.length]]);
   }
 }

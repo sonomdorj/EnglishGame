@@ -1,26 +1,32 @@
-import { speak } from './tts.js';
+import { CONFIG } from './config.js';
 
 // Dialog box at the bottom of the screen. One sentence at a time. Space = next.
-// Every line is spoken when it is shown.
+// Each line plays its voice file. The text appears CONFIG.textDelaySec after the voice starts.
+// R replays the last line.
 export class Dialog {
-  constructor(root) {
+  constructor(root, voice, nameOf) {
     this.root = root;
+    this.voice = voice;
+    this.nameOf = nameOf;
     this.nameEl = root.querySelector('.d-name');
     this.textEl = root.querySelector('.d-text');
     this.queue = [];
     this.current = null;
     this.warnings = [];
+    this.timer = null;
+    this.shownAt = 0;
   }
 
   get open() { return this.current !== null; }
+  get textVisible() { return this.textEl.style.visibility !== 'hidden'; }
 
-  // lines: array of [who, text] or {who, text}. onDone runs after the last line is dismissed.
+  // lines: array of { who, text, audio }. onDone runs after the last line is dismissed.
   say(lines, onDone) {
-    const items = lines.map(l => Array.isArray(l) ? { who: l[0], text: l[1] } : { ...l });
+    const items = lines.filter(Boolean).map(l => ({ ...l }));
     if (!items.length) { onDone?.(); return; }
     items[items.length - 1].onDone = onDone;
     for (const it of items) {
-      if (it.who === 'Buu' && it.text.split(/\s+/).length > 8) {
+      if (it.who === 'buu' && it.text.split(/\s+/).length > 8) {
         const msg = `Buu line longer than 8 words: "${it.text}"`;
         this.warnings.push(msg);
         console.warn(msg);
@@ -31,18 +37,47 @@ export class Dialog {
   }
 
   showNext() {
+    clearTimeout(this.timer);
     this.current = this.queue.shift() || null;
     if (!this.current) {
       this.root.hidden = true;
+      this.voice.stop();
       return;
     }
-    const { who, text } = this.current;
+    const line = this.current;
     this.root.hidden = false;
-    this.nameEl.textContent = who || '';
-    this.nameEl.hidden = !who;
-    // *word* = highlighted new word
-    this.textEl.innerHTML = escapeHtml(text).replace(/\*(.+?)\*/g, '<b>$1</b>');
-    speak(text);
+    const name = this.nameOf(line.who);
+    this.nameEl.textContent = name;
+    this.nameEl.hidden = !name;
+    this.textEl.innerHTML = escapeHtml(line.text).replace(/\*(.+?)\*/g, '<b>$1</b>');
+    this.hideText();
+    this.voice.play(line, () => this.revealLater(line));
+  }
+
+  hideText() {
+    clearTimeout(this.timer);
+    this.textEl.style.visibility = 'hidden';
+  }
+
+  revealLater(line) {
+    clearTimeout(this.timer);
+    this.voiceStartAt = performance.now();
+    this.timer = setTimeout(() => {
+      if (this.current === line) {
+        this.textEl.style.visibility = 'visible';
+        this.shownAt = performance.now();
+      }
+    }, CONFIG.textDelaySec * 1000);
+  }
+
+  // R key
+  replay() {
+    if (this.current) {
+      this.hideText();
+      this.voice.play(this.current, () => this.revealLater(this.current));
+    } else {
+      this.voice.replay();
+    }
   }
 
   next() {
@@ -53,6 +88,7 @@ export class Dialog {
   }
 
   clear() {
+    clearTimeout(this.timer);
     this.queue = [];
     this.current = null;
     this.root.hidden = true;

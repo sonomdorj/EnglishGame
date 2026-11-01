@@ -8,7 +8,7 @@ import { Learner } from './learn.js';
 import { QuestRunner } from './quest.js';
 import { DayNight, Headmaster } from './night.js';
 import { loadSave, writeSave } from './save.js';
-import { spokenLog } from './tts.js';
+import { Voice } from './audio.js';
 import { parseDate } from './dates.js';
 
 const $ = id => document.getElementById(id);
@@ -22,14 +22,6 @@ const LOOKS = {
   tsetseg: { shirt: 0x3b6fd6, pants: 0x4a4a52, hair: 0x1b1410, hairStyle: 'long', extras: ['glasses', 'skirt', 'longSleeves'] },
   ganbold: { shirt: 0x2f8c8c, pants: 0x283a5a, hair: 0x2a2018, extras: ['cap', 'mustache'], capColor: 0x1e2e4a, skin: 0xc0886a },
 };
-const SMALL_TALK = {
-  blacksmith: ['Iron is heavy. Fire is hot.', 'My hammer is old.'],
-  baker: ['The oven is hot today.', 'I bake bread every morning.'],
-  student: ['I like my teacher.', 'Buu is a silly panda.'],
-  farmer: ['The wheat is tall this year.', 'My horse eats carrots.'],
-  teacher: ['A week has seven days.', 'Read every day.'],
-  fisherman: ['The lake is quiet today.', 'I caught three fish.'],
-};
 const LOST_TOTAL = 12;
 
 async function loadJSON(path) {
@@ -41,8 +33,13 @@ async function loadJSON(path) {
 const G = window.game = { started: false, paused: false, clock: 0 };
 
 async function init() {
-  const [villagers, quests, words, letters] = await Promise.all(
-    ['villagers.json', 'quests.json', 'words.json', 'letters.json'].map(loadJSON));
+  const [allPeople, quests, words, letters, buuLines] = await Promise.all(
+    ['villagers.json', 'quests.json', 'words.json', 'letters.json', 'buu.json'].map(loadJSON));
+  const villagers = allPeople.filter(v => v.house);
+  G.people = Object.fromEntries(allPeople.map(v => [v.id, v]));
+  G.buuLines = buuLines;
+  G.voice = new Voice();
+  await G.voice.load();
   G.villagerList = villagers;
   G.villagerData = Object.fromEntries(villagers.map(v => [v.id, v]));
   G.quests = quests;
@@ -56,8 +53,10 @@ async function init() {
   // Renderer, scene, lights
   const canvas = $('view');
   const renderer = G.renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
-  renderer.setPixelRatio(Math.min(2, devicePixelRatio));
-  renderer.shadowMap.enabled = true;
+  // ?fast=1 (used by tests): low resolution and no shadows.
+  const fast = new URLSearchParams(location.search).has('fast');
+  renderer.setPixelRatio(fast ? 0.5 : Math.min(2, devicePixelRatio));
+  renderer.shadowMap.enabled = !fast;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.0;
@@ -118,11 +117,10 @@ async function init() {
   G.headmaster = new Headmaster(G);
 
   // UI
-  G.dialog = new Dialog($('dialog'));
+  G.dialog = new Dialog($('dialog'), G.voice, nameOf);
   G.picker = new Picker($('picker'));
   G.bookEl = $('book');
   G.quest = new QuestRunner(G);
-  G.spoken = spokenLog;
 
   // Things the player can look at and use
   G.targets = [G.buu.hit, ...Object.values(G.villagers).map(n => n.hit), ...world.letters.map(l => l.mesh),
@@ -164,9 +162,14 @@ G.meet = id => {
   if (G.state.met.includes(id)) return [];
   G.state.met.push(id);
   G.persist();
-  const v = G.villagerData[id];
-  return [[v.name, `Hello. I am ${v.name}.`], [v.name, `I am a ${v.job}.`]];
+  return G.villagerData[id].lines.intro;
 };
+
+function nameOf(who) {
+  if (who === 'buu') return 'Buu';
+  if (who === 'letter') return 'Letter';
+  return G.people[who]?.name || '';
+}
 
 G.teleportPlayer = spot => {
   G.player.pos.set(spot.x, spot.y, spot.z);
@@ -238,6 +241,7 @@ function onKey(e) {
   if (e.repeat && !held.includes(code) && !code.startsWith('Arrow')) return;
 
   if (code === 'Space' && G.dialog.open) { G.dialog.next(); return; }
+  if (code === 'KeyR') { G.dialog.replay(); return; }
   if (code === 'Escape') { G.closePanels(); return; }
 
   if (G.picker.isOpen) {
@@ -309,16 +313,15 @@ function interact() {
   if (t.kind === 'calendar') return openCalendar();
   if (t.kind === 'item') return pickItem(t.name);
   if (t.kind === 'headmaster') {
-    return G.dialog.say([['Batsaikhan Erdene', G.dayNight.isNight ? 'Why are you awake?' : 'Good day. I am the headmaster.'],
-      ['Batsaikhan Erdene', 'Children must sleep at night.']]);
+    const hl = G.people.headmaster.lines;
+    return G.dialog.say(G.dayNight.isNight ? hl.talkNight : hl.talkDay);
   }
   if (t.kind === 'villager') {
     if (G.quest.talkVillager(t.id)) return;
     const v = G.villagerData[t.id];
     const intro = G.meet(t.id);
-    const talk = SMALL_TALK[v.job];
-    const line = talk[Math.floor(Math.random() * talk.length)];
-    G.dialog.say(intro.length ? intro : [[v.name, 'Hello again.'], [v.name, line]]);
+    const line = v.lines.talk[Math.floor(Math.random() * v.lines.talk.length)];
+    G.dialog.say(intro.length ? intro : [...v.lines.again, line]);
   }
 }
 
@@ -329,18 +332,19 @@ function pickItem(name) {
   const it = G.world.items.find(i => i.name === name);
   if (it) it.group.visible = false;
   const n = G.state.found.length;
-  const lines = [['Buu', `This is a *${name}*.`], ['Buu', `${n} of ${LOST_TOTAL} lost things found.`]];
-  if (n === LOST_TOTAL) lines.push(['Buu', 'All lost things are found.']);
+  const B = G.buuLines;
+  const lines = [B.lost[name], B.lostCount[n - 1]];
+  if (n === LOST_TOTAL) lines.push(B.lostAll);
   G.dialog.say(lines);
 }
 
 function readLetter(houseId) {
   if (!G.dayNight.isNight) {
-    G.dialog.say([['Buu', 'Read it at night. Not now.']]);
+    G.dialog.say([G.buuLines.letterDay]);
     return;
   }
   if (!G.state.lettersRead.includes(houseId)) { G.state.lettersRead.push(houseId); G.persist(); }
-  G.dialog.say(G.letters[houseId].map(t => ['Letter', t]));
+  G.dialog.say(G.letters[houseId]);
 }
 
 // ---------- update ----------
@@ -377,16 +381,16 @@ function update(dt) {
   // Who is speaking right now
   const speaker = G.dialog.current?.who || '';
   updateBuu(dt);
-  G.buu.talking = speaker === 'Buu';
+  G.buu.talking = speaker === 'buu';
   for (const [id, npc] of Object.entries(G.villagers)) {
     const d = npc.group.position.distanceTo(p.pos);
     if (d < 7) npc.lookAt(p.pos.x, p.pos.z);
-    npc.talking = speaker === G.villagerData[id].name;
+    npc.talking = speaker === id;
     npc.animate(dt, false, G.clock);
     npc.label.visible = d < 14;
   }
   const hm = G.headmaster.npc;
-  hm.talking = speaker === 'Batsaikhan Erdene';
+  hm.talking = speaker === 'headmaster';
   hm.label.visible = hm.group.position.distanceTo(p.pos) < 14;
   G.buu.label.visible = G.buuBody.pos.distanceTo(p.pos) < 10;
 
@@ -401,7 +405,7 @@ function update(dt) {
   const wasNight = G.lastNight;
   G.lastNight = G.dayNight.isNight;
   if (wasNight !== undefined && wasNight !== G.lastNight) {
-    G.dialog.say([['Buu', G.lastNight ? 'It is night now. Be quiet.' : 'Morning. The headmaster went home.']]);
+    G.dialog.say([G.lastNight ? G.buuLines.night : G.buuLines.morning]);
   }
   // Room light when inside a house
   const house = houseAt(p.pos.x, p.pos.z);

@@ -44,3 +44,14 @@
 39. A wall calendar in each kitchen opens the calendar (E).
 40. Shift = run. Walk 4 m/s, run 7 m/s.
 41. Headmaster route uses the road at x = 1.8 so he walks beside the well, not through it.
+
+## Days 7–10 (user goal)
+
+42. This cloud session has no OPENAI_API_KEY, and its network blocks api.openai.com. `scripts/make_audio.js` is written and assigns all audio ids, but no mp3 files could be made here. Run it on a machine with the key. No fake or silent files were made.
+43. Audio id = `<speaker>-<FNV-1a hash of speaker|text>` (`audioid.js`). The browser and the script compute the same id, so a changed line gets a new file.
+44. `audio_manifest.json` lists the mp3 files that exist. The game only requests listed files, so missing audio never causes 404 errors. With no files, lines are silent and text still appears 1.5 s after the line starts.
+45. Voices: Buu alloy; Batbayar onyx, Dulamsuren shimmer, Oyunaa nova, Enkhjargal coral, Tsetseg sage, Ganbold echo; headmaster ash; narrator, letters and word lessons fable. Speed = CONFIG.ttsRate (0.85).
+46. All spoken lines now live in JSON: villager lines in villagers.json (the headmaster was added there with role "headmaster"), generic Buu lines in buu.json (lines with names are written out once per name), quest lines in quests.json, letters in letters.json, words and example sentences in words.json (`audio` = word, `sentenceAudio` = sentence).
+47. Word lesson sentences are spoken by the narrator voice, not the villager, because each sentence has one recording.
+48. `?fast=1` turns off shadows and lowers resolution. Only tests use it.
+49. Tests serve three.js from node_modules (package.json devDependencies) because some machines cannot reach the CDN.

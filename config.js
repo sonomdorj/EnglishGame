@@ -1,7 +1,7 @@
 // Player settings. Change these values to tune the game.
 export const CONFIG = {
-  ttsRate: 0.85,            // speech speed (1 = normal)
-  ttsLang: 'en-US',
+  ttsRate: 0.85,            // voice speed used by scripts/make_audio.js (1 = normal)
+  textDelaySec: 1.5,        // text appears this long after the voice starts
   mouseSensitivity: 0.0022, // radians per pixel of mouse movement
   buuFollowDistance: 3,     // meters between Buu and the player
 

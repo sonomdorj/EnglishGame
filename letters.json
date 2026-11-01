@@ -1,8 +1,182 @@
 [
-  { "house": "h1", "lines": ["Dear Oyunaa.", "I made your first spoon from iron.", "You were very small.", "One day this anvil is yours.", "Love, Dad."] },
-  { "house": "h2", "lines": ["My secret bread.", "Two cups of flour.", "One egg. A little milk.", "Bake it for one hour.", "Tell nobody. Dulamsuren."] },
-  { "house": "h3", "lines": ["My diary.", "Today I fed the cat.", "Buu the panda is silly.", "I want a dog.", "Dad promised. I remember."] },
-  { "house": "h4", "lines": ["To my daughter Tsetseg.", "You are a good teacher.", "Your father was proud of you.", "Come and eat with me on Sunday.", "Your mother, Enkhjargal."] },
-  { "house": "h5", "lines": ["Lesson plan.", "Monday: the days of the week.", "Tuesday: the months of the year.", "Wednesday: a test.", "Do not forget the umbrella."] },
-  { "house": "h6", "lines": ["Dear brother Batsaikhan.", "Why do you patrol at night?", "The children are not bad.", "Come fishing with me.", "Ganbold."] }
+  {
+    "house": "h1",
+    "lines": [
+      {
+        "who": "letter",
+        "text": "Dear Oyunaa.",
+        "audio": "letter-75b5e4d6"
+      },
+      {
+        "who": "letter",
+        "text": "I made your first spoon from iron.",
+        "audio": "letter-9910cc2f"
+      },
+      {
+        "who": "letter",
+        "text": "You were very small.",
+        "audio": "letter-854ad3bc"
+      },
+      {
+        "who": "letter",
+        "text": "One day this anvil is yours.",
+        "audio": "letter-98f538e9"
+      },
+      {
+        "who": "letter",
+        "text": "Love, Dad.",
+        "audio": "letter-be91482a"
+      }
+    ]
+  },
+  {
+    "house": "h2",
+    "lines": [
+      {
+        "who": "letter",
+        "text": "My secret bread.",
+        "audio": "letter-9090cbb5"
+      },
+      {
+        "who": "letter",
+        "text": "Two cups of flour.",
+        "audio": "letter-13289ec9"
+      },
+      {
+        "who": "letter",
+        "text": "One egg. A little milk.",
+        "audio": "letter-e1be61b0"
+      },
+      {
+        "who": "letter",
+        "text": "Bake it for one hour.",
+        "audio": "letter-e256af6c"
+      },
+      {
+        "who": "letter",
+        "text": "Tell nobody. Dulamsuren.",
+        "audio": "letter-48bcd02d"
+      }
+    ]
+  },
+  {
+    "house": "h3",
+    "lines": [
+      {
+        "who": "letter",
+        "text": "My diary.",
+        "audio": "letter-1aa281f4"
+      },
+      {
+        "who": "letter",
+        "text": "Today I fed the cat.",
+        "audio": "letter-6d3a0397"
+      },
+      {
+        "who": "letter",
+        "text": "Buu the panda is silly.",
+        "audio": "letter-e7832239"
+      },
+      {
+        "who": "letter",
+        "text": "I want a dog.",
+        "audio": "letter-9a39da29"
+      },
+      {
+        "who": "letter",
+        "text": "Dad promised. I remember.",
+        "audio": "letter-f85edefb"
+      }
+    ]
+  },
+  {
+    "house": "h4",
+    "lines": [
+      {
+        "who": "letter",
+        "text": "To my daughter Tsetseg.",
+        "audio": "letter-02c9f289"
+      },
+      {
+        "who": "letter",
+        "text": "You are a good teacher.",
+        "audio": "letter-0ad97054"
+      },
+      {
+        "who": "letter",
+        "text": "Your father was proud of you.",
+        "audio": "letter-b7fa0fbd"
+      },
+      {
+        "who": "letter",
+        "text": "Come and eat with me on Sunday.",
+        "audio": "letter-45d6c751"
+      },
+      {
+        "who": "letter",
+        "text": "Your mother, Enkhjargal.",
+        "audio": "letter-225d7226"
+      }
+    ]
+  },
+  {
+    "house": "h5",
+    "lines": [
+      {
+        "who": "letter",
+        "text": "Lesson plan.",
+        "audio": "letter-8daa4c1c"
+      },
+      {
+        "who": "letter",
+        "text": "Monday: the days of the week.",
+        "audio": "letter-405c7d3d"
+      },
+      {
+        "who": "letter",
+        "text": "Tuesday: the months of the year.",
+        "audio": "letter-86fe38e1"
+      },
+      {
+        "who": "letter",
+        "text": "Wednesday: a test.",
+        "audio": "letter-96c0ee38"
+      },
+      {
+        "who": "letter",
+        "text": "Do not forget the umbrella.",
+        "audio": "letter-8868bef1"
+      }
+    ]
+  },
+  {
+    "house": "h6",
+    "lines": [
+      {
+        "who": "letter",
+        "text": "Dear brother Batsaikhan.",
+        "audio": "letter-b0f727e1"
+      },
+      {
+        "who": "letter",
+        "text": "Why do you patrol at night?",
+        "audio": "letter-23b8ccdf"
+      },
+      {
+        "who": "letter",
+        "text": "The children are not bad.",
+        "audio": "letter-74db74b5"
+      },
+      {
+        "who": "letter",
+        "text": "Come fishing with me.",
+        "audio": "letter-08cf3683"
+      },
+      {
+        "who": "letter",
+        "text": "Ganbold.",
+        "audio": "letter-8c69e566"
+      }
+    ]
+  }
 ]

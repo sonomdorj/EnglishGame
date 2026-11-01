@@ -7,7 +7,7 @@
 - Stop only when every box is ticked.
 - Stack: Three.js (CDN), plain JS modules, no framework, no backend, no build step.
 - All in-game text is English only. Never show Mongolian or any translation.
-- Every spoken line uses `window.speechSynthesis`, voice en-US, rate 0.85.
+- Every spoken line plays a pre-made voice file (OpenAI TTS, made by `scripts/make_audio.js`), speed 0.85.
 - Player: 10 years old, introvert. No timers, no fail screens, no scores shown, no cute praise. Buu the panda is dry: "Correct. Next."
 
 ## Day 1 — World
@@ -52,3 +52,30 @@
 - [x] 12 lost things to find (E). Buu says the English name. Family Book counts them.
 - [x] Shift to run. Wall calendar opens the calendar.
 - [x] Play all 15 quests again in the new world. No console errors.
+
+## Day 7 — Tests and real voices
+- [x] Playwright tests in /tests. `npx playwright test` exits 0.
+- [ ] `scripts/make_audio.js` reads every line (villagers, quests, words, letters, Buu), calls OpenAI TTS (OPENAI_API_KEY; Buu = alloy, six other voices for villagers), saves audio/<id>.mp3. `ls audio | wc -l` matches the line count.
+- [x] Every JSON line has an "audio" field.
+- [x] Browser speech (the Web Speech synthesis API) fully removed. A recursive grep for its name returns nothing.
+- [x] Text appears 1.5 s after the voice starts. R replays the last line.
+
+## Day 8 — Bring Buu the thing
+- [ ] Click-on-word check deleted.
+- [ ] Replaced by a world action: Buu says "Bring me the X". The player walks, picks up the thing, and gives it to Buu.
+
+## Day 9 — No calendar, power system
+- [ ] Calendar panel deleted (`grep -r calendar ui.js` returns nothing).
+- [ ] Weekday question = 7 buttons, no hints. Wrong = Buu says "No." and waits.
+- [ ] Catch count per adult. 1 catch = take one item.
+- [ ] 3 catches = player picks a nickname from 3 options. Buu uses it forever.
+- [ ] 5 catches = that adult is locked out of the market for one game day.
+- [ ] Headmaster with 3 catches bows when the player passes.
+
+## Day 10 — 50 quests
+- [ ] quests.json: exactly 50 quests in 5 arcs of 10: The Baker's Lie, The Fake Birthday, The Headmaster's Diary, The Wedding War, Buu's Betrayal.
+- [ ] Max words per line by arc: 3, 5, 7, 10, 12. `scripts/check_quests.js` verifies and exits 0.
+- [ ] Past tense only from arc 4. because/so only from arc 5. A new grammar form unlocks only after 5 correct in a row. Grammar is never explained or shown.
+- [ ] Every quest reuses at least 90% words already in words.json.
+- [ ] Villagers mention past cases by name.
+- [ ] report.json is written at every quest end.

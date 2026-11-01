@@ -3,8 +3,6 @@
     "id": 1,
     "a": "dulamsuren",
     "b": "batbayar",
-    "claimA": "Batbayar paid me on Friday, 17 November 2017.",
-    "claimB": "No. I paid on Saturday.",
     "date": "17 November 2017",
     "weekday": "Friday",
     "liar": "batbayar",
@@ -17,16 +15,86 @@
     "trap": {
       "date": "21 June 2014",
       "said": "Tuesday",
-      "weekday": "Saturday",
-      "line": "Oyunaa was born on Tuesday, 21 June 2014."
+      "weekday": "Saturday"
+    },
+    "lines": {
+      "announce": [
+        {
+          "who": "buu",
+          "text": "New case. Talk to Dulamsuren.",
+          "audio": "buu-7af8da7e"
+        },
+        {
+          "who": "buu",
+          "text": "New words today.",
+          "audio": "buu-7f705c1d"
+        },
+        {
+          "who": "buu",
+          "text": "Oyunaa was born on Tuesday, 21 June 2014.",
+          "audio": "buu-b54536ca"
+        }
+      ],
+      "claimA": [
+        {
+          "who": "dulamsuren",
+          "text": "Batbayar paid me on Friday, 17 November 2017.",
+          "audio": "dulamsuren-55d310c9"
+        }
+      ],
+      "toB": [
+        {
+          "who": "buu",
+          "text": "Now talk to Batbayar.",
+          "audio": "buu-d48def14"
+        }
+      ],
+      "wrongOrder": [
+        {
+          "who": "buu",
+          "text": "Talk to Dulamsuren first.",
+          "audio": "buu-81521a80"
+        }
+      ],
+      "claimB": [
+        {
+          "who": "batbayar",
+          "text": "No. I paid on Saturday.",
+          "audio": "batbayar-bad0eb2f"
+        }
+      ],
+      "ask": [
+        {
+          "who": "buu",
+          "text": "Which day was 17 November 2017?",
+          "audio": "buu-91bd75d8"
+        }
+      ],
+      "verdict": [
+        {
+          "who": "buu",
+          "text": "Friday. Batbayar lied.",
+          "audio": "buu-8280f2ee"
+        },
+        {
+          "who": "buu",
+          "text": "Take 10 iron from Batbayar.",
+          "audio": "buu-59ac68ad"
+        }
+      ],
+      "take": [
+        {
+          "who": "narrator",
+          "text": "You take 10 iron.",
+          "audio": "narrator-28d2c4bb"
+        }
+      ]
     }
   },
   {
     "id": 2,
     "a": "ganbold",
     "b": "dulamsuren",
-    "claimA": "Dulamsuren took my fish on Saturday, 3 March 2019.",
-    "claimB": "No. I took it on Sunday.",
     "date": "3 March 2019",
     "weekday": "Sunday",
     "liar": "ganbold",
@@ -40,16 +108,86 @@
     "trap": {
       "date": "4 July 1998",
       "said": "Wednesday",
-      "weekday": "Saturday",
-      "line": "4 July 1998 was a Wednesday."
+      "weekday": "Saturday"
+    },
+    "lines": {
+      "announce": [
+        {
+          "who": "buu",
+          "text": "New case. Talk to Ganbold.",
+          "audio": "buu-95551931"
+        },
+        {
+          "who": "buu",
+          "text": "New words today.",
+          "audio": "buu-7f705c1d"
+        },
+        {
+          "who": "buu",
+          "text": "4 July 1998 was a Wednesday.",
+          "audio": "buu-30897906"
+        }
+      ],
+      "claimA": [
+        {
+          "who": "ganbold",
+          "text": "Dulamsuren took my fish on Saturday, 3 March 2019.",
+          "audio": "ganbold-c058242b"
+        }
+      ],
+      "toB": [
+        {
+          "who": "buu",
+          "text": "Now talk to Dulamsuren.",
+          "audio": "buu-f9924032"
+        }
+      ],
+      "wrongOrder": [
+        {
+          "who": "buu",
+          "text": "Talk to Ganbold first.",
+          "audio": "buu-b55dc533"
+        }
+      ],
+      "claimB": [
+        {
+          "who": "dulamsuren",
+          "text": "No. I took it on Sunday.",
+          "audio": "dulamsuren-cef910c0"
+        }
+      ],
+      "ask": [
+        {
+          "who": "buu",
+          "text": "Which day was 3 March 2019?",
+          "audio": "buu-e1fee492"
+        }
+      ],
+      "verdict": [
+        {
+          "who": "buu",
+          "text": "Sunday. Ganbold lied.",
+          "audio": "buu-8e3ded54"
+        },
+        {
+          "who": "buu",
+          "text": "Take 5 fish from Ganbold.",
+          "audio": "buu-2d2fc4c4"
+        }
+      ],
+      "take": [
+        {
+          "who": "narrator",
+          "text": "You take 5 fish.",
+          "audio": "narrator-ea236f51"
+        }
+      ]
     }
   },
   {
     "id": 3,
     "a": "tsetseg",
     "b": "oyunaa",
-    "claimA": "Oyunaa missed school on Monday, 9 October 2023.",
-    "claimB": "No. I missed it on Wednesday.",
     "date": "9 October 2023",
     "weekday": "Monday",
     "liar": "oyunaa",
@@ -62,16 +200,86 @@
     "trap": {
       "date": "14 March 1978",
       "said": "Sunday",
-      "weekday": "Tuesday",
-      "line": "Batbayar was born on Sunday, 14 March 1978."
+      "weekday": "Tuesday"
+    },
+    "lines": {
+      "announce": [
+        {
+          "who": "buu",
+          "text": "New case. Talk to Tsetseg.",
+          "audio": "buu-0d316e85"
+        },
+        {
+          "who": "buu",
+          "text": "New words today.",
+          "audio": "buu-7f705c1d"
+        },
+        {
+          "who": "buu",
+          "text": "Batbayar was born on Sunday, 14 March 1978.",
+          "audio": "buu-4e51738d"
+        }
+      ],
+      "claimA": [
+        {
+          "who": "tsetseg",
+          "text": "Oyunaa missed school on Monday, 9 October 2023.",
+          "audio": "tsetseg-c4ed9aeb"
+        }
+      ],
+      "toB": [
+        {
+          "who": "buu",
+          "text": "Now talk to Oyunaa.",
+          "audio": "buu-a1ffc94d"
+        }
+      ],
+      "wrongOrder": [
+        {
+          "who": "buu",
+          "text": "Talk to Tsetseg first.",
+          "audio": "buu-8b824e97"
+        }
+      ],
+      "claimB": [
+        {
+          "who": "oyunaa",
+          "text": "No. I missed it on Wednesday.",
+          "audio": "oyunaa-863e220b"
+        }
+      ],
+      "ask": [
+        {
+          "who": "buu",
+          "text": "Which day was 9 October 2023?",
+          "audio": "buu-81646b0c"
+        }
+      ],
+      "verdict": [
+        {
+          "who": "buu",
+          "text": "Monday. Oyunaa lied.",
+          "audio": "buu-c6287e3a"
+        },
+        {
+          "who": "buu",
+          "text": "Take 3 pencils from Oyunaa.",
+          "audio": "buu-8052d2a6"
+        }
+      ],
+      "take": [
+        {
+          "who": "narrator",
+          "text": "You take 3 pencils.",
+          "audio": "narrator-fec47f95"
+        }
+      ]
     }
   },
   {
     "id": 4,
     "a": "enkhjargal",
     "b": "ganbold",
-    "claimA": "Ganbold borrowed my horse on Sunday, 26 July 2005.",
-    "claimB": "No. I borrowed it on Tuesday.",
     "date": "26 July 2005",
     "weekday": "Tuesday",
     "liar": "enkhjargal",
@@ -85,16 +293,86 @@
     "trap": {
       "date": "25 December 2002",
       "said": "Saturday",
-      "weekday": "Wednesday",
-      "line": "25 December 2002 was a Saturday."
+      "weekday": "Wednesday"
+    },
+    "lines": {
+      "announce": [
+        {
+          "who": "buu",
+          "text": "New case. Talk to Enkhjargal.",
+          "audio": "buu-0a3790ab"
+        },
+        {
+          "who": "buu",
+          "text": "New words today.",
+          "audio": "buu-7f705c1d"
+        },
+        {
+          "who": "buu",
+          "text": "25 December 2002 was a Saturday.",
+          "audio": "buu-b9d737cc"
+        }
+      ],
+      "claimA": [
+        {
+          "who": "enkhjargal",
+          "text": "Ganbold borrowed my horse on Sunday, 26 July 2005.",
+          "audio": "enkhjargal-bce2641a"
+        }
+      ],
+      "toB": [
+        {
+          "who": "buu",
+          "text": "Now talk to Ganbold.",
+          "audio": "buu-6fe657ad"
+        }
+      ],
+      "wrongOrder": [
+        {
+          "who": "buu",
+          "text": "Talk to Enkhjargal first.",
+          "audio": "buu-ca221661"
+        }
+      ],
+      "claimB": [
+        {
+          "who": "ganbold",
+          "text": "No. I borrowed it on Tuesday.",
+          "audio": "ganbold-d136b2a3"
+        }
+      ],
+      "ask": [
+        {
+          "who": "buu",
+          "text": "Which day was 26 July 2005?",
+          "audio": "buu-ca479579"
+        }
+      ],
+      "verdict": [
+        {
+          "who": "buu",
+          "text": "Tuesday. Enkhjargal lied.",
+          "audio": "buu-e8475021"
+        },
+        {
+          "who": "buu",
+          "text": "Take 4 carrots from Enkhjargal.",
+          "audio": "buu-54a4df0d"
+        }
+      ],
+      "take": [
+        {
+          "who": "narrator",
+          "text": "You take 4 carrots.",
+          "audio": "narrator-8a3b3394"
+        }
+      ]
     }
   },
   {
     "id": 5,
     "a": "batbayar",
     "b": "enkhjargal",
-    "claimA": "Enkhjargal ordered a shovel on Tuesday, 12 April 2011.",
-    "claimB": "No. I ordered it on Friday.",
     "date": "12 April 2011",
     "weekday": "Tuesday",
     "liar": "enkhjargal",
@@ -107,16 +385,86 @@
     "trap": {
       "date": "8 November 1991",
       "said": "Tuesday",
-      "weekday": "Friday",
-      "line": "Tsetseg was born on Tuesday, 8 November 1991."
+      "weekday": "Friday"
+    },
+    "lines": {
+      "announce": [
+        {
+          "who": "buu",
+          "text": "New case. Talk to Batbayar.",
+          "audio": "buu-a204b290"
+        },
+        {
+          "who": "buu",
+          "text": "New words today.",
+          "audio": "buu-7f705c1d"
+        },
+        {
+          "who": "buu",
+          "text": "Tsetseg was born on Tuesday, 8 November 1991.",
+          "audio": "buu-653fe014"
+        }
+      ],
+      "claimA": [
+        {
+          "who": "batbayar",
+          "text": "Enkhjargal ordered a shovel on Tuesday, 12 April 2011.",
+          "audio": "batbayar-3da71b56"
+        }
+      ],
+      "toB": [
+        {
+          "who": "buu",
+          "text": "Now talk to Enkhjargal.",
+          "audio": "buu-e108b657"
+        }
+      ],
+      "wrongOrder": [
+        {
+          "who": "buu",
+          "text": "Talk to Batbayar first.",
+          "audio": "buu-d80457b6"
+        }
+      ],
+      "claimB": [
+        {
+          "who": "enkhjargal",
+          "text": "No. I ordered it on Friday.",
+          "audio": "enkhjargal-36e2fce6"
+        }
+      ],
+      "ask": [
+        {
+          "who": "buu",
+          "text": "Which day was 12 April 2011?",
+          "audio": "buu-4b9496d9"
+        }
+      ],
+      "verdict": [
+        {
+          "who": "buu",
+          "text": "Tuesday. Enkhjargal lied.",
+          "audio": "buu-e8475021"
+        },
+        {
+          "who": "buu",
+          "text": "Take 6 potatoes from Enkhjargal.",
+          "audio": "buu-0414bf0a"
+        }
+      ],
+      "take": [
+        {
+          "who": "narrator",
+          "text": "You take 6 potatoes.",
+          "audio": "narrator-d02372a3"
+        }
+      ]
     }
   },
   {
     "id": 6,
     "a": "oyunaa",
     "b": "tsetseg",
-    "claimA": "Tsetseg gave us a test on Thursday, 15 May 2024.",
-    "claimB": "No. I gave it on Wednesday.",
     "date": "15 May 2024",
     "weekday": "Wednesday",
     "liar": "oyunaa",
@@ -130,16 +478,86 @@
     "trap": {
       "date": "1 April 2015",
       "said": "Monday",
-      "weekday": "Wednesday",
-      "line": "1 April 2015 was a Monday."
+      "weekday": "Wednesday"
+    },
+    "lines": {
+      "announce": [
+        {
+          "who": "buu",
+          "text": "New case. Talk to Oyunaa.",
+          "audio": "buu-a7b0e319"
+        },
+        {
+          "who": "buu",
+          "text": "New words today.",
+          "audio": "buu-7f705c1d"
+        },
+        {
+          "who": "buu",
+          "text": "1 April 2015 was a Monday.",
+          "audio": "buu-21b94bc0"
+        }
+      ],
+      "claimA": [
+        {
+          "who": "oyunaa",
+          "text": "Tsetseg gave us a test on Thursday, 15 May 2024.",
+          "audio": "oyunaa-bb3138d3"
+        }
+      ],
+      "toB": [
+        {
+          "who": "buu",
+          "text": "Now talk to Tsetseg.",
+          "audio": "buu-3b7e38d1"
+        }
+      ],
+      "wrongOrder": [
+        {
+          "who": "buu",
+          "text": "Talk to Oyunaa first.",
+          "audio": "buu-343cf463"
+        }
+      ],
+      "claimB": [
+        {
+          "who": "tsetseg",
+          "text": "No. I gave it on Wednesday.",
+          "audio": "tsetseg-67b06d51"
+        }
+      ],
+      "ask": [
+        {
+          "who": "buu",
+          "text": "Which day was 15 May 2024?",
+          "audio": "buu-21ddc5fd"
+        }
+      ],
+      "verdict": [
+        {
+          "who": "buu",
+          "text": "Wednesday. Oyunaa lied.",
+          "audio": "buu-720c2188"
+        },
+        {
+          "who": "buu",
+          "text": "Take 2 erasers from Oyunaa.",
+          "audio": "buu-ef2220ae"
+        }
+      ],
+      "take": [
+        {
+          "who": "narrator",
+          "text": "You take 2 erasers.",
+          "audio": "narrator-3fa20b55"
+        }
+      ]
     }
   },
   {
     "id": 7,
     "a": "dulamsuren",
     "b": "ganbold",
-    "claimA": "Ganbold ate my cake on Friday, 31 December 1999.",
-    "claimB": "No. I ate it on Thursday.",
     "date": "31 December 1999",
     "weekday": "Friday",
     "liar": "ganbold",
@@ -152,16 +570,86 @@
     "trap": {
       "date": "17 May 1975",
       "said": "Tuesday",
-      "weekday": "Saturday",
-      "line": "Ganbold was born on Tuesday, 17 May 1975."
+      "weekday": "Saturday"
+    },
+    "lines": {
+      "announce": [
+        {
+          "who": "buu",
+          "text": "New case. Talk to Dulamsuren.",
+          "audio": "buu-7af8da7e"
+        },
+        {
+          "who": "buu",
+          "text": "New words today.",
+          "audio": "buu-7f705c1d"
+        },
+        {
+          "who": "buu",
+          "text": "Ganbold was born on Tuesday, 17 May 1975.",
+          "audio": "buu-4ac267f5"
+        }
+      ],
+      "claimA": [
+        {
+          "who": "dulamsuren",
+          "text": "Ganbold ate my cake on Friday, 31 December 1999.",
+          "audio": "dulamsuren-31459973"
+        }
+      ],
+      "toB": [
+        {
+          "who": "buu",
+          "text": "Now talk to Ganbold.",
+          "audio": "buu-6fe657ad"
+        }
+      ],
+      "wrongOrder": [
+        {
+          "who": "buu",
+          "text": "Talk to Dulamsuren first.",
+          "audio": "buu-81521a80"
+        }
+      ],
+      "claimB": [
+        {
+          "who": "ganbold",
+          "text": "No. I ate it on Thursday.",
+          "audio": "ganbold-6565e588"
+        }
+      ],
+      "ask": [
+        {
+          "who": "buu",
+          "text": "Which day was 31 December 1999?",
+          "audio": "buu-cb702133"
+        }
+      ],
+      "verdict": [
+        {
+          "who": "buu",
+          "text": "Friday. Ganbold lied.",
+          "audio": "buu-b8fe26b1"
+        },
+        {
+          "who": "buu",
+          "text": "Take 1 fishing net from Ganbold.",
+          "audio": "buu-92b62b81"
+        }
+      ],
+      "take": [
+        {
+          "who": "narrator",
+          "text": "You take 1 fishing net.",
+          "audio": "narrator-9846c7a2"
+        }
+      ]
     }
   },
   {
     "id": 8,
     "a": "ganbold",
     "b": "batbayar",
-    "claimA": "Batbayar fixed my hook on Sunday, 8 August 2008.",
-    "claimB": "No. I fixed it on Friday.",
     "date": "8 August 2008",
     "weekday": "Friday",
     "liar": "ganbold",
@@ -175,16 +663,86 @@
     "trap": {
       "date": "13 June 1997",
       "said": "Tuesday",
-      "weekday": "Friday",
-      "line": "13 June 1997 was a Tuesday."
+      "weekday": "Friday"
+    },
+    "lines": {
+      "announce": [
+        {
+          "who": "buu",
+          "text": "New case. Talk to Ganbold.",
+          "audio": "buu-95551931"
+        },
+        {
+          "who": "buu",
+          "text": "New words today.",
+          "audio": "buu-7f705c1d"
+        },
+        {
+          "who": "buu",
+          "text": "13 June 1997 was a Tuesday.",
+          "audio": "buu-c7f27668"
+        }
+      ],
+      "claimA": [
+        {
+          "who": "ganbold",
+          "text": "Batbayar fixed my hook on Sunday, 8 August 2008.",
+          "audio": "ganbold-b96a7595"
+        }
+      ],
+      "toB": [
+        {
+          "who": "buu",
+          "text": "Now talk to Batbayar.",
+          "audio": "buu-d48def14"
+        }
+      ],
+      "wrongOrder": [
+        {
+          "who": "buu",
+          "text": "Talk to Ganbold first.",
+          "audio": "buu-b55dc533"
+        }
+      ],
+      "claimB": [
+        {
+          "who": "batbayar",
+          "text": "No. I fixed it on Friday.",
+          "audio": "batbayar-c9c1b3bc"
+        }
+      ],
+      "ask": [
+        {
+          "who": "buu",
+          "text": "Which day was 8 August 2008?",
+          "audio": "buu-0a0787fd"
+        }
+      ],
+      "verdict": [
+        {
+          "who": "buu",
+          "text": "Friday. Ganbold lied.",
+          "audio": "buu-b8fe26b1"
+        },
+        {
+          "who": "buu",
+          "text": "Take 1 fishing rod from Ganbold.",
+          "audio": "buu-c7659c47"
+        }
+      ],
+      "take": [
+        {
+          "who": "narrator",
+          "text": "You take 1 fishing rod.",
+          "audio": "narrator-7d6c6fb0"
+        }
+      ]
     }
   },
   {
     "id": 9,
     "a": "tsetseg",
     "b": "enkhjargal",
-    "claimA": "Enkhjargal visited me on Wednesday, 1 June 2016.",
-    "claimB": "No. I visited you on Monday.",
     "date": "1 June 2016",
     "weekday": "Wednesday",
     "liar": "enkhjargal",
@@ -197,16 +755,86 @@
     "trap": {
       "date": "2 September 1983",
       "said": "Wednesday",
-      "weekday": "Friday",
-      "line": "Dulamsuren was born on Wednesday, 2 September 1983."
+      "weekday": "Friday"
+    },
+    "lines": {
+      "announce": [
+        {
+          "who": "buu",
+          "text": "New case. Talk to Tsetseg.",
+          "audio": "buu-0d316e85"
+        },
+        {
+          "who": "buu",
+          "text": "New words today.",
+          "audio": "buu-7f705c1d"
+        },
+        {
+          "who": "buu",
+          "text": "Dulamsuren was born on Wednesday, 2 September 1983.",
+          "audio": "buu-a3bfbf86"
+        }
+      ],
+      "claimA": [
+        {
+          "who": "tsetseg",
+          "text": "Enkhjargal visited me on Wednesday, 1 June 2016.",
+          "audio": "tsetseg-18730a0c"
+        }
+      ],
+      "toB": [
+        {
+          "who": "buu",
+          "text": "Now talk to Enkhjargal.",
+          "audio": "buu-e108b657"
+        }
+      ],
+      "wrongOrder": [
+        {
+          "who": "buu",
+          "text": "Talk to Tsetseg first.",
+          "audio": "buu-8b824e97"
+        }
+      ],
+      "claimB": [
+        {
+          "who": "enkhjargal",
+          "text": "No. I visited you on Monday.",
+          "audio": "enkhjargal-c0a9fc66"
+        }
+      ],
+      "ask": [
+        {
+          "who": "buu",
+          "text": "Which day was 1 June 2016?",
+          "audio": "buu-9aea5fa0"
+        }
+      ],
+      "verdict": [
+        {
+          "who": "buu",
+          "text": "Wednesday. Enkhjargal lied.",
+          "audio": "buu-f90ebd82"
+        },
+        {
+          "who": "buu",
+          "text": "Take 12 eggs from Enkhjargal.",
+          "audio": "buu-28773ddc"
+        }
+      ],
+      "take": [
+        {
+          "who": "narrator",
+          "text": "You take 12 eggs.",
+          "audio": "narrator-c402651d"
+        }
+      ]
     }
   },
   {
     "id": 10,
     "a": "enkhjargal",
     "b": "dulamsuren",
-    "claimA": "Dulamsuren bought my wheat on Monday, 20 September 2013.",
-    "claimB": "No. I bought it on Friday.",
     "date": "20 September 2013",
     "weekday": "Friday",
     "liar": "enkhjargal",
@@ -220,16 +848,86 @@
     "trap": {
       "date": "30 October 2020",
       "said": "Monday",
-      "weekday": "Friday",
-      "line": "30 October 2020 was a Monday."
+      "weekday": "Friday"
+    },
+    "lines": {
+      "announce": [
+        {
+          "who": "buu",
+          "text": "New case. Talk to Enkhjargal.",
+          "audio": "buu-0a3790ab"
+        },
+        {
+          "who": "buu",
+          "text": "New words today.",
+          "audio": "buu-7f705c1d"
+        },
+        {
+          "who": "buu",
+          "text": "30 October 2020 was a Monday.",
+          "audio": "buu-919f6832"
+        }
+      ],
+      "claimA": [
+        {
+          "who": "enkhjargal",
+          "text": "Dulamsuren bought my wheat on Monday, 20 September 2013.",
+          "audio": "enkhjargal-e9a28c90"
+        }
+      ],
+      "toB": [
+        {
+          "who": "buu",
+          "text": "Now talk to Dulamsuren.",
+          "audio": "buu-f9924032"
+        }
+      ],
+      "wrongOrder": [
+        {
+          "who": "buu",
+          "text": "Talk to Enkhjargal first.",
+          "audio": "buu-ca221661"
+        }
+      ],
+      "claimB": [
+        {
+          "who": "dulamsuren",
+          "text": "No. I bought it on Friday.",
+          "audio": "dulamsuren-6808a735"
+        }
+      ],
+      "ask": [
+        {
+          "who": "buu",
+          "text": "Which day was 20 September 2013?",
+          "audio": "buu-56b592f9"
+        }
+      ],
+      "verdict": [
+        {
+          "who": "buu",
+          "text": "Friday. Enkhjargal lied.",
+          "audio": "buu-66017c7f"
+        },
+        {
+          "who": "buu",
+          "text": "Take 1 bag of wheat from Enkhjargal.",
+          "audio": "buu-af5e06fa"
+        }
+      ],
+      "take": [
+        {
+          "who": "narrator",
+          "text": "You take 1 bag of wheat.",
+          "audio": "narrator-9d979da3"
+        }
+      ]
     }
   },
   {
     "id": 11,
     "a": "oyunaa",
     "b": "batbayar",
-    "claimA": "My father promised me a dog on Thursday, 29 February 2024.",
-    "claimB": "No. I promised it on Friday.",
     "date": "29 February 2024",
     "weekday": "Thursday",
     "liar": "batbayar",
@@ -242,16 +940,86 @@
     "trap": {
       "date": "30 January 1969",
       "said": "Monday",
-      "weekday": "Thursday",
-      "line": "Enkhjargal was born on Monday, 30 January 1969."
+      "weekday": "Thursday"
+    },
+    "lines": {
+      "announce": [
+        {
+          "who": "buu",
+          "text": "New case. Talk to Oyunaa.",
+          "audio": "buu-a7b0e319"
+        },
+        {
+          "who": "buu",
+          "text": "New words today.",
+          "audio": "buu-7f705c1d"
+        },
+        {
+          "who": "buu",
+          "text": "Enkhjargal was born on Monday, 30 January 1969.",
+          "audio": "buu-6575acbf"
+        }
+      ],
+      "claimA": [
+        {
+          "who": "oyunaa",
+          "text": "My father promised me a dog on Thursday, 29 February 2024.",
+          "audio": "oyunaa-5e5b9a72"
+        }
+      ],
+      "toB": [
+        {
+          "who": "buu",
+          "text": "Now talk to Batbayar.",
+          "audio": "buu-d48def14"
+        }
+      ],
+      "wrongOrder": [
+        {
+          "who": "buu",
+          "text": "Talk to Oyunaa first.",
+          "audio": "buu-343cf463"
+        }
+      ],
+      "claimB": [
+        {
+          "who": "batbayar",
+          "text": "No. I promised it on Friday.",
+          "audio": "batbayar-7e4558bb"
+        }
+      ],
+      "ask": [
+        {
+          "who": "buu",
+          "text": "Which day was 29 February 2024?",
+          "audio": "buu-311c8e25"
+        }
+      ],
+      "verdict": [
+        {
+          "who": "buu",
+          "text": "Thursday. Batbayar lied.",
+          "audio": "buu-867f4b73"
+        },
+        {
+          "who": "buu",
+          "text": "Take 1 hammer from Batbayar.",
+          "audio": "buu-04d7ebaf"
+        }
+      ],
+      "take": [
+        {
+          "who": "narrator",
+          "text": "You take 1 hammer.",
+          "audio": "narrator-6f3b67bd"
+        }
+      ]
     }
   },
   {
     "id": 12,
     "a": "batbayar",
     "b": "tsetseg",
-    "claimA": "Tsetseg returned my book on Sunday, 4 January 2010.",
-    "claimB": "No. I returned it on Monday.",
     "date": "4 January 2010",
     "weekday": "Monday",
     "liar": "batbayar",
@@ -265,16 +1033,86 @@
     "trap": {
       "date": "5 May 2005",
       "said": "Tuesday",
-      "weekday": "Thursday",
-      "line": "5 May 2005 was a Tuesday."
+      "weekday": "Thursday"
+    },
+    "lines": {
+      "announce": [
+        {
+          "who": "buu",
+          "text": "New case. Talk to Batbayar.",
+          "audio": "buu-a204b290"
+        },
+        {
+          "who": "buu",
+          "text": "New words today.",
+          "audio": "buu-7f705c1d"
+        },
+        {
+          "who": "buu",
+          "text": "5 May 2005 was a Tuesday.",
+          "audio": "buu-8dab764b"
+        }
+      ],
+      "claimA": [
+        {
+          "who": "batbayar",
+          "text": "Tsetseg returned my book on Sunday, 4 January 2010.",
+          "audio": "batbayar-65b6fc0a"
+        }
+      ],
+      "toB": [
+        {
+          "who": "buu",
+          "text": "Now talk to Tsetseg.",
+          "audio": "buu-3b7e38d1"
+        }
+      ],
+      "wrongOrder": [
+        {
+          "who": "buu",
+          "text": "Talk to Batbayar first.",
+          "audio": "buu-d80457b6"
+        }
+      ],
+      "claimB": [
+        {
+          "who": "tsetseg",
+          "text": "No. I returned it on Monday.",
+          "audio": "tsetseg-e3a89d91"
+        }
+      ],
+      "ask": [
+        {
+          "who": "buu",
+          "text": "Which day was 4 January 2010?",
+          "audio": "buu-e7d9a5bf"
+        }
+      ],
+      "verdict": [
+        {
+          "who": "buu",
+          "text": "Monday. Batbayar lied.",
+          "audio": "buu-78333e39"
+        },
+        {
+          "who": "buu",
+          "text": "Take 1 horseshoe from Batbayar.",
+          "audio": "buu-45468b7d"
+        }
+      ],
+      "take": [
+        {
+          "who": "narrator",
+          "text": "You take 1 horseshoe.",
+          "audio": "narrator-ded9669b"
+        }
+      ]
     }
   },
   {
     "id": 13,
     "a": "ganbold",
     "b": "oyunaa",
-    "claimA": "Oyunaa fed my cat on Monday, 22 August 2022.",
-    "claimB": "No. I fed it on Wednesday.",
     "date": "22 August 2022",
     "weekday": "Monday",
     "liar": "oyunaa",
@@ -287,16 +1125,86 @@
     "trap": {
       "date": "16 August 2018",
       "said": "Sunday",
-      "weekday": "Thursday",
-      "line": "16 August 2018 was a Sunday."
+      "weekday": "Thursday"
+    },
+    "lines": {
+      "announce": [
+        {
+          "who": "buu",
+          "text": "New case. Talk to Ganbold.",
+          "audio": "buu-95551931"
+        },
+        {
+          "who": "buu",
+          "text": "New words today.",
+          "audio": "buu-7f705c1d"
+        },
+        {
+          "who": "buu",
+          "text": "16 August 2018 was a Sunday.",
+          "audio": "buu-83ed97be"
+        }
+      ],
+      "claimA": [
+        {
+          "who": "ganbold",
+          "text": "Oyunaa fed my cat on Monday, 22 August 2022.",
+          "audio": "ganbold-0dd818c2"
+        }
+      ],
+      "toB": [
+        {
+          "who": "buu",
+          "text": "Now talk to Oyunaa.",
+          "audio": "buu-a1ffc94d"
+        }
+      ],
+      "wrongOrder": [
+        {
+          "who": "buu",
+          "text": "Talk to Ganbold first.",
+          "audio": "buu-b55dc533"
+        }
+      ],
+      "claimB": [
+        {
+          "who": "oyunaa",
+          "text": "No. I fed it on Wednesday.",
+          "audio": "oyunaa-9fc41ed9"
+        }
+      ],
+      "ask": [
+        {
+          "who": "buu",
+          "text": "Which day was 22 August 2022?",
+          "audio": "buu-6df502df"
+        }
+      ],
+      "verdict": [
+        {
+          "who": "buu",
+          "text": "Monday. Oyunaa lied.",
+          "audio": "buu-c6287e3a"
+        },
+        {
+          "who": "buu",
+          "text": "Take 1 kite from Oyunaa.",
+          "audio": "buu-83310f61"
+        }
+      ],
+      "take": [
+        {
+          "who": "narrator",
+          "text": "You take 1 kite.",
+          "audio": "narrator-063af4a2"
+        }
+      ]
     }
   },
   {
     "id": 14,
     "a": "dulamsuren",
     "b": "tsetseg",
-    "claimA": "Tsetseg lost my umbrella on Wednesday, 11 November 2011.",
-    "claimB": "No. I lost it on Friday.",
     "date": "11 November 2011",
     "weekday": "Friday",
     "liar": "dulamsuren",
@@ -310,16 +1218,86 @@
     "trap": {
       "date": "2 February 2012",
       "said": "Monday",
-      "weekday": "Thursday",
-      "line": "2 February 2012 was a Monday."
+      "weekday": "Thursday"
+    },
+    "lines": {
+      "announce": [
+        {
+          "who": "buu",
+          "text": "New case. Talk to Dulamsuren.",
+          "audio": "buu-7af8da7e"
+        },
+        {
+          "who": "buu",
+          "text": "New words today.",
+          "audio": "buu-7f705c1d"
+        },
+        {
+          "who": "buu",
+          "text": "2 February 2012 was a Monday.",
+          "audio": "buu-c5e8fc2a"
+        }
+      ],
+      "claimA": [
+        {
+          "who": "dulamsuren",
+          "text": "Tsetseg lost my umbrella on Wednesday, 11 November 2011.",
+          "audio": "dulamsuren-9f1b44d1"
+        }
+      ],
+      "toB": [
+        {
+          "who": "buu",
+          "text": "Now talk to Tsetseg.",
+          "audio": "buu-3b7e38d1"
+        }
+      ],
+      "wrongOrder": [
+        {
+          "who": "buu",
+          "text": "Talk to Dulamsuren first.",
+          "audio": "buu-81521a80"
+        }
+      ],
+      "claimB": [
+        {
+          "who": "tsetseg",
+          "text": "No. I lost it on Friday.",
+          "audio": "tsetseg-ee8b5065"
+        }
+      ],
+      "ask": [
+        {
+          "who": "buu",
+          "text": "Which day was 11 November 2011?",
+          "audio": "buu-ccee4764"
+        }
+      ],
+      "verdict": [
+        {
+          "who": "buu",
+          "text": "Friday. Dulamsuren lied.",
+          "audio": "buu-bea826c8"
+        },
+        {
+          "who": "buu",
+          "text": "Take 2 loaves of bread from Dulamsuren.",
+          "audio": "buu-688b90f1"
+        }
+      ],
+      "take": [
+        {
+          "who": "narrator",
+          "text": "You take 2 loaves of bread.",
+          "audio": "narrator-1db90401"
+        }
+      ]
     }
   },
   {
     "id": 15,
     "a": "tsetseg",
     "b": "ganbold",
-    "claimA": "Ganbold sang at my party on Sunday, 7 March 2021.",
-    "claimB": "No. I sang on Wednesday.",
     "date": "7 March 2021",
     "weekday": "Sunday",
     "liar": "ganbold",
@@ -334,8 +1312,80 @@
     "trap": {
       "date": "21 March 2001",
       "said": "Monday",
-      "weekday": "Wednesday",
-      "line": "21 March 2001 was a Monday."
+      "weekday": "Wednesday"
+    },
+    "lines": {
+      "announce": [
+        {
+          "who": "buu",
+          "text": "New case. Talk to Tsetseg.",
+          "audio": "buu-0d316e85"
+        },
+        {
+          "who": "buu",
+          "text": "New words today.",
+          "audio": "buu-7f705c1d"
+        },
+        {
+          "who": "buu",
+          "text": "21 March 2001 was a Monday.",
+          "audio": "buu-85c16090"
+        }
+      ],
+      "claimA": [
+        {
+          "who": "tsetseg",
+          "text": "Ganbold sang at my party on Sunday, 7 March 2021.",
+          "audio": "tsetseg-2564853d"
+        }
+      ],
+      "toB": [
+        {
+          "who": "buu",
+          "text": "Now talk to Ganbold.",
+          "audio": "buu-6fe657ad"
+        }
+      ],
+      "wrongOrder": [
+        {
+          "who": "buu",
+          "text": "Talk to Tsetseg first.",
+          "audio": "buu-8b824e97"
+        }
+      ],
+      "claimB": [
+        {
+          "who": "ganbold",
+          "text": "No. I sang on Wednesday.",
+          "audio": "ganbold-d231fe10"
+        }
+      ],
+      "ask": [
+        {
+          "who": "buu",
+          "text": "Which day was 7 March 2021?",
+          "audio": "buu-8709712b"
+        }
+      ],
+      "verdict": [
+        {
+          "who": "buu",
+          "text": "Sunday. Ganbold lied.",
+          "audio": "buu-8e3ded54"
+        },
+        {
+          "who": "buu",
+          "text": "Take 7 shells from Ganbold.",
+          "audio": "buu-0e29b2d7"
+        }
+      ],
+      "take": [
+        {
+          "who": "narrator",
+          "text": "You take 7 shells.",
+          "audio": "narrator-df0e2010"
+        }
+      ]
     }
   }
 ]

@@ -1,0 +1,16 @@
+{
+  "name": "name-keeper",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "serve . -l 3010",
+    "test": "playwright test",
+    "audio": "node scripts/make_audio.js",
+    "check": "node scripts/check_quests.js"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.63.0",
+    "serve": "14.2.4",
+    "three": "0.160.0"
+  }
+}

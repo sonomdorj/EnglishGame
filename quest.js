@@ -1,6 +1,5 @@
 import { CONFIG } from './config.js';
 import { WEEKDAYS, parseDate } from './dates.js';
-import { speak } from './tts.js';
 import { shuffle } from './learn.js';
 
 const ITEM_COLORS = { iron: 0x8a8f99, fish: 0x5aa0c8, pencil: 0xf2c94c, carrot: 0xf08a24, potato: 0xb08850,
@@ -12,14 +11,14 @@ function itemColor(penalty) {
   return 0xffffff;
 }
 
-function highlight(sentence, word) {
-  const re = new RegExp(`\\b(${word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'i');
-  return re.test(sentence) ? sentence.replace(re, '*$1*') : `${sentence} (*${word}*)`;
+// Word lesson line: the example sentence from words.json, new word marked with *...*.
+function wordLine(w) {
+  const re = new RegExp(`\\b(${w.word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'i');
+  const text = re.test(w.sentence) ? w.sentence.replace(re, '*$1*') : w.sentence;
+  return { who: 'word', text, audio: w.sentenceAudio };
 }
 
-// Judge quest flow:
-// Buu announces -> villager A claim -> villager B claim -> pick weekday -> verdict
-// -> take penalty from liar -> word check -> "Correct. Next."
+// Judge quest flow. All spoken lines come from quests.json and buu.json.
 export class QuestRunner {
   constructor(G) {
     this.G = G;
@@ -32,27 +31,14 @@ export class QuestRunner {
   }
 
   get list() { return this.G.quests; }
-  first(id) { return this.G.villagerData[id].name.split(' ')[0]; }
-
-  buu(lines, onDone) {
-    this.G.dialog.say(lines.map(t => ['Buu', t]), onDone);
-  }
+  get B() { return this.G.buuLines; }
 
   update(dt) {
     const G = this.G;
     if (this.stage === 'idle' && !G.dialog.open && !G.picker.isOpen && G.started) {
       if (!G.state.introDone) {
         this.stage = 'intro';
-        this.buu([
-          'I am Buu. I follow you.',
-          'People here lie about days.',
-          'You are the judge.',
-          'C opens the calendar.',
-          'B opens the Family Book.',
-          'Lost things hide in the village.',
-          'Sometimes I say a wrong day.',
-          'Then press F.',
-        ], () => { G.state.introDone = true; G.persist(); this.stage = 'idle'; this.timer = 0; });
+        G.dialog.say(this.B.intro, () => { G.state.introDone = true; G.persist(); this.stage = 'idle'; this.timer = 0; });
         return;
       }
       if (G.state.questsDone >= this.list.length) return;
@@ -68,59 +54,48 @@ export class QuestRunner {
     this.stage = 'toA';
     this.trapActive = true;
     this.trapCaught = false;
-    this.buu([
-      `New case. Talk to ${this.first(this.q.a)}.`,
-      `New words: ${this.newWords.map(w => w.word).join(', ')}.`,
-      this.q.trap.line,
-    ]);
+    G.dialog.say(this.q.lines.announce);
   }
 
-  wordLines(who, part) {
+  wordLines(part) {
     const half = Math.ceil(this.newWords.length / 2);
     const ws = part === 0 ? this.newWords.slice(0, half) : this.newWords.slice(half);
-    return ws.map(w => [who, highlight(w.sentence, w.word)]);
+    return ws.map(wordLine);
   }
 
   // Returns true if the quest handled this talk.
   talkVillager(id) {
     const G = this.G, q = this.q;
-    const name = G.villagerData[id].name;
     const intro = G.meet(id);
     if (!q) return false;
+    const L = q.lines;
     if (this.stage === 'toA' && id === q.a) {
-      G.dialog.say([...intro, [name, q.claimA], ...this.wordLines(name, 0)], () => {
+      G.dialog.say([...intro, ...L.claimA, ...this.wordLines(0)], () => {
         this.stage = 'toB';
-        this.buu([`Now talk to ${this.first(q.b)}.`]);
+        G.dialog.say(L.toB);
       });
       return true;
     }
     if (this.stage === 'toA' && id === q.b) {
-      G.dialog.say(intro);
-      this.buu([`Talk to ${this.first(q.a)} first.`]);
+      G.dialog.say([...intro, ...L.wrongOrder]);
       return true;
     }
     if (this.stage === 'toB' && id === q.b) {
-      G.dialog.say([...intro, [name, q.claimB], ...this.wordLines(name, 1)], () => {
+      G.dialog.say([...intro, ...L.claimB, ...this.wordLines(1)], () => {
         this.stage = 'ask';
         this.askWeekday();
       });
       return true;
     }
-    if ((this.stage === 'toB' || this.stage === 'ask') && id === q.a) {
-      G.dialog.say([...intro, [name, q.claimA]]);
-      return true;
-    }
-    if (this.stage === 'ask' && id === q.b) {
-      G.dialog.say([...intro, [name, q.claimB]]);
-      return true;
-    }
+    if ((this.stage === 'toB' || this.stage === 'ask') && id === q.a) { G.dialog.say([...intro, ...L.claimA]); return true; }
+    if (this.stage === 'ask' && id === q.b) { G.dialog.say([...intro, ...L.claimB]); return true; }
     if (this.stage === 'take' && id === q.liar) {
-      G.dialog.say([...intro, ['', `You take ${q.penalty}.`]], () => {
+      G.dialog.say([...intro, ...L.take], () => {
         G.state.items.push(q.penalty);
         G.villagers[id].setItem(null);
         G.persist();
         this.stage = 'words';
-        this.buu(['Word check. Listen.'], () => this.wordQuiz(0));
+        G.dialog.say([this.B.wordCheck], () => this.wordQuiz(0));
       });
       return true;
     }
@@ -128,16 +103,16 @@ export class QuestRunner {
   }
 
   talkBuu() {
-    const q = this.q;
+    const q = this.q, G = this.G;
     switch (this.stage) {
-      case 'toA': return this.buu([`Talk to ${this.first(q.a)}.`]);
-      case 'toB': return this.buu([`Talk to ${this.first(q.b)}.`]);
+      case 'toA': return G.dialog.say([this.B.talkTo[q.a]]);
+      case 'toB': return G.dialog.say([this.B.talkTo[q.b]]);
       case 'ask': return this.askWeekday();
-      case 'take': return this.buu([`Take ${q.penalty} from ${this.first(q.liar)}.`]);
-      case 'words': return this.buu(['Word check. Listen.'], () => this.wordQuiz(this.wordIndex || 0));
+      case 'take': return G.dialog.say([q.lines.verdict[1]]);
+      case 'words': return G.dialog.say([this.B.wordCheck], () => this.wordQuiz(this.wordIndex || 0));
       default:
-        if (this.G.state.questsDone >= this.list.length) return this.buu(['No more cases. Read letters at night.']);
-        return this.buu(['Wait. A new case comes soon.']);
+        if (G.state.questsDone >= this.list.length) return G.dialog.say([this.B.noMore]);
+        return G.dialog.say([this.B.wait]);
     }
   }
 
@@ -158,7 +133,7 @@ export class QuestRunner {
           G.learner.record(false);
           btn.classList.add('wrong');
           G.dialog.clear();
-          this.buu(['No. Look again.']);
+          G.dialog.say([this.B.noLook]);
         }
       },
     }));
@@ -166,25 +141,25 @@ export class QuestRunner {
 
   askWeekday() {
     const q = this.q;
-    this.buu([`Which day was ${q.date}?`], () => {
+    this.G.dialog.say(q.lines.ask, () => {
       if (this.stage !== 'ask') return;
       this.weekdayPicker(`Which day was ${q.date}?`, q.date, q.weekday, () => {
         this.stage = 'take';
         this.G.villagers[q.liar].setItem(itemColor(q.penalty));
-        this.buu([`${q.weekday}. ${this.first(q.liar)} lied.`, `Take ${q.penalty} from ${this.first(q.liar)}.`]);
+        this.G.dialog.say(q.lines.verdict);
       });
     });
   }
 
   // F key: the player says Buu used a wrong weekday.
   trapKey() {
-    const q = this.q;
-    if (this.trapCaught) return this.buu(['You caught me already.']);
-    if (!this.trapActive || !q) return this.buu(['I said nothing wrong.']);
-    this.weekdayPicker(`Buu said: "${q.trap.line}" Which day was it?`, q.trap.date, q.trap.weekday, () => {
+    const q = this.q, G = this.G;
+    if (this.trapCaught) return G.dialog.say([this.B.caughtAlready]);
+    if (!this.trapActive || !q) return G.dialog.say([this.B.nothingWrong]);
+    this.weekdayPicker(`Buu said: "${q.lines.announce[2].text}" Which day was it?`, q.trap.date, q.trap.weekday, () => {
       this.trapActive = false;
       this.trapCaught = true;
-      this.buu(['You are right. I am a silly panda.']);
+      G.dialog.say([this.B.silly]);
     });
   }
 
@@ -195,10 +170,11 @@ export class QuestRunner {
     if (i >= this.newWords.length) return this.finish();
     const target = this.newWords[i];
     const options = shuffle([target, ...G.learner.distractors(target, 3)]);
+    const say = () => G.voice.play({ who: 'word', text: target.word, audio: target.audio });
     G.openPanel(() => G.picker.open({
       title: 'Listen. Which word?',
       cal: null,
-      extra: [{ label: 'Listen again', onClick: () => speak(target.word) }],
+      extra: [{ label: 'Listen again', onClick: say }],
       options: options.map(w => w.word),
       onPick: (k, btn) => {
         if (options[k] === target) {
@@ -210,25 +186,24 @@ export class QuestRunner {
           G.learner.record(false);
           btn.classList.add('wrong');
           G.dialog.clear();
-          this.buu(['No. Listen again.']);
-          speak(target.word, { queue: true });
+          G.dialog.say([this.B.noListen]);
         }
       },
     }));
-    speak(target.word);
+    say();
   }
 
   finish() {
     const G = this.G;
     this.stage = 'done';
     this.trapActive = false;
-    this.buu(['Correct. Next.'], () => {
+    G.dialog.say([this.B.correctNext], () => {
       G.state.questsDone++;
       G.persist();
       this.q = null;
       this.stage = 'idle';
       this.timer = CONFIG.nextCaseDelaySec;
-      if (G.state.questsDone >= this.list.length) this.buu(['All cases closed.', 'Read the letters at night.']);
+      if (G.state.questsDone >= this.list.length) G.dialog.say(this.B.allClosed);
     });
   }
 }

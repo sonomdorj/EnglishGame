@@ -18,6 +18,24 @@ Use a recent Chrome. The game uses real shadows, so an old computer may be slow.
 
 Date engine tests: open http://localhost:3010/test_dates.html
 
+## Voices
+
+Voices are mp3 files made once with OpenAI text-to-speech:
+
+```bash
+npm install
+OPENAI_API_KEY=your-key node scripts/make_audio.js
+```
+
+Run it again after you change any line. It only downloads new lines.
+
+## Tests
+
+```bash
+npm install
+npx playwright test
+```
+
 ## Controls
 
 | Key | Action |
@@ -26,6 +44,7 @@ Date engine tests: open http://localhost:3010/test_dates.html
 | Shift | Run |
 | Mouse | Look (click the game first) |
 | Space | Jump. Next line when a dialog is open |
+| R | Replay the last line |
 | E | Talk, read a letter, take an item, pick up a lost thing, look at a wall calendar |
 | F | Buu said a wrong weekday. Correct him |
 | B | Family Book |
@@ -89,7 +108,10 @@ Rules:
 | `world.js` | Ground, houses with rooms, school, lake, farm, market, trees, collision, lost things |
 | `textures.js` | Textures drawn in code (grass, wood, wallpaper, roof tiles) |
 | `npc.js` | People with faces and joints, and Buu the panda |
-| `dialog.js`, `tts.js` | Dialog box and speech (en-US, rate 0.85) |
+| `dialog.js`, `audio.js`, `audioid.js` | Dialog box and voice files (text appears 1.5 s after the voice) |
+| `buu.json` | Every Buu line that is not part of a quest |
+| `scripts/make_audio.js` | Makes audio/<id>.mp3 for every line with OpenAI TTS |
+| `tests/` | Playwright tests (`npx playwright test`) |
 | `quest.js` | Judge quest flow and Buu's date trap |
 | `dates.js` | Weekday for any date 1900–2099 |
 | `learn.js` | Adaptive word level |

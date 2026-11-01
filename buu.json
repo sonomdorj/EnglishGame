@@ -1,0 +1,277 @@
+{
+  "intro": [
+    {
+      "who": "buu",
+      "text": "I am Buu. I follow you.",
+      "audio": "buu-65049287"
+    },
+    {
+      "who": "buu",
+      "text": "People here lie about days.",
+      "audio": "buu-2954d958"
+    },
+    {
+      "who": "buu",
+      "text": "You are the judge.",
+      "audio": "buu-57060ccc"
+    },
+    {
+      "who": "buu",
+      "text": "C opens the calendar.",
+      "audio": "buu-f23f25c0"
+    },
+    {
+      "who": "buu",
+      "text": "B opens the Family Book.",
+      "audio": "buu-513f09d0"
+    },
+    {
+      "who": "buu",
+      "text": "Lost things hide in the village.",
+      "audio": "buu-0868e14a"
+    },
+    {
+      "who": "buu",
+      "text": "Sometimes I say a wrong day.",
+      "audio": "buu-4e3c1a31"
+    },
+    {
+      "who": "buu",
+      "text": "Then press F.",
+      "audio": "buu-1767d94f"
+    }
+  ],
+  "noLook": {
+    "who": "buu",
+    "text": "No. Look again.",
+    "audio": "buu-27ed9b9f"
+  },
+  "noListen": {
+    "who": "buu",
+    "text": "No. Listen again.",
+    "audio": "buu-019675f7"
+  },
+  "silly": {
+    "who": "buu",
+    "text": "You are right. I am a silly panda.",
+    "audio": "buu-8279f9e1"
+  },
+  "nothingWrong": {
+    "who": "buu",
+    "text": "I said nothing wrong.",
+    "audio": "buu-d2985171"
+  },
+  "caughtAlready": {
+    "who": "buu",
+    "text": "You caught me already.",
+    "audio": "buu-63d6c7cc"
+  },
+  "wait": {
+    "who": "buu",
+    "text": "Wait. A new case comes soon.",
+    "audio": "buu-e65a1127"
+  },
+  "noMore": {
+    "who": "buu",
+    "text": "No more cases. Read letters at night.",
+    "audio": "buu-216d969e"
+  },
+  "allClosed": [
+    {
+      "who": "buu",
+      "text": "All cases closed.",
+      "audio": "buu-6be6b39f"
+    },
+    {
+      "who": "buu",
+      "text": "Read the letters at night.",
+      "audio": "buu-7a5f73b8"
+    }
+  ],
+  "night": {
+    "who": "buu",
+    "text": "It is night now. Be quiet.",
+    "audio": "buu-efcbce95"
+  },
+  "morning": {
+    "who": "buu",
+    "text": "Morning. The headmaster went home.",
+    "audio": "buu-40b4ac41"
+  },
+  "letterDay": {
+    "who": "buu",
+    "text": "Read it at night. Not now.",
+    "audio": "buu-f5df9a6a"
+  },
+  "wordCheck": {
+    "who": "buu",
+    "text": "Word check. Listen.",
+    "audio": "buu-cc2ec1be"
+  },
+  "correctNext": {
+    "who": "buu",
+    "text": "Correct. Next.",
+    "audio": "buu-db7b513c"
+  },
+  "talkTo": {
+    "batbayar": {
+      "who": "buu",
+      "text": "Talk to Batbayar.",
+      "audio": "buu-922257ec"
+    },
+    "dulamsuren": {
+      "who": "buu",
+      "text": "Talk to Dulamsuren.",
+      "audio": "buu-1259e00a"
+    },
+    "oyunaa": {
+      "who": "buu",
+      "text": "Talk to Oyunaa.",
+      "audio": "buu-6fd34905"
+    },
+    "enkhjargal": {
+      "who": "buu",
+      "text": "Talk to Enkhjargal.",
+      "audio": "buu-ef66eb8f"
+    },
+    "tsetseg": {
+      "who": "buu",
+      "text": "Talk to Tsetseg.",
+      "audio": "buu-3e5e0249"
+    },
+    "ganbold": {
+      "who": "buu",
+      "text": "Talk to Ganbold.",
+      "audio": "buu-4b9e2335"
+    }
+  },
+  "lost": {
+    "key": {
+      "who": "buu",
+      "text": "This is a *key*.",
+      "audio": "buu-b36b50b3"
+    },
+    "cup": {
+      "who": "buu",
+      "text": "This is a *cup*.",
+      "audio": "buu-674472a6"
+    },
+    "shoe": {
+      "who": "buu",
+      "text": "This is a *shoe*.",
+      "audio": "buu-5a1a8867"
+    },
+    "ball": {
+      "who": "buu",
+      "text": "This is a *ball*.",
+      "audio": "buu-8cbfda41"
+    },
+    "spoon": {
+      "who": "buu",
+      "text": "This is a *spoon*.",
+      "audio": "buu-69aa3fe1"
+    },
+    "book": {
+      "who": "buu",
+      "text": "This is a *book*.",
+      "audio": "buu-98422281"
+    },
+    "hat": {
+      "who": "buu",
+      "text": "This is a *hat*.",
+      "audio": "buu-9def1c39"
+    },
+    "bell": {
+      "who": "buu",
+      "text": "This is a *bell*.",
+      "audio": "buu-8ee1d4c5"
+    },
+    "coin": {
+      "who": "buu",
+      "text": "This is a *coin*.",
+      "audio": "buu-97629ca9"
+    },
+    "comb": {
+      "who": "buu",
+      "text": "This is a *comb*.",
+      "audio": "buu-cc1ce169"
+    },
+    "glove": {
+      "who": "buu",
+      "text": "This is a *glove*.",
+      "audio": "buu-9427e51d"
+    },
+    "candle": {
+      "who": "buu",
+      "text": "This is a *candle*.",
+      "audio": "buu-4e65a9b9"
+    }
+  },
+  "lostCount": [
+    {
+      "who": "buu",
+      "text": "1 of 12 lost things found.",
+      "audio": "buu-581a3643"
+    },
+    {
+      "who": "buu",
+      "text": "2 of 12 lost things found.",
+      "audio": "buu-39d26d70"
+    },
+    {
+      "who": "buu",
+      "text": "3 of 12 lost things found.",
+      "audio": "buu-f6ed87a5"
+    },
+    {
+      "who": "buu",
+      "text": "4 of 12 lost things found.",
+      "audio": "buu-aacd0a72"
+    },
+    {
+      "who": "buu",
+      "text": "5 of 12 lost things found.",
+      "audio": "buu-4f4397f7"
+    },
+    {
+      "who": "buu",
+      "text": "6 of 12 lost things found.",
+      "audio": "buu-732f5d34"
+    },
+    {
+      "who": "buu",
+      "text": "7 of 12 lost things found.",
+      "audio": "buu-e4505ed9"
+    },
+    {
+      "who": "buu",
+      "text": "8 of 12 lost things found.",
+      "audio": "buu-ec197e26"
+    },
+    {
+      "who": "buu",
+      "text": "9 of 12 lost things found.",
+      "audio": "buu-e52343eb"
+    },
+    {
+      "who": "buu",
+      "text": "10 of 12 lost things found.",
+      "audio": "buu-f6ed54a3"
+    },
+    {
+      "who": "buu",
+      "text": "11 of 12 lost things found.",
+      "audio": "buu-d1e1a8de"
+    },
+    {
+      "who": "buu",
+      "text": "12 of 12 lost things found.",
+      "audio": "buu-8daaf685"
+    }
+  ],
+  "lostAll": {
+    "who": "buu",
+    "text": "All lost things are found.",
+    "audio": "buu-760ca061"
+  }
+}

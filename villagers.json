@@ -1,14 +1,323 @@
 [
-  { "id": "batbayar", "name": "Batbayar Sonomdorj", "house": "h1", "job": "blacksmith", "birthday": "14-3-1978",
-    "father": "Sonomdorj Ganzorig", "mother": "Altantsetseg Bat", "children": ["oyunaa"] },
-  { "id": "dulamsuren", "name": "Dulamsuren Tsogt", "house": "h2", "job": "baker", "birthday": "2-9-1983",
-    "father": "Tsogt Dashdorj", "mother": "Narantuya Luvsan", "children": [] },
-  { "id": "oyunaa", "name": "Oyunaa Batbayar", "house": "h3", "job": "student", "birthday": "21-6-2014",
-    "father": "Batbayar Sonomdorj", "mother": "Saruul Bold", "children": [] },
-  { "id": "enkhjargal", "name": "Enkhjargal Dorj", "house": "h4", "job": "farmer", "birthday": "30-1-1969",
-    "father": "Dorj Purev", "mother": "Khulan Tumur", "children": ["tsetseg"] },
-  { "id": "tsetseg", "name": "Tsetseg Nyamdorj", "house": "h5", "job": "teacher", "birthday": "8-11-1991",
-    "father": "Nyamdorj Baatar", "mother": "Enkhjargal Dorj", "children": [] },
-  { "id": "ganbold", "name": "Ganbold Erdene", "house": "h6", "job": "fisherman", "birthday": "17-5-1975",
-    "father": "Erdene Damdin", "mother": "Oyun Ganbaatar", "children": [] }
+  {
+    "id": "batbayar",
+    "name": "Batbayar Sonomdorj",
+    "house": "h1",
+    "job": "blacksmith",
+    "birthday": "14-3-1978",
+    "father": "Sonomdorj Ganzorig",
+    "mother": "Altantsetseg Bat",
+    "children": [
+      "oyunaa"
+    ],
+    "lines": {
+      "intro": [
+        {
+          "who": "batbayar",
+          "text": "Hello. I am Batbayar Sonomdorj.",
+          "audio": "batbayar-37cb5ab5"
+        },
+        {
+          "who": "batbayar",
+          "text": "I am a blacksmith.",
+          "audio": "batbayar-32e40bad"
+        }
+      ],
+      "again": [
+        {
+          "who": "batbayar",
+          "text": "Hello again.",
+          "audio": "batbayar-81d82313"
+        }
+      ],
+      "talk": [
+        {
+          "who": "batbayar",
+          "text": "Iron is heavy. Fire is hot.",
+          "audio": "batbayar-bb97ff47"
+        },
+        {
+          "who": "batbayar",
+          "text": "My hammer is old.",
+          "audio": "batbayar-94a51912"
+        }
+      ]
+    }
+  },
+  {
+    "id": "dulamsuren",
+    "name": "Dulamsuren Tsogt",
+    "house": "h2",
+    "job": "baker",
+    "birthday": "2-9-1983",
+    "father": "Tsogt Dashdorj",
+    "mother": "Narantuya Luvsan",
+    "children": [],
+    "lines": {
+      "intro": [
+        {
+          "who": "dulamsuren",
+          "text": "Hello. I am Dulamsuren Tsogt.",
+          "audio": "dulamsuren-641aba81"
+        },
+        {
+          "who": "dulamsuren",
+          "text": "I am a baker.",
+          "audio": "dulamsuren-37488660"
+        }
+      ],
+      "again": [
+        {
+          "who": "dulamsuren",
+          "text": "Hello again.",
+          "audio": "dulamsuren-c846af0d"
+        }
+      ],
+      "talk": [
+        {
+          "who": "dulamsuren",
+          "text": "The oven is hot today.",
+          "audio": "dulamsuren-c6001f78"
+        },
+        {
+          "who": "dulamsuren",
+          "text": "I bake bread every morning.",
+          "audio": "dulamsuren-f7082570"
+        }
+      ]
+    }
+  },
+  {
+    "id": "oyunaa",
+    "name": "Oyunaa Batbayar",
+    "house": "h3",
+    "job": "student",
+    "birthday": "21-6-2014",
+    "father": "Batbayar Sonomdorj",
+    "mother": "Saruul Bold",
+    "children": [],
+    "lines": {
+      "intro": [
+        {
+          "who": "oyunaa",
+          "text": "Hello. I am Oyunaa Batbayar.",
+          "audio": "oyunaa-f06bb372"
+        },
+        {
+          "who": "oyunaa",
+          "text": "I am a student.",
+          "audio": "oyunaa-2d76c3ff"
+        }
+      ],
+      "again": [
+        {
+          "who": "oyunaa",
+          "text": "Hello again.",
+          "audio": "oyunaa-795b3b7a"
+        }
+      ],
+      "talk": [
+        {
+          "who": "oyunaa",
+          "text": "I like my teacher.",
+          "audio": "oyunaa-aab293f4"
+        },
+        {
+          "who": "oyunaa",
+          "text": "Buu is a silly panda.",
+          "audio": "oyunaa-da675cbe"
+        }
+      ]
+    }
+  },
+  {
+    "id": "enkhjargal",
+    "name": "Enkhjargal Dorj",
+    "house": "h4",
+    "job": "farmer",
+    "birthday": "30-1-1969",
+    "father": "Dorj Purev",
+    "mother": "Khulan Tumur",
+    "children": [
+      "tsetseg"
+    ],
+    "lines": {
+      "intro": [
+        {
+          "who": "enkhjargal",
+          "text": "Hello. I am Enkhjargal Dorj.",
+          "audio": "enkhjargal-a8f35fc3"
+        },
+        {
+          "who": "enkhjargal",
+          "text": "I am a farmer.",
+          "audio": "enkhjargal-264b4569"
+        }
+      ],
+      "again": [
+        {
+          "who": "enkhjargal",
+          "text": "Hello again.",
+          "audio": "enkhjargal-8cf8e214"
+        }
+      ],
+      "talk": [
+        {
+          "who": "enkhjargal",
+          "text": "The wheat is tall this year.",
+          "audio": "enkhjargal-470694a6"
+        },
+        {
+          "who": "enkhjargal",
+          "text": "My horse eats carrots.",
+          "audio": "enkhjargal-89371a0e"
+        }
+      ]
+    }
+  },
+  {
+    "id": "tsetseg",
+    "name": "Tsetseg Nyamdorj",
+    "house": "h5",
+    "job": "teacher",
+    "birthday": "8-11-1991",
+    "father": "Nyamdorj Baatar",
+    "mother": "Enkhjargal Dorj",
+    "children": [],
+    "lines": {
+      "intro": [
+        {
+          "who": "tsetseg",
+          "text": "Hello. I am Tsetseg Nyamdorj.",
+          "audio": "tsetseg-f56f7c82"
+        },
+        {
+          "who": "tsetseg",
+          "text": "I am a teacher.",
+          "audio": "tsetseg-cd8ec76e"
+        }
+      ],
+      "again": [
+        {
+          "who": "tsetseg",
+          "text": "Hello again.",
+          "audio": "tsetseg-96036578"
+        }
+      ],
+      "talk": [
+        {
+          "who": "tsetseg",
+          "text": "A week has seven days.",
+          "audio": "tsetseg-5e03cbdd"
+        },
+        {
+          "who": "tsetseg",
+          "text": "Read every day.",
+          "audio": "tsetseg-fbb917a7"
+        }
+      ]
+    }
+  },
+  {
+    "id": "ganbold",
+    "name": "Ganbold Erdene",
+    "house": "h6",
+    "job": "fisherman",
+    "birthday": "17-5-1975",
+    "father": "Erdene Damdin",
+    "mother": "Oyun Ganbaatar",
+    "children": [],
+    "lines": {
+      "intro": [
+        {
+          "who": "ganbold",
+          "text": "Hello. I am Ganbold Erdene.",
+          "audio": "ganbold-ec339cdf"
+        },
+        {
+          "who": "ganbold",
+          "text": "I am a fisherman.",
+          "audio": "ganbold-ae7fd0a9"
+        }
+      ],
+      "again": [
+        {
+          "who": "ganbold",
+          "text": "Hello again.",
+          "audio": "ganbold-242bee68"
+        }
+      ],
+      "talk": [
+        {
+          "who": "ganbold",
+          "text": "The lake is quiet today.",
+          "audio": "ganbold-8110af15"
+        },
+        {
+          "who": "ganbold",
+          "text": "I caught three fish.",
+          "audio": "ganbold-e95b97a7"
+        }
+      ]
+    }
+  },
+  {
+    "id": "headmaster",
+    "name": "Batsaikhan Erdene",
+    "role": "headmaster",
+    "house": null,
+    "job": "headmaster",
+    "birthday": "3-4-1972",
+    "father": "Erdene Damdin",
+    "mother": "Oyun Ganbaatar",
+    "children": [],
+    "lines": {
+      "caught": [
+        {
+          "who": "headmaster",
+          "text": "Children must sleep at night. Go home.",
+          "audio": "headmaster-066a4696"
+        },
+        {
+          "who": "headmaster",
+          "text": "It is too late to walk around. Go home.",
+          "audio": "headmaster-d62fbb58"
+        },
+        {
+          "who": "headmaster",
+          "text": "I see you. Back to the gate, please.",
+          "audio": "headmaster-cc72ce52"
+        },
+        {
+          "who": "headmaster",
+          "text": "The village is closed at night. Go home.",
+          "audio": "headmaster-3b40a782"
+        }
+      ],
+      "talkDay": [
+        {
+          "who": "headmaster",
+          "text": "Good day. I am the headmaster.",
+          "audio": "headmaster-f38b2640"
+        },
+        {
+          "who": "headmaster",
+          "text": "Children must sleep at night.",
+          "audio": "headmaster-0d6776ed"
+        }
+      ],
+      "talkNight": [
+        {
+          "who": "headmaster",
+          "text": "Why are you awake?",
+          "audio": "headmaster-92a7f0e6"
+        },
+        {
+          "who": "headmaster",
+          "text": "Children must sleep at night.",
+          "audio": "headmaster-0d6776ed"
+        }
+      ]
+    }
+  }
 ]
