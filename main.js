@@ -162,7 +162,9 @@ G.modalOpen = () => G.picker.isOpen || !G.bookEl.hidden;
 
 G.openPanel = show => {
   G.closePanels();
-  if (document.pointerLockElement) document.exitPointerLock();
+  // The game frees the mouse itself here. The pointerlockchange event comes later, maybe after the panel
+  // is closed again (fast click or number key). It must not be taken for Esc, so remember who unlocked.
+  if (document.pointerLockElement) { G.selfUnlock = true; document.exitPointerLock(); }
   show();
 };
 
@@ -293,7 +295,8 @@ function setupInput(canvas) {
   });
   document.addEventListener('pointerlockchange', () => {
     const locked = document.pointerLockElement === canvas;
-    if (locked) { G.lockedAt = performance.now(); G.paused = false; $('start').hidden = true; return; }
+    if (locked) { G.lockedAt = performance.now(); G.paused = false; G.selfUnlock = false; $('start').hidden = true; return; }
+    if (G.selfUnlock) { G.selfUnlock = false; return; } // openPanel freed the mouse, not the player
     // Lost the lock with Esc while playing: pause until the next click.
     if (G.started && !G.modalOpen()) {
       G.paused = true;

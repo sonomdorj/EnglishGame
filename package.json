@@ -4,7 +4,10 @@
   "type": "module",
   "scripts": {
     "start": "serve . -l 3010",
-    "test": "playwright test",
+    "test": "npm run test:unit && npm run test:integration && npm run test:e2e",
+    "test:unit": "node --test \"tests/unit/*.test.js\"",
+    "test:integration": "node --test \"tests/integration/*.test.js\"",
+    "test:e2e": "playwright test",
     "audio": "node scripts/make_audio.js",
     "check": "node scripts/check_quests.js"
   },

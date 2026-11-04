@@ -1367,9 +1367,9 @@
   {
     "word": "surname",
     "level": 7,
-    "sentence": "The father's name comes first.",
+    "sentence": "My surname is my family name.",
     "audio": "word-6dfa8384",
-    "sentenceAudio": "word-11819fc0"
+    "sentenceAudio": "word-b0325115"
   },
   {
     "word": "age",
@@ -1717,9 +1717,9 @@
   {
     "word": "deny",
     "level": 9,
-    "sentence": "She denies the claim.",
+    "sentence": "I deny the claim.",
     "audio": "word-8c649f99",
-    "sentenceAudio": "word-036790fa"
+    "sentenceAudio": "word-f297d657"
   },
   {
     "word": "penalty",

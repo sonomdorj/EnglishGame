@@ -10,11 +10,23 @@
       {
         "who": "letter",
         "text": "I made your first spoon from iron.",
+        "form": "past",
+        "plain": {
+          "who": "letter",
+          "text": "Your first spoon is from my iron.",
+          "audio": "letter-b878e5a3"
+        },
         "audio": "letter-9910cc2f"
       },
       {
         "who": "letter",
         "text": "You were very small.",
+        "form": "past",
+        "plain": {
+          "who": "letter",
+          "text": "You are still small to me.",
+          "audio": "letter-1ee5d866"
+        },
         "audio": "letter-854ad3bc"
       },
       {
@@ -70,6 +82,12 @@
       {
         "who": "letter",
         "text": "Today I fed the cat.",
+        "form": "past",
+        "plain": {
+          "who": "letter",
+          "text": "Today I feed the cat.",
+          "audio": "letter-b9c4b034"
+        },
         "audio": "letter-6d3a0397"
       },
       {
@@ -85,6 +103,12 @@
       {
         "who": "letter",
         "text": "Dad promised. I remember.",
+        "form": "past",
+        "plain": {
+          "who": "letter",
+          "text": "Dad has a promise. I remember.",
+          "audio": "letter-72ee4de0"
+        },
         "audio": "letter-f85edefb"
       }
     ]
@@ -105,6 +129,12 @@
       {
         "who": "letter",
         "text": "Your father was proud of you.",
+        "form": "past",
+        "plain": {
+          "who": "letter",
+          "text": "Your father is proud of you.",
+          "audio": "letter-efb38d4c"
+        },
         "audio": "letter-b7fa0fbd"
       },
       {

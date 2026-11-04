@@ -38,6 +38,8 @@ export async function faceNpc(page, id) {
   for (let t = 0; t < 30000; t += 150) {
     await drain(page);
     const ok = await page.evaluate(id => {
+      // A slow test machine can reach night here. At night the headmaster catches a player next to him. Stay in the day.
+      if (game.dayNight.t > 200) game.dayNight.t = 60;
       const npc = id === 'headmaster' ? game.headmaster.npc : game.villagers[id];
       const v = npc.group.position;
       const sx = v.x < 0 ? 1 : -1;
@@ -53,23 +55,20 @@ export async function faceNpc(page, id) {
   throw new Error(`not looking at ${id}`);
 }
 
-// Wait until the player looks at the target. Closes open dialog lines first (the player cannot look while one is open).
-async function waitLook(page, id) {
+// Buu walks after the player, so aim again on every try.
+export async function faceBuu(page) {
   for (let t = 0; t < 30000; t += 100) {
     await drain(page);
-    if (await page.evaluate(id => game.lookingAt && (game.lookingAt.id === id || game.lookingAt.kind === id), id)) return;
+    const ok = await page.evaluate(() => {
+      const b = game.buuBody.pos, p = game.player.pos;
+      game.yaw = Math.atan2(-(b.x - p.x), -(b.z - p.z));
+      game.pitch = -0.35;
+      return game.lookingAt?.kind === 'buu';
+    });
+    if (ok) return;
     await sleep(100);
   }
-  throw new Error(`not looking at ${id}`);
-}
-
-export async function faceBuu(page) {
-  await page.evaluate(() => {
-    const b = game.buuBody.pos, p = game.player.pos;
-    game.yaw = Math.atan2(-(b.x - p.x), -(b.z - p.z));
-    game.pitch = -0.35;
-  });
-  await waitLook(page, 'buu');
+  throw new Error('not looking at buu');
 }
 
 export async function clickOption(page, text) {

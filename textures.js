@@ -83,7 +83,7 @@ export const TEX = {
       g.save(); g.translate(r() * w, r() * h); g.fillStyle = grd; g.fillRect(-30, -30, 60, 60); g.restore();
     }
   }, 16)),
-  wallpaper: (a, b) => cached(`wp${a}${b}`, () => make(256, 256, (g, w, h, r) => {
+  wallpaper: (a, b) => cached(`wp${a}-${b}`, () => make(256, 256, (g, w, h, r) => {
     speckle(g, w, h, r, a, 1500, 0.1, 3);
     g.fillStyle = hex(b);
     for (let y = 0; y < h; y += 32) for (let x = (y / 32) % 2 * 16; x < w; x += 32) {

@@ -33,8 +33,16 @@ Run it again after you change any line. It only downloads new lines.
 
 ```bash
 npm install
-npx playwright test
+npm test
 ```
+
+`npm test` runs three groups. You can run each one alone:
+
+| Command | What it tests | Time |
+| --- | --- | --- |
+| `npm run test:unit` | Every module alone, in Node (`tests/unit/`). A small fake DOM replaces the browser. | about 5 s |
+| `npm run test:integration` | The real modules wired together like `main.js` does it, in Node (`tests/integration/`). | about 3 s |
+| `npm run test:e2e` | The real game in Chromium with Playwright (`tests/*.spec.js`). | about 10 min |
 
 ## Controls
 

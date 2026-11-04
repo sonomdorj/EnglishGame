@@ -22,8 +22,8 @@
     },
     {
       "who": "buu",
-      "text": "Lost things hide in the village.",
-      "audio": "buu-0868e14a"
+      "text": "Some things hide in the village.",
+      "audio": "buu-d3f910ec"
     },
     {
       "who": "buu",
@@ -43,8 +43,8 @@
   },
   "nothingWrong": {
     "who": "buu",
-    "text": "I said nothing wrong.",
-    "audio": "buu-d2985171"
+    "text": "I say nothing wrong.",
+    "audio": "buu-5022835b"
   },
   "caughtAlready": {
     "who": "buu",
@@ -64,8 +64,8 @@
   "allClosed": [
     {
       "who": "buu",
-      "text": "All cases closed.",
-      "audio": "buu-6be6b39f"
+      "text": "All cases are done.",
+      "audio": "buu-a5c97c05"
     },
     {
       "who": "buu",
@@ -80,8 +80,8 @@
   },
   "morning": {
     "who": "buu",
-    "text": "Morning. The headmaster went home.",
-    "audio": "buu-40b4ac41"
+    "text": "Morning. The headmaster is home now.",
+    "audio": "buu-3821f3ff"
   },
   "letterDay": {
     "who": "buu",
@@ -297,69 +297,69 @@
   "lostCount": [
     {
       "who": "buu",
-      "text": "1 of 12 lost things found.",
-      "audio": "buu-581a3643"
+      "text": "You have 1 of 12 things.",
+      "audio": "buu-10f9a728"
     },
     {
       "who": "buu",
-      "text": "2 of 12 lost things found.",
-      "audio": "buu-39d26d70"
+      "text": "You have 2 of 12 things.",
+      "audio": "buu-4afc498d"
     },
     {
       "who": "buu",
-      "text": "3 of 12 lost things found.",
-      "audio": "buu-f6ed87a5"
+      "text": "You have 3 of 12 things.",
+      "audio": "buu-82b450d6"
     },
     {
       "who": "buu",
-      "text": "4 of 12 lost things found.",
-      "audio": "buu-aacd0a72"
+      "text": "You have 4 of 12 things.",
+      "audio": "buu-9a17a513"
     },
     {
       "who": "buu",
-      "text": "5 of 12 lost things found.",
-      "audio": "buu-4f4397f7"
+      "text": "You have 5 of 12 things.",
+      "audio": "buu-cc30b564"
     },
     {
       "who": "buu",
-      "text": "6 of 12 lost things found.",
-      "audio": "buu-732f5d34"
+      "text": "You have 6 of 12 things.",
+      "audio": "buu-2d431f79"
     },
     {
       "who": "buu",
-      "text": "7 of 12 lost things found.",
-      "audio": "buu-e4505ed9"
+      "text": "You have 7 of 12 things.",
+      "audio": "buu-e2764942"
     },
     {
       "who": "buu",
-      "text": "8 of 12 lost things found.",
-      "audio": "buu-ec197e26"
+      "text": "You have 8 of 12 things.",
+      "audio": "buu-38c2bd2f"
     },
     {
       "who": "buu",
-      "text": "9 of 12 lost things found.",
-      "audio": "buu-e52343eb"
+      "text": "You have 9 of 12 things.",
+      "audio": "buu-394d30c0"
     },
     {
       "who": "buu",
-      "text": "10 of 12 lost things found.",
-      "audio": "buu-f6ed54a3"
+      "text": "You have 10 of 12 things.",
+      "audio": "buu-2d2807ae"
     },
     {
       "who": "buu",
-      "text": "11 of 12 lost things found.",
-      "audio": "buu-d1e1a8de"
+      "text": "You have 11 of 12 things.",
+      "audio": "buu-806676a5"
     },
     {
       "who": "buu",
-      "text": "12 of 12 lost things found.",
-      "audio": "buu-8daaf685"
+      "text": "You have 12 of 12 things.",
+      "audio": "buu-e0a96920"
     }
   ],
   "lostAll": {
     "who": "buu",
-    "text": "All lost things are found.",
-    "audio": "buu-760ca061"
+    "text": "You have all 12 things.",
+    "audio": "buu-89a7f905"
   },
   "bring": {
     "cup": {

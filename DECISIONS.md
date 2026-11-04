@@ -74,3 +74,11 @@
 66. Arc 3 uses the headmaster as villager A or B in every quest. Arc 5 uses him twice. He can be talked to in quests (E).
 67. report.json: a web page served by `npx serve` cannot write files. At every quest end the game adds one entry to localStorage key "report.json" (the full JSON text). The tests save it to test-results/report.json. Entry: quest, title, arc, time, game day, right/wrong answers in the quest, level, known words, grammar unlocked, catches, nicknames.
 68. The 1.5 s text delay is proven on tests/dialog_timing.html (real Dialog and Voice classes, no 3D scene): 1500-1507 ms. Inside the full game on a slow test machine, rendering can delay the timer.
+
+## Tests (Day 11)
+
+69. Three test groups: `tests/unit` (each module alone, Node), `tests/integration` (modules wired like `main.js`, Node), `tests/*.spec.js` (the real game, Playwright). Node tests use a small fake DOM (`tests/unit/fake-dom.js`), so the 3D village is built without a browser. No new npm packages.
+70. `make_audio.js` is tested with a fake OpenAI endpoint (`tests/unit/stub-openai.mjs`). No request leaves the machine.
+71. Fixed: the first talk to a villager outside a case said "Hello again." (the quest code used up the introduction). Fixed: words "surname" and "deny" had example sentences without the word. Fixed: two wallpaper color pairs could share one texture.
+72. Buu's lines in `buu.json` can be said from arc 1, so they are now present tense ("Morning. The headmaster is home now.", "You have 3 of 12 things."). Letters and the headmaster's "closed" line keep their past text with `form: "past"` and a plain present version, like quest lines. `check_quests.js` now checks the grammar of `buu.json`, `villagers.json` and `letters.json` too (past and because/so need a form and a plain version, Buu max 8 words, audio ids). `words.json` is not checked: quest.js says only the word when its sentence uses a locked form.
+73. Fixed: when a panel opened and closed before the browser's pointerlockchange event arrived (fast click or number key), the game took it for Esc and paused. `openPanel` now marks its own unlock, and that event does not pause.
