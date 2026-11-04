@@ -16,8 +16,9 @@ test('text appears 1.5 s after the voice starts; R replays', async ({ page }) =>
   await page.waitForFunction(() => game.dialog.textVisible, null, { timeout: 10000 });
   const gap = await page.evaluate(() => game.dialog.shownAt - game.dialog.voiceStartAt);
   console.log(`text shown ${Math.round(gap)} ms after voice start`);
+  // The first line runs while the GPU compiles shaders, so a slow test machine can delay its timer a lot.
+  // Only the lower bound is checked here; the upper bound is checked on the replay below (warm scene).
   expect(gap).toBeGreaterThanOrEqual(1490);
-  expect(gap).toBeLessThan(6000); // upper bound only guards against a stuck timer on a busy test machine
   // Press R and read the result in the same step.
   const r = await page.evaluate(() => {
     const before = game.voice.log.length, line = game.dialog.current;
@@ -30,6 +31,10 @@ test('text appears 1.5 s after the voice starts; R replays', async ({ page }) =>
   expect(r.hidden).toBe(true);
   expect(r.replayedId).toBe(r.lineId);
   await page.waitForFunction(() => game.dialog.textVisible, null, { timeout: 10000 });
+  const replayGap = await page.evaluate(() => game.dialog.shownAt - game.dialog.voiceStartAt);
+  console.log(`replay: text shown ${Math.round(replayGap)} ms after voice start`);
+  expect(replayGap).toBeGreaterThanOrEqual(1490);
+  expect(replayGap).toBeLessThan(6000); // guards against a stuck timer only; exact timing is in dialog.spec.js
   await drain(page);
   expect(problems).toEqual([]);
 });

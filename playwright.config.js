@@ -2,6 +2,7 @@ import { defineConfig } from '@playwright/test';
 
 export default defineConfig({
   testDir: './tests',
+  testMatch: '*.spec.js', // tests/unit and tests/integration run with node --test
   timeout: 15 * 60 * 1000,
   workers: 1,
   reporter: 'list',

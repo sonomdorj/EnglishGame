@@ -71,31 +71,32 @@ export class QuestRunner {
   // Returns true if the quest handled this talk.
   talkVillager(id) {
     const G = this.G, q = this.q;
-    const intro = G.meet(id);
     if (!q) return false;
+    // Meet only when the quest handles this talk. Otherwise main.js says the introduction.
+    const intro = () => G.meet(id);
     const L = q.lines;
     if (this.stage === 'toA' && id === q.a) {
-      G.dialog.say([...intro, ...L.claimA, ...this.wordLines(0)], () => {
+      G.dialog.say([...intro(), ...L.claimA, ...this.wordLines(0)], () => {
         this.stage = 'toB';
         G.dialog.say(L.toB);
       });
       return true;
     }
     if (this.stage === 'toA' && id === q.b) {
-      G.dialog.say([...intro, ...L.wrongOrder]);
+      G.dialog.say([...intro(), ...L.wrongOrder]);
       return true;
     }
     if (this.stage === 'toB' && id === q.b) {
-      G.dialog.say([...intro, ...L.claimB, ...this.wordLines(1)], () => {
+      G.dialog.say([...intro(), ...L.claimB, ...this.wordLines(1)], () => {
         this.stage = 'ask';
         this.askWeekday();
       });
       return true;
     }
-    if ((this.stage === 'toB' || this.stage === 'ask') && id === q.a) { G.dialog.say([...intro, ...L.claimA]); return true; }
-    if (this.stage === 'ask' && id === q.b) { G.dialog.say([...intro, ...L.claimB]); return true; }
+    if ((this.stage === 'toB' || this.stage === 'ask') && id === q.a) { G.dialog.say([...intro(), ...L.claimA]); return true; }
+    if (this.stage === 'ask' && id === q.b) { G.dialog.say([...intro(), ...L.claimB]); return true; }
     if (this.stage === 'take' && id === q.liar) {
-      G.dialog.say([...intro, ...L.take], () => {
+      G.dialog.say([...intro(), ...L.take], () => {
         G.state.items.push(q.penalty);
         G.villagers[id]?.setItem(null);
         G.headmaster.npc.setItem(null);
