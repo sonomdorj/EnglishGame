@@ -248,3 +248,21 @@ test('progress is saved and restored after a reload', async ({ page }) => {
   expect(s.introDone).toBe(true);
   expect(problems).toEqual([]);
 });
+
+test('a panel closed before the mouse unlock event arrives does not pause the game', async ({ page }) => {
+  const problems = await quietGame(page);
+  await page.waitForFunction(() => !!document.pointerLockElement, null, { timeout: 10000 });
+  // Open and close in one step: the pointerlockchange event comes after the panel is closed.
+  await page.evaluate(() => { game.openPanel(() => game.picker.open({ title: 't', options: ['a'] })); game.picker.close(); });
+  await page.waitForFunction(() => !document.pointerLockElement);
+  await sleep(300);
+  expect(await page.evaluate(() => game.paused)).toBe(false);
+  expect(await page.isVisible('#start')).toBe(false);
+  // Esc (the browser frees the mouse, not the game) still pauses.
+  await page.mouse.click(400, 225);
+  await page.waitForFunction(() => !!document.pointerLockElement, null, { timeout: 10000 });
+  await page.evaluate(() => document.exitPointerLock());
+  await page.waitForFunction(() => game.paused === true, null, { timeout: 5000 });
+  expect(await page.isVisible('#start')).toBe(true);
+  expect(problems).toEqual([]);
+});
