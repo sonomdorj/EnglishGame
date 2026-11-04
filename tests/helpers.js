@@ -55,23 +55,20 @@ export async function faceNpc(page, id) {
   throw new Error(`not looking at ${id}`);
 }
 
-// Wait until the player looks at the target. Closes open dialog lines first (the player cannot look while one is open).
-async function waitLook(page, id) {
+// Buu walks after the player, so aim again on every try.
+export async function faceBuu(page) {
   for (let t = 0; t < 30000; t += 100) {
     await drain(page);
-    if (await page.evaluate(id => game.lookingAt && (game.lookingAt.id === id || game.lookingAt.kind === id), id)) return;
+    const ok = await page.evaluate(() => {
+      const b = game.buuBody.pos, p = game.player.pos;
+      game.yaw = Math.atan2(-(b.x - p.x), -(b.z - p.z));
+      game.pitch = -0.35;
+      return game.lookingAt?.kind === 'buu';
+    });
+    if (ok) return;
     await sleep(100);
   }
-  throw new Error(`not looking at ${id}`);
-}
-
-export async function faceBuu(page) {
-  await page.evaluate(() => {
-    const b = game.buuBody.pos, p = game.player.pos;
-    game.yaw = Math.atan2(-(b.x - p.x), -(b.z - p.z));
-    game.pitch = -0.35;
-  });
-  await waitLook(page, 'buu');
+  throw new Error('not looking at buu');
 }
 
 export async function clickOption(page, text) {
