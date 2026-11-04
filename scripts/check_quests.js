@@ -1,4 +1,4 @@
-// Checks quests.json. Exits 0 only if every rule holds.
+// Checks quests.json and the grammar of every dialog file. Exits 0 only if every rule holds.
 //   node scripts/check_quests.js
 import fs from 'fs';
 import path from 'path';
@@ -100,11 +100,45 @@ quests.forEach((q, i) => {
 });
 if (new Set(titles).size !== titles.length) errors.push('case titles are not unique');
 
+// Other dialog files. Their lines can be said in any arc, also arc 1. So a line with past tense or
+// because/so needs a "form" and a plain version without it (the game says the plain one until the form unlocks).
+// words.json is not here: quest.js says only the word when its sentence uses a locked form.
+const DIALOG = ['buu.json', 'villagers.json', 'letters.json'];
+const other = { lines: 0, gated: 0 };
+function checkLine(f, l, form) {
+  other.lines++;
+  const bad = msg => errors.push(`${f}: ${msg}: "${l.text}"`);
+  if (l.audio !== audioId(l.who, l.text)) bad('missing or old audio id');
+  if (f === 'buu.json' && l.who === 'buu' && wordCount(l.text) > 8) bad('Buu line over 8 words');
+  const past = hasPast(l.text), cause = hasCause(l.text);
+  if (past && form !== 'past' && form !== 'cause') bad('past tense line without form "past"');
+  if (cause && form !== 'cause') bad('because/so line without form "cause"');
+  if (l.form && !['past', 'cause'].includes(l.form)) bad(`unknown form "${l.form}"`);
+  if (l.form) {
+    other.gated++;
+    if (!l.plain || hasPast(l.plain.text) || hasCause(l.plain.text)) bad('plain version missing or not plain');
+  }
+}
+function walkDialog(f, node, form = null) {
+  if (Array.isArray(node)) return node.forEach(n => walkDialog(f, n, form));
+  if (!node || typeof node !== 'object') return;
+  if (typeof node.who === 'string' && typeof node.text === 'string') {
+    const own = node.form || form;
+    checkLine(f, node, own);
+    if (node.plain) walkDialog(f, node.plain, null);          // the plain version must stand alone
+    for (const n of Object.values(node.nick || {})) walkDialog(f, n, own); // nickname versions share the form
+    return;
+  }
+  for (const v of Object.values(node)) walkDialog(f, v, form);
+}
+for (const f of DIALOG) walkDialog(f, read(f));
+
 for (let a = 1; a <= 5; a++) {
   const s = stats[a];
   console.log(`arc ${a} ${ARCS[a - 1].padEnd(24)} max words ${String(s.maxWords).padStart(2)} / ${ARC_LIMIT[a]}  past lines ${String(s.past || 0).padStart(3)}  because/so lines ${String(s.cause || 0).padStart(3)}  min known words ${(s.minShare * 100).toFixed(1)}%`);
 }
 console.log(`quests: ${quests.length}`);
+console.log(`other dialog lines (${DIALOG.join(', ')}): ${other.lines}, with a gated form: ${other.gated}`);
 if (errors.length) {
   console.log(`FAILED: ${errors.length} problem(s)`);
   for (const e of errors) console.log('  ' + e);

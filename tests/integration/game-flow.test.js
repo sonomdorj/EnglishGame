@@ -211,6 +211,27 @@ test('arc 4: past tense lines are said only after 5 correct answers in a row', (
   drain(G);
 });
 
+test('letters and villager lines: plain present version until past tense unlocks', () => {
+  const G = boot();
+  const letters = readJSON('letters.json');
+  const h1 = letters.find(l => l.house === 'h1').lines;
+  const gated = h1.find(l => l.form === 'past');
+  assert.ok(gated, 'letter h1 has a gated line');
+  G.dialog.say(h1);
+  const before = drain(G);
+  assert.ok(before.includes(gated.plain.text));
+  assert.ok(!before.includes(gated.text));
+  const caught = G.people.headmaster.lines.caught.find(l => l.form === 'past');
+  G.dialog.say([caught]);
+  assert.equal(drain(G)[0], caught.plain.text);
+  G.state.grammar.past = true;
+  G.dialog.say(h1);
+  const after = drain(G);
+  assert.ok(after.includes(gated.text));
+  G.dialog.say([caught]);
+  assert.equal(drain(G)[0], caught.text);
+});
+
 test('2 wrong weekday answers: level down and the next case reuses known words', () => {
   localStorage.setItem('nameKeeper.save.v1', JSON.stringify({ introDone: true, level: 3 }));
   const G = boot();

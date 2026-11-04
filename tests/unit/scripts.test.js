@@ -156,13 +156,13 @@ test('check_quests: OK on the real data', () => {
   assert.match(out, /quests: 50/);
 });
 
-// Breaks quests.json in the sandbox in one way and expects check_quests to fail with `msg`.
-function brokenCheck(edit, msg) {
-  const q = readJSON('quests.json');
+// Breaks one data file in the sandbox in one way and expects check_quests to fail with `msg`.
+function brokenCheck(edit, msg, file = 'quests.json') {
+  const q = readJSON(file);
   edit(q);
-  fs.writeFileSync(path.join(box, 'quests.json'), JSON.stringify(q));
+  fs.writeFileSync(path.join(box, file), JSON.stringify(q));
   const r = node(box, ['scripts/check_quests.js']);
-  fs.copyFileSync(path.join(ROOT, 'quests.json'), path.join(box, 'quests.json'));
+  fs.copyFileSync(path.join(ROOT, file), path.join(box, file));
   assert.equal(r.status, 1, r.stdout);
   assert.match(r.stdout, /FAILED/);
   assert.match(r.stdout, msg);
@@ -185,4 +185,35 @@ test('check_quests catches a long line, an old audio id and past tense too early
 test('check_quests catches a wrong quest count and duplicate titles', () => {
   brokenCheck(q => q.pop(), /expected 50 quests, found 49/);
   brokenCheck(q => { q[1].title = q[0].title; }, /case titles are not unique/);
+});
+
+// A line with a new text and a matching audio id, so only the grammar rule can fail.
+const said = (l, text) => { l.text = text; l.audio = audioId(l.who, text); delete l.form; delete l.plain; };
+
+test('check_quests: other dialog files are checked too', () => {
+  const out = execFileSync(process.execPath, ['scripts/check_quests.js'], { cwd: ROOT, encoding: 'utf8' });
+  assert.match(out, /other dialog lines \(buu\.json, villagers\.json, letters\.json\): \d+, with a gated form: 6/);
+});
+
+test('check_quests catches past tense in buu.json (said from arc 1)', () => {
+  brokenCheck(b => said(b.morning, 'Morning. The headmaster went home.'), /buu\.json: past tense line without form "past": "Morning\. The headmaster went home\."/, 'buu.json');
+  brokenCheck(b => said(b.nothingWrong, 'I said nothing wrong.'), /buu\.json: past tense line without form "past"/, 'buu.json');
+});
+
+test('check_quests catches because/so, long Buu lines and old audio ids in buu.json', () => {
+  brokenCheck(b => said(b.wait, 'Wait, because I am slow.'), /buu\.json: because\/so line without form "cause"/, 'buu.json');
+  brokenCheck(b => said(b.wait, 'One two three four five six seven eight nine.'), /buu\.json: Buu line over 8 words/, 'buu.json');
+  brokenCheck(b => { b.wait.audio = 'x'; }, /buu\.json: missing or old audio id/, 'buu.json');
+});
+
+test('check_quests catches past tense in letters and villager lines', () => {
+  brokenCheck(L => said(L[0].lines[1], 'I made your first spoon from iron.'), /letters\.json: past tense line without form "past"/, 'letters.json');
+  brokenCheck(V => said(V.find(v => v.id === 'oyunaa').lines.talk[0], 'I lost my doll.'), /villagers\.json: past tense line without form "past"/, 'villagers.json');
+});
+
+test('check_quests catches a gated line whose plain version is missing or not plain', () => {
+  const gated = L => L[0].lines.find(l => l.form);
+  brokenCheck(L => { delete gated(L).plain; }, /letters\.json: plain version missing or not plain/, 'letters.json');
+  brokenCheck(L => { const p = gated(L).plain; p.text = 'I made it.'; p.audio = audioId(p.who, p.text); }, /letters\.json: (plain version missing or not plain|past tense line without form)/, 'letters.json');
+  brokenCheck(L => { gated(L).form = 'future'; }, /letters\.json: unknown form "future"/, 'letters.json');
 });

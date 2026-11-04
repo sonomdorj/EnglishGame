@@ -357,6 +357,12 @@
         {
           "who": "headmaster",
           "text": "The village is closed at night. Go home.",
+          "form": "past",
+          "plain": {
+            "who": "headmaster",
+            "text": "Everyone sleeps at night. Go home.",
+            "audio": "headmaster-d90f398e"
+          },
           "audio": "headmaster-3b40a782"
         }
       ],

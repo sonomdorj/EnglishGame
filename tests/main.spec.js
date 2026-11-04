@@ -127,7 +127,7 @@ test('lost thing: E picks it up, Buu names it, it is counted and saved', async (
   await key(page, 'KeyE');
   expect(await page.evaluate(() => game.dialog.current.text)).toBe(await page.evaluate(() => game.buuLines.lost.key.text));
   await key(page, 'Space');
-  expect(await page.evaluate(() => game.dialog.current.text)).toBe('1 of 12 lost things found.');
+  expect(await page.evaluate(() => game.dialog.current.text)).toBe('You have 1 of 12 things.');
   await drain(page);
   expect(await page.evaluate(() => game.state.found)).toEqual(['key']);
   expect(await page.evaluate(() => game.world.items.find(i => i.name === 'key').group.visible)).toBe(false);
@@ -177,7 +177,7 @@ test('Buu says when night starts and when morning comes', async ({ page }) => {
   // Move the player away from the headmaster's road, then end the night.
   await page.evaluate(() => { game.teleportPlayer({ x: -40, y: 0, z: 40, yaw: 0 }); game.dayNight.t = 359.9; });
   await page.waitForFunction(() => game.dialog.open && !game.dayNight.isNight, null, { timeout: 10000 });
-  expect(await page.evaluate(() => game.dialog.current.text)).toBe('Morning. The headmaster went home.');
+  expect(await page.evaluate(() => game.dialog.current.text)).toBe('Morning. The headmaster is home now.');
   await drain(page);
   expect(problems).toEqual([]);
 });
