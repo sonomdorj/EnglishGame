@@ -107,10 +107,14 @@ test('W walks forward, Shift runs faster; nothing moves while a dialog is open',
 
 test('Space jumps', async ({ page }) => {
   const problems = await quietGame(page);
+  // Record the highest point often, so a slow frame rate cannot hide the jump.
+  await page.evaluate(() => { game.maxY = 0; setInterval(() => { game.maxY = Math.max(game.maxY, game.player.pos.y); }, 5); });
   await page.waitForFunction(() => game.player.onGround);
   await page.keyboard.press('Space');
-  await page.waitForFunction(() => game.player.pos.y > 0.3, null, { timeout: 5000 });
-  await page.waitForFunction(() => game.player.onGround && game.player.pos.y === 0, null, { timeout: 5000 });
+  await page.waitForFunction(() => game.maxY > 0.3, null, { timeout: 20000 });
+  await page.waitForFunction(() => game.player.onGround && game.player.pos.y === 0, null, { timeout: 20000 });
+  const top = await page.evaluate(() => game.maxY);
+  expect(top).toBeLessThan(0.9); // jumpSpeed 5.5, gravity 18: peak 0.84 m
   expect(problems).toEqual([]);
 });
 
