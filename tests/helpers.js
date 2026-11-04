@@ -38,6 +38,8 @@ export async function faceNpc(page, id) {
   for (let t = 0; t < 30000; t += 150) {
     await drain(page);
     const ok = await page.evaluate(id => {
+      // A slow test machine can reach night here. At night the headmaster catches a player next to him. Stay in the day.
+      if (game.dayNight.t > 200) game.dayNight.t = 60;
       const npc = id === 'headmaster' ? game.headmaster.npc : game.villagers[id];
       const v = npc.group.position;
       const sx = v.x < 0 ? 1 : -1;
