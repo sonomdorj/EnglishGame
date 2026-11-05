@@ -169,11 +169,32 @@ test('missingFishVoices: placeholders and empty IDs, only for speakers that have
 
 const FISH = { TTS_PROVIDER: 'fish', FISH_API_KEY: 'fish-test-key', OPENAI_API_KEY: '' };
 
+// Writes voice IDs into the sandbox copy of fish_voices.json. edit(raw) changes the parsed file.
+function withFishVoices(edit, fn) {
+  const file = path.join(box, 'scripts/fish_voices.json');
+  const raw = JSON.parse(fs.readFileSync(file, 'utf8'));
+  edit(raw);
+  fs.writeFileSync(file, JSON.stringify(raw));
+  try { return fn(); } finally {
+    fs.copyFileSync(path.join(ROOT, 'scripts/fish_voices.json'), file);
+    fs.rmSync(path.join(box, 'audio'), { recursive: true, force: true });
+    fs.copyFileSync(path.join(ROOT, 'audio_manifest.json'), path.join(box, 'audio_manifest.json'));
+  }
+}
+const allVoices = raw => { for (const k of Object.keys(raw)) if (!k.startsWith('_')) raw[k] = `voice-${k}`; };
+
 test('make_audio (fish): placeholder voice IDs stop it before any request', () => {
-  const r = node(box, ['--import', STUB, 'scripts/make_audio.js'], { ...FISH, STUB_TTS: 'ok' });
-  assert.equal(r.status, 2, r.stdout + r.stderr);
-  assert.match(r.stderr, /Fish voice IDs missing in scripts\/fish_voices\.json for: .*buu/);
-  assert.equal(fs.existsSync(path.join(box, 'audio')), false);
+  withFishVoices(raw => { allVoices(raw); raw.buu = 'REPLACE_ME_BUU'; raw.reader = ''; }, () => {
+    const r = node(box, ['--import', STUB, 'scripts/make_audio.js'], { ...FISH, STUB_TTS: 'ok' });
+    assert.equal(r.status, 2, r.stdout + r.stderr);
+    assert.match(r.stderr, /Fish voice IDs missing in scripts\/fish_voices\.json for: buu, letter, word\./);
+    assert.equal(fs.existsSync(path.join(box, 'audio')), false);
+  });
+});
+
+test('fish_voices.json: every committed voice ID is a real ID (32 hex characters)', () => {
+  const v = fishVoices();
+  for (const [who, id] of Object.entries(v)) assert.match(id, /^[0-9a-f]{32}$/, who);
 });
 
 test('make_audio (fish): no FISH_API_KEY = exit 2; unknown provider = exit 2', () => {
@@ -186,11 +207,7 @@ test('make_audio (fish): no FISH_API_KEY = exit 2; unknown provider = exit 2', (
 });
 
 test('make_audio (fish): with voice IDs, one mp3 per line in the right voice', () => {
-  const file = path.join(box, 'scripts/fish_voices.json');
-  const raw = JSON.parse(fs.readFileSync(file, 'utf8'));
-  for (const k of Object.keys(raw)) if (k !== '_help') raw[k] = `voice-${k}`;
-  fs.writeFileSync(file, JSON.stringify(raw));
-  try {
+  withFishVoices(allVoices, () => {
     const r = node(box, ['--import', STUB, 'scripts/make_audio.js'], { ...FISH, STUB_TTS: 'ok', FISH_MODEL: 's1' });
     assert.equal(r.status, 0, r.stdout + r.stderr);
     assert.match(r.stdout, /Provider: fish \(model s1\)/);
@@ -203,26 +220,15 @@ test('make_audio (fish): with voice IDs, one mp3 per line in the right voice', (
     assert.equal(voiceOf('headmaster'), 'voice-headmaster');
     assert.equal(voiceOf('letter'), 'voice-reader');
     assert.equal(voiceOf('word'), 'voice-reader');
-  } finally {
-    fs.copyFileSync(path.join(ROOT, 'scripts/fish_voices.json'), file);
-    fs.rmSync(path.join(box, 'audio'), { recursive: true, force: true });
-    fs.copyFileSync(path.join(ROOT, 'audio_manifest.json'), path.join(box, 'audio_manifest.json'));
-  }
+  });
 });
 
 test('make_audio (fish): a refused key stops with exit 1 and the API message', () => {
-  const file = path.join(box, 'scripts/fish_voices.json');
-  const raw = JSON.parse(fs.readFileSync(file, 'utf8'));
-  for (const k of Object.keys(raw)) if (k !== '_help') raw[k] = `voice-${k}`;
-  fs.writeFileSync(file, JSON.stringify(raw));
-  try {
+  withFishVoices(allVoices, () => {
     const r = node(box, ['--import', STUB, 'scripts/make_audio.js'], { ...FISH, STUB_TTS: '401' });
     assert.equal(r.status, 1);
     assert.match(r.stderr, /TTS 401 for .*: bad key/);
-  } finally {
-    fs.copyFileSync(path.join(ROOT, 'scripts/fish_voices.json'), file);
-    fs.rmSync(path.join(box, 'audio'), { recursive: true, force: true });
-  }
+  });
 });
 
 test('check_quests: OK on the real data', () => {
