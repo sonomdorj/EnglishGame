@@ -1,13 +1,25 @@
 {
-  "_help": "Fish Audio voice model IDs (reference_id). Copy each ID from https://fish.audio (the voice page URL or 'Copy ID'). Replace every REPLACE_ME value. letter and word use the reader voice.",
-  "buu": "REPLACE_ME_BUU",
-  "batbayar": "REPLACE_ME_BATBAYAR",
-  "dulamsuren": "REPLACE_ME_DULAMSUREN",
-  "oyunaa": "REPLACE_ME_OYUNAA",
-  "enkhjargal": "REPLACE_ME_ENKHJARGAL",
-  "tsetseg": "REPLACE_ME_TSETSEG",
-  "ganbold": "REPLACE_ME_GANBOLD",
-  "headmaster": "REPLACE_ME_HEADMASTER",
-  "narrator": "REPLACE_ME_NARRATOR",
-  "reader": "REPLACE_ME_READER"
+  "_help": "Fish Audio voice model IDs (reference_id). All are 'Fish Official' voices from fish.audio. Change one by pasting another voice ID. letter and word use the reader voice.",
+  "_names": {
+    "buu": "Noah (boy, 8, energetic)",
+    "oyunaa": "Aubrey (girl, 8, bright)",
+    "batbayar": "Adrian (man, deep, slow)",
+    "ganbold": "Ethan (man, clear, calm)",
+    "headmaster": "Jordan (older man, measured)",
+    "dulamsuren": "Hannah (woman, friendly, clear)",
+    "enkhjargal": "Pearl (woman, 70s, warm)",
+    "tsetseg": "Laura (woman, warm, clear)",
+    "narrator": "Richard (man, British, storytelling)",
+    "reader": "Sheila (young American woman)"
+  },
+  "buu": "a3d56467a193409984ce245f8f371c9a",
+  "batbayar": "bf322df2096a46f18c579d0baa36f41d",
+  "dulamsuren": "9a9cf47702da476aa4629e2506d4a857",
+  "oyunaa": "029f407da0914eab9469a0edbc23efa8",
+  "enkhjargal": "7e9224dacd1c4de7918aa46c82009a70",
+  "tsetseg": "e3cd384158934cc9a01029cd7d278634",
+  "ganbold": "536d3a5e000945adb7038665781a4aca",
+  "headmaster": "79d0bd3e4e5444b18f7b6d89b5927bf1",
+  "narrator": "fbc1029c018041d4b17f2c1e57222dff",
+  "reader": "f3a2b90078d54a65af4b95f63bc7798e"
 }
