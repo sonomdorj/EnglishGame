@@ -31,14 +31,27 @@ In the repo, open Settings → Pages and set Source to "GitHub Actions".
 
 ## Voices
 
-Voices are mp3 files made once with OpenAI text-to-speech:
+Voices are mp3 files in `audio/`, one per spoken line. `scripts/make_audio.js` makes them with Fish Audio or OpenAI.
+It only downloads lines that have no file yet. Run it again after you change any line.
+
+**On GitHub (one click):**
+
+1. Put a voice ID for each speaker in `scripts/fish_voices.json` (replace every `REPLACE_ME` value).
+2. Add a repo secret: Settings → Secrets and variables → Actions → `FISH_API_KEY` (or `OPENAI_API_KEY`).
+3. Actions → "Make voice files" → Run workflow. It makes the files, runs the checks and opens a PR.
+   If it cannot open the PR, the run summary gives a link. To allow it: Settings → Actions → General →
+   "Allow GitHub Actions to create and approve pull requests".
+4. Merge the PR. The live site then has voices.
+
+**On your computer:**
 
 ```bash
 npm install
-OPENAI_API_KEY=your-key node scripts/make_audio.js
+TTS_PROVIDER=fish FISH_API_KEY=your-key node scripts/make_audio.js
 ```
 
-Run it again after you change any line. It only downloads new lines.
+Use `OPENAI_API_KEY=your-key node scripts/make_audio.js` for OpenAI. `FISH_MODEL` picks the Fish model (default `s2.1-pro`).
+With placeholder voice IDs the script stops before it sends any request.
 
 ## Tests
 

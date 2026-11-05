@@ -1,0 +1,13 @@
+{
+  "_help": "Fish Audio voice model IDs (reference_id). Copy each ID from https://fish.audio (the voice page URL or 'Copy ID'). Replace every REPLACE_ME value. letter and word use the reader voice.",
+  "buu": "REPLACE_ME_BUU",
+  "batbayar": "REPLACE_ME_BATBAYAR",
+  "dulamsuren": "REPLACE_ME_DULAMSUREN",
+  "oyunaa": "REPLACE_ME_OYUNAA",
+  "enkhjargal": "REPLACE_ME_ENKHJARGAL",
+  "tsetseg": "REPLACE_ME_TSETSEG",
+  "ganbold": "REPLACE_ME_GANBOLD",
+  "headmaster": "REPLACE_ME_HEADMASTER",
+  "narrator": "REPLACE_ME_NARRATOR",
+  "reader": "REPLACE_ME_READER"
+}

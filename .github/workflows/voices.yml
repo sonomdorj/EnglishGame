@@ -1,0 +1,90 @@
+# Makes the voice files and opens a PR with them. Start it by hand:
+#   Actions -> "Make voice files" -> Run workflow.
+# Needs a repo secret: FISH_API_KEY (Fish Audio) or OPENAI_API_KEY (OpenAI).
+# Fish Audio also needs real voice IDs in scripts/fish_voices.json (no REPLACE_ME values).
+name: Make voice files
+
+on:
+  workflow_dispatch:
+    inputs:
+      provider:
+        description: Text-to-speech provider
+        type: choice
+        options: [fish, openai]
+        default: fish
+      fish_model:
+        description: Fish Audio model (s1, s2-pro, s2.1-pro, s2.1-pro-free)
+        type: string
+        default: s2.1-pro
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: voices
+  cancel-in-progress: false
+
+jobs:
+  voices:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Make the mp3 files
+        env:
+          TTS_PROVIDER: ${{ inputs.provider }}
+          FISH_MODEL: ${{ inputs.fish_model }}
+          FISH_API_KEY: ${{ secrets.FISH_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: node scripts/make_audio.js
+
+      - name: Check the data and run the unit tests
+        run: |
+          npm ci
+          npm run check
+          npm run test:unit
+
+      - name: Open a PR with the files
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PROVIDER: ${{ inputs.provider }}
+          FISH_MODEL: ${{ inputs.fish_model }}
+          RUN_NUMBER: ${{ github.run_number }}
+          BASE: ${{ github.event.repository.default_branch }}
+          COMPARE: ${{ github.server_url }}/${{ github.repository }}/compare
+        run: |
+          git add audio audio_manifest.json
+          if git diff --cached --quiet; then
+            echo "No new voice files." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          BRANCH="voices/run-$RUN_NUMBER"
+          COUNT=$(ls audio | wc -l | tr -d ' ')
+          SIZE=$(du -sh audio | cut -f1)
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$BRANCH"
+          git commit -q -m "Add voice files ($COUNT mp3, $PROVIDER)"
+          git push -q origin "$BRANCH"
+          BODY="Voice files made by the \"Make voice files\" workflow, run $RUN_NUMBER.
+
+          - Provider: $PROVIDER (Fish model: $FISH_MODEL)
+          - Files: $COUNT mp3 in audio/, $SIZE
+          - The quest check and the unit tests passed.
+
+          Merge this PR to put the voices on the live site."
+          if gh pr create --base "$BASE" --head "$BRANCH" \
+               --title "Add voice files ($COUNT mp3)" --body "$BODY"; then
+            echo "PR opened for $BRANCH." >> "$GITHUB_STEP_SUMMARY"
+          else
+            URL="$COMPARE/$BASE...$BRANCH?expand=1"
+            echo "Branch $BRANCH is pushed, but this workflow may not open PRs." >> "$GITHUB_STEP_SUMMARY"
+            echo "Open the PR here: $URL" >> "$GITHUB_STEP_SUMMARY"
+            echo "Or allow it: Settings -> Actions -> General -> Allow GitHub Actions to create and approve pull requests." >> "$GITHUB_STEP_SUMMARY"
+          fi

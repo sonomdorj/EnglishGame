@@ -1,8 +1,10 @@
-// Makes one mp3 per spoken line with OpenAI text-to-speech.
+// Makes one mp3 per spoken line with text-to-speech (Fish Audio or OpenAI).
 //
-//   OPENAI_API_KEY=... node scripts/make_audio.js        assign ids + download missing files
-//   node scripts/make_audio.js --ids-only                 only write the "audio" fields
+//   TTS_PROVIDER=fish FISH_API_KEY=... node scripts/make_audio.js   Fish Audio (voices in scripts/fish_voices.json)
+//   OPENAI_API_KEY=... node scripts/make_audio.js                    OpenAI (the default provider)
+//   node scripts/make_audio.js --ids-only                            only write the "audio" fields
 //
+// Optional: FISH_MODEL (default s2.1-pro).
 // Reads villagers.json, quests.json, words.json, letters.json, buu.json.
 // Every spoken line gets an "audio" field (words also get "sentenceAudio").
 // Files are saved as audio/<id>.mp3. audio_manifest.json lists the files that exist.
@@ -23,6 +25,20 @@ export const VOICES = {
   batbayar: 'onyx', dulamsuren: 'shimmer', oyunaa: 'nova', enkhjargal: 'coral', tsetseg: 'sage', ganbold: 'echo',
   headmaster: 'ash', narrator: 'fable', letter: 'fable', word: 'fable',
 };
+
+// Fish Audio: one voice model ID per speaker, from scripts/fish_voices.json. letter and word use "reader".
+export function fishVoices(file = path.join(ROOT, 'scripts/fish_voices.json')) {
+  const v = JSON.parse(fs.readFileSync(file, 'utf8'));
+  const out = {};
+  for (const who of Object.keys(VOICES)) out[who] = v[who === 'letter' || who === 'word' ? 'reader' : who];
+  return out;
+}
+
+// Speakers whose Fish voice ID is missing or still a placeholder.
+export function missingFishVoices(voices, lines) {
+  const need = new Set(lines.map(l => l.who));
+  return [...need].filter(who => !voices[who] || /^REPLACE_ME/.test(voices[who])).sort();
+}
 
 // Finds every line object { who, text } in a JSON value and gives it an audio id.
 function walk(node, found) {
@@ -58,14 +74,26 @@ export function collectLines({ write = false } = {}) {
   return [...unique.values()];
 }
 
-async function tts(line, key) {
-  for (let attempt = 1; attempt <= 4; attempt++) {
-    const r = await fetch('https://api.openai.com/v1/audio/speech', {
-      method: 'POST',
+// One request per line. Retries on 429 and 5xx with a growing wait.
+async function tts(line, key, provider, fish) {
+  const req = provider === 'fish'
+    ? {
+      url: 'https://api.fish.audio/v1/tts',
+      headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json', model: fish.model },
+      body: { text: line.text, reference_id: fish.voices[line.who], format: 'mp3', mp3_bitrate: 64, prosody: { speed: CONFIG.ttsRate } },
+    }
+    : {
+      url: 'https://api.openai.com/v1/audio/speech',
       headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ model: 'tts-1', voice: VOICES[line.who], input: line.text, speed: CONFIG.ttsRate, response_format: 'mp3' }),
-    });
-    if (r.ok) return Buffer.from(await r.arrayBuffer());
+      body: { model: 'tts-1', voice: VOICES[line.who], input: line.text, speed: CONFIG.ttsRate, response_format: 'mp3' },
+    };
+  for (let attempt = 1; attempt <= 4; attempt++) {
+    const r = await fetch(req.url, { method: 'POST', headers: req.headers, body: JSON.stringify(req.body) });
+    if (r.ok) {
+      const buf = Buffer.from(await r.arrayBuffer());
+      if (!buf.length) throw new Error(`TTS returned an empty file for ${line.id}`);
+      return buf;
+    }
     if (attempt === 4 || (r.status < 500 && r.status !== 429)) throw new Error(`TTS ${r.status} for ${line.id}: ${await r.text()}`);
     await new Promise(res => setTimeout(res, 2000 * 2 ** attempt));
   }
@@ -83,8 +111,21 @@ async function main() {
   console.log(`Spoken lines (unique): ${lines.length}`);
   if (idsOnly) { console.log('Audio ids written. No files downloaded (--ids-only).'); return; }
 
-  const key = process.env.OPENAI_API_KEY;
-  if (!key) { console.error('OPENAI_API_KEY is not set. Nothing downloaded.'); process.exit(2); }
+  const provider = (process.env.TTS_PROVIDER || 'openai').toLowerCase();
+  if (!['openai', 'fish'].includes(provider)) { console.error(`Unknown TTS_PROVIDER "${provider}". Use fish or openai.`); process.exit(2); }
+  const keyName = provider === 'fish' ? 'FISH_API_KEY' : 'OPENAI_API_KEY';
+  const key = process.env[keyName];
+  if (!key) { console.error(`${keyName} is not set. Nothing downloaded.`); process.exit(2); }
+  let fish = null;
+  if (provider === 'fish') {
+    fish = { voices: fishVoices(), model: process.env.FISH_MODEL || 's2.1-pro' };
+    const missing = missingFishVoices(fish.voices, lines);
+    if (missing.length) {
+      console.error(`Fish voice IDs missing in scripts/fish_voices.json for: ${missing.join(', ')}. Nothing downloaded.`);
+      process.exit(2);
+    }
+  }
+  console.log(`Provider: ${provider}${fish ? ` (model ${fish.model})` : ''}`);
   fs.mkdirSync(AUDIO, { recursive: true });
   // Remove files for lines that no longer exist.
   const keep = new Set(lines.map(l => l.id));
@@ -96,7 +137,7 @@ async function main() {
   const worker = async () => {
     while (todo.length) {
       const l = todo.shift();
-      fs.writeFileSync(path.join(AUDIO, `${l.id}.mp3`), await tts(l, key));
+      fs.writeFileSync(path.join(AUDIO, `${l.id}.mp3`), await tts(l, key, provider, fish));
       if (++done % 50 === 0) console.log(`  ${done} done`);
     }
   };

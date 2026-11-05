@@ -6,7 +6,7 @@ import path from 'path';
 import { execFileSync, spawnSync } from 'child_process';
 import { ROOT, readJSON } from './data.js';
 import { addNickVariants, adultsFrom } from '../../scripts/nicknames.js';
-import { collectLines, VOICES } from '../../scripts/make_audio.js';
+import { collectLines, VOICES, fishVoices, missingFishVoices } from '../../scripts/make_audio.js';
 import { audioId } from '../../audioid.js';
 
 const DATA = ['villagers.json', 'quests.json', 'words.json', 'letters.json', 'buu.json'];
@@ -112,19 +112,19 @@ test('pipeline: build_quests + nicknames + make_audio --ids-only gives the commi
 });
 
 test('make_audio without OPENAI_API_KEY: exit 2, nothing downloaded', () => {
-  const r = node(box, ['scripts/make_audio.js'], { OPENAI_API_KEY: '' });
+  const r = node(box, ['scripts/make_audio.js'], { TTS_PROVIDER: 'openai', OPENAI_API_KEY: '' });
   assert.equal(r.status, 2);
   assert.match(r.stderr, /OPENAI_API_KEY is not set/);
   assert.equal(fs.existsSync(path.join(box, 'audio')), false);
 });
 
-const STUB = path.join(ROOT, 'tests/unit/stub-openai.mjs');
+const STUB = path.join(ROOT, 'tests/unit/stub-tts.mjs');
 
 test('make_audio with a key: one mp3 per line, old files removed, manifest written', () => {
   const audio = path.join(box, 'audio');
   fs.mkdirSync(audio, { recursive: true });
   fs.writeFileSync(path.join(audio, 'old-line.mp3'), 'x');
-  const r = node(box, ['--import', STUB, 'scripts/make_audio.js'], { OPENAI_API_KEY: 'test-key', STUB_TTS: 'ok' });
+  const r = node(box, ['--import', STUB, 'scripts/make_audio.js'], { TTS_PROVIDER: 'openai', OPENAI_API_KEY: 'test-key', STUB_TTS: 'ok' });
   assert.equal(r.status, 0, r.stdout + r.stderr);
   assert.match(r.stdout, /MATCH: one file per line\./);
   const lines = collectLines();
@@ -136,7 +136,7 @@ test('make_audio with a key: one mp3 per line, old files removed, manifest writt
   const manifest = JSON.parse(fs.readFileSync(path.join(box, 'audio_manifest.json'), 'utf8'));
   assert.deepEqual(manifest, files.map(f => f.slice(0, -4)));
   // Second run: nothing new to download.
-  const again = node(box, ['--import', STUB, 'scripts/make_audio.js'], { OPENAI_API_KEY: 'test-key', STUB_TTS: '401' });
+  const again = node(box, ['--import', STUB, 'scripts/make_audio.js'], { TTS_PROVIDER: 'openai', OPENAI_API_KEY: 'test-key', STUB_TTS: '401' });
   assert.equal(again.status, 0, again.stderr);
   assert.match(again.stdout, /To download: 0/);
   fs.rmSync(audio, { recursive: true });
@@ -144,10 +144,85 @@ test('make_audio with a key: one mp3 per line, old files removed, manifest writt
 });
 
 test('make_audio: a refused key stops with exit 1 and the API message', () => {
-  const r = node(box, ['--import', STUB, 'scripts/make_audio.js'], { OPENAI_API_KEY: 'bad', STUB_TTS: '401' });
+  const r = node(box, ['--import', STUB, 'scripts/make_audio.js'], { TTS_PROVIDER: 'openai', OPENAI_API_KEY: 'bad', STUB_TTS: '401' });
   assert.equal(r.status, 1);
   assert.match(r.stderr, /TTS 401 for .*: bad key/);
   fs.rmSync(path.join(box, 'audio'), { recursive: true, force: true });
+});
+
+// ---------- Fish Audio ----------
+
+test('fish_voices.json: one entry for every speaker; letter and word use the reader voice', () => {
+  const v = fishVoices();
+  assert.deepEqual(Object.keys(v).sort(), Object.keys(VOICES).sort());
+  for (const [who, id] of Object.entries(v)) assert.equal(typeof id, 'string', who);
+  assert.equal(v.letter, v.word);
+  const raw = readJSON('scripts/fish_voices.json');
+  assert.equal(v.letter, raw.reader);
+});
+
+test('missingFishVoices: placeholders and empty IDs, only for speakers that have lines', () => {
+  const lines = [{ who: 'buu' }, { who: 'oyunaa' }, { who: 'word' }];
+  assert.deepEqual(missingFishVoices({ buu: 'REPLACE_ME_BUU', oyunaa: '', word: 'abc' }, lines), ['buu', 'oyunaa']);
+  assert.deepEqual(missingFishVoices({ buu: 'a', oyunaa: 'b', word: 'c', ganbold: 'REPLACE_ME' }, lines), []);
+});
+
+const FISH = { TTS_PROVIDER: 'fish', FISH_API_KEY: 'fish-test-key', OPENAI_API_KEY: '' };
+
+test('make_audio (fish): placeholder voice IDs stop it before any request', () => {
+  const r = node(box, ['--import', STUB, 'scripts/make_audio.js'], { ...FISH, STUB_TTS: 'ok' });
+  assert.equal(r.status, 2, r.stdout + r.stderr);
+  assert.match(r.stderr, /Fish voice IDs missing in scripts\/fish_voices\.json for: .*buu/);
+  assert.equal(fs.existsSync(path.join(box, 'audio')), false);
+});
+
+test('make_audio (fish): no FISH_API_KEY = exit 2; unknown provider = exit 2', () => {
+  let r = node(box, ['scripts/make_audio.js'], { ...FISH, FISH_API_KEY: '' });
+  assert.equal(r.status, 2);
+  assert.match(r.stderr, /FISH_API_KEY is not set/);
+  r = node(box, ['scripts/make_audio.js'], { TTS_PROVIDER: 'robot' });
+  assert.equal(r.status, 2);
+  assert.match(r.stderr, /Unknown TTS_PROVIDER "robot"/);
+});
+
+test('make_audio (fish): with voice IDs, one mp3 per line in the right voice', () => {
+  const file = path.join(box, 'scripts/fish_voices.json');
+  const raw = JSON.parse(fs.readFileSync(file, 'utf8'));
+  for (const k of Object.keys(raw)) if (k !== '_help') raw[k] = `voice-${k}`;
+  fs.writeFileSync(file, JSON.stringify(raw));
+  try {
+    const r = node(box, ['--import', STUB, 'scripts/make_audio.js'], { ...FISH, STUB_TTS: 'ok', FISH_MODEL: 's1' });
+    assert.equal(r.status, 0, r.stdout + r.stderr);
+    assert.match(r.stdout, /Provider: fish \(model s1\)/);
+    assert.match(r.stdout, /MATCH: one file per line\./);
+    const lines = collectLines();
+    const audio = path.join(box, 'audio');
+    assert.equal(fs.readdirSync(audio).length, lines.length);
+    const voiceOf = who => fs.readFileSync(path.join(audio, `${lines.find(l => l.who === who).id}.mp3`)).subarray(2).toString();
+    assert.equal(voiceOf('buu'), 'voice-buu');
+    assert.equal(voiceOf('headmaster'), 'voice-headmaster');
+    assert.equal(voiceOf('letter'), 'voice-reader');
+    assert.equal(voiceOf('word'), 'voice-reader');
+  } finally {
+    fs.copyFileSync(path.join(ROOT, 'scripts/fish_voices.json'), file);
+    fs.rmSync(path.join(box, 'audio'), { recursive: true, force: true });
+    fs.copyFileSync(path.join(ROOT, 'audio_manifest.json'), path.join(box, 'audio_manifest.json'));
+  }
+});
+
+test('make_audio (fish): a refused key stops with exit 1 and the API message', () => {
+  const file = path.join(box, 'scripts/fish_voices.json');
+  const raw = JSON.parse(fs.readFileSync(file, 'utf8'));
+  for (const k of Object.keys(raw)) if (k !== '_help') raw[k] = `voice-${k}`;
+  fs.writeFileSync(file, JSON.stringify(raw));
+  try {
+    const r = node(box, ['--import', STUB, 'scripts/make_audio.js'], { ...FISH, STUB_TTS: '401' });
+    assert.equal(r.status, 1);
+    assert.match(r.stderr, /TTS 401 for .*: bad key/);
+  } finally {
+    fs.copyFileSync(path.join(ROOT, 'scripts/fish_voices.json'), file);
+    fs.rmSync(path.join(box, 'audio'), { recursive: true, force: true });
+  }
 });
 
 test('check_quests: OK on the real data', () => {
