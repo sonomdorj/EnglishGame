@@ -18,6 +18,17 @@ Use a recent Chrome. The game uses real shadows, so an old computer may be slow.
 
 Date engine tests: open http://localhost:3010/test_dates.html
 
+## Deploy (GitHub Pages)
+
+Every push to the default branch runs `.github/workflows/pages.yml`:
+quest check, unit tests and integration tests, then deploy.
+The site is at https://sonomdorj.github.io/EnglishGame/
+
+One-time setup: the repo must be public (or on a paid GitHub plan).
+In the repo, open Settings → Pages and set Source to "GitHub Actions".
+
+`sh scripts/build_site.sh` copies only the game files into `_site/`. The workflow uses it too.
+
 ## Voices
 
 Voices are mp3 files made once with OpenAI text-to-speech:
